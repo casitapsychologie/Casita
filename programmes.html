@@ -112,7 +112,7 @@ nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; justify
 .tcard-footer { display:flex; justify-content:space-between; align-items:center; border-top:1px solid #f2d5d5; padding-top:0.8rem; margin-top:auto; }
 .tcard-price { font-family:'Cormorant Garamond',serif; font-size:1.3rem; color:#9b5c5c; font-weight:500; }
 .tcard-price small { font-size:0.62rem; color:#7a5c5c; font-family:'DM Sans',sans-serif; display:block; }
-.btn-get { padding:0.42rem 1rem; border-radius:50px; font-size:0.75rem; cursor:pointer; transition:all 0.3s; border:1.5px solid; font-family:'DM Sans',sans-serif; }
+.btn-get { padding:0.42rem 1rem; border-radius:50px; font-size:0.75rem; cursor:pointer; transition:all 0.3s; border:1.5px solid; font-family:'DM Sans',sans-serif; display:inline-block; text-decoration:none; }
 .t-anxiete .btn-get { background:#fce8e8; color:#9b5c5c; border-color:#f5d0d0; }
 .t-connaissance .btn-get { background:#e8eaf7; color:#4a4f7a; border-color:#c8ccee; }
 .t-peurs .btn-get { background:#fdf0ec; color:#8a5040; border-color:#f0c8b8; }
@@ -133,7 +133,7 @@ nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; justify
 .bundle-price { font-family:'Cormorant Garamond',serif; font-size:3.8rem; color:white; line-height:1; }
 .bundle-old { font-size:1rem; color:#f2d5d5; text-decoration:line-through; display:block; }
 .bundle-saving { font-size:0.7rem; color:#f9e8e8; letter-spacing:0.1em; text-transform:uppercase; }
-.btn-bundle { background:white; color:#9b5c5c; padding:1rem 2.2rem; border-radius:50px; font-size:0.9rem; font-weight:500; border:none; cursor:pointer; transition:all 0.3s; }
+.btn-bundle { background:white; color:#9b5c5c; padding:1rem 2.2rem; border-radius:50px; font-size:0.9rem; font-weight:500; border:none; cursor:pointer; transition:all 0.3s; display:inline-block; text-decoration:none; }
 .btn-bundle:hover { background:#fdf7f4; }
 .bundle-visual { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; }
 .mini-card { background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:14px; padding:1rem; }
@@ -245,7 +245,7 @@ footer { background:#c98080; color:white; padding:2.5rem 3rem; display:flex; jus
           </ul>
           <div class="tcard-footer">
             <div class="tcard-price">30 €<small data-fr="PDF · 29 pages" data-es="PDF · 29 páginas">PDF · 29 pages</small></div>
-            <button class="btn-get" data-fr="Obtenir" data-es="Obtener" onclick="window.open('https://jennandrea.gumroad.com/l/gjvfx','_blank')">Obtenir</button>
+            <a href="https://jennandrea.gumroad.com/l/gjvfx" target="_blank" rel="noopener" class="btn-get" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
           </div>
         </div>
       </div>
@@ -270,7 +270,7 @@ footer { background:#c98080; color:white; padding:2.5rem 3rem; display:flex; jus
           </ul>
           <div class="tcard-footer">
             <div class="tcard-price">14 €<small data-fr="PDF · 17 pages" data-es="PDF · 17 páginas">PDF · 17 pages</small></div>
-            <button class="btn-get" data-fr="Obtenir" data-es="Obtener" onclick="window.open('https://jennandrea.gumroad.com/l/nwxih','_blank')" onclick="window.open('https://jennandrea.gumroad.com/l/nwxih','_blank')">Obtenir</button>
+            <a href="https://jennandrea.gumroad.com/l/nwxih" target="_blank" rel="noopener" class="btn-get" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
           </div>
         </div>
       </div>
@@ -294,7 +294,7 @@ footer { background:#c98080; color:white; padding:2.5rem 3rem; display:flex; jus
           </ul>
           <div class="tcard-footer">
             <div class="tcard-price">59 €<small data-fr="PDF · 29 pages" data-es="PDF · 29 páginas">PDF · 29 pages</small></div>
-            <button class="btn-get" data-fr="Commencer" data-es="Comenzar" onclick="window.open('https://jennandrea.gumroad.com/l/lsstww','_blank')">Commencer</button>
+            <a href="https://jennandrea.gumroad.com/l/lsstww" target="_blank" rel="noopener" class="btn-get" data-fr="Commencer" data-es="Comenzar">Commencer</a>
           </div>
         </div>
       </div>
@@ -341,7 +341,7 @@ footer { background:#c98080; color:white; padding:2.5rem 3rem; display:flex; jus
           <p class="tcard-desc" data-fr="30 jours de questions profondes, 4 bilans guidés (TCC, ACT, self-compassion), plan de transformation. 60 pages." data-es="30 días de preguntas profundas, 4 balances guiados (TCC, ACT, autocompasión), plan de transformación. 60 páginas.">30 jours de questions profondes, 4 bilans guidés (TCC, ACT, self-compassion), plan de transformation. 60 pages.</p>
           <div class="tcard-footer">
             <div class="tcard-price">32 €<small data-fr="PDF · 60 pages" data-es="PDF · 60 páginas">PDF · 60 pages</small></div>
-            <button class="btn-get" data-fr="Obtenir" data-es="Obtener" onclick="window.open('https://jennandrea.gumroad.com/l/ewlbyx','_blank')">Obtenir</button>
+            <a href="https://jennandrea.gumroad.com/l/ewlbyx" target="_blank" rel="noopener" class="btn-get" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
           </div>
         </div>
       </div>
@@ -356,7 +356,7 @@ footer { background:#c98080; color:white; padding:2.5rem 3rem; display:flex; jus
           <p class="tcard-desc" data-fr="35 jours pour explorer qui vous êtes vraiment — valeurs, blessures, schémas, besoins, relations. Le programme le plus complet de Casita. 46 pages." data-es="35 días para explorar quién eres de verdad — valores, heridas, esquemas, necesidades, relaciones. El programa más completo de Casita. 46 páginas.">35 jours pour explorer qui vous êtes vraiment — valeurs, blessures, schémas, besoins, relations. Le programme le plus complet de Casita. 46 pages.</p>
           <div class="tcard-footer">
             <div class="tcard-price">69 €<small data-fr="PDF · 46 pages" data-es="PDF · 46 páginas">PDF · 46 pages</small></div>
-            <button class="btn-get" data-fr="Commencer" data-es="Comenzar" onclick="window.open('https://jennandrea.gumroad.com/l/rbjpn','_blank')">Commencer</button>
+            <a href="https://jennandrea.gumroad.com/l/rbjpn" target="_blank" rel="noopener" class="btn-get" data-fr="Commencer" data-es="Comenzar">Commencer</a>
           </div>
         </div>
       </div>
@@ -388,7 +388,7 @@ footer { background:#c98080; color:white; padding:2.5rem 3rem; display:flex; jus
           <p class="tcard-desc" data-fr="Physiologie, cartographie, origines, exposition progressive (10 niveaux), liberté. 24 pages." data-es="Fisiología, cartografía, orígenes, exposición progresiva (10 niveles), libertad. 24 páginas.">Physiologie, cartographie, origines, exposition progressive (10 niveaux), liberté. 24 pages.</p>
           <div class="tcard-footer">
             <div class="tcard-price">24 €<small data-fr="PDF · 24 pages" data-es="PDF · 24 páginas">PDF · 24 pages</small></div>
-            <button class="btn-get" data-fr="Obtenir" data-es="Obtener" onclick="window.open('https://jennandrea.gumroad.com/l/aorhra','_blank')" onclick="window.open('https://jennandrea.gumroad.com/l/aorhra','_blank')">Obtenir</button>
+            <a href="https://jennandrea.gumroad.com/l/aorhra" target="_blank" rel="noopener" class="btn-get" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
           </div>
         </div>
       </div>
@@ -403,7 +403,7 @@ footer { background:#c98080; color:white; padding:2.5rem 3rem; display:flex; jus
           <p class="tcard-desc" data-fr="28 jours pour transformer votre relation à la peur — origines, corps, exposition progressive (10 niveaux), liberté. 33 pages." data-es="28 días para transformar tu relación con el miedo — orígenes, cuerpo, exposición progresiva (10 niveles), libertad. 33 páginas.">28 jours pour transformer votre relation à la peur — origines, corps, exposition progressive (10 niveaux), liberté. 33 pages.</p>
           <div class="tcard-footer">
             <div class="tcard-price">62 €<small data-fr="PDF · 33 pages" data-es="PDF · 33 páginas">PDF · 33 pages</small></div>
-            <button class="btn-get" data-fr="Commencer" data-es="Comenzar" onclick="window.open('https://jennandrea.gumroad.com/l/fktqwy','_blank')">Commencer</button>
+            <a href="https://jennandrea.gumroad.com/l/fktqwy" target="_blank" rel="noopener" class="btn-get" data-fr="Commencer" data-es="Comenzar">Commencer</a>
           </div>
         </div>
       </div>
@@ -435,7 +435,7 @@ footer { background:#c98080; color:white; padding:2.5rem 3rem; display:flex; jus
           <p class="tcard-desc" data-fr="Self-compassion (K. Neff), critique intérieur, croyances limitantes, 6 piliers d'estime. 31 pages." data-es="Autocompasión (K. Neff), crítico interior, creencias limitantes, 6 pilares de autoestima. 31 páginas.">Self-compassion (K. Neff), critique intérieur, croyances limitantes, 6 piliers d'estime. 31 pages.</p>
           <div class="tcard-footer">
             <div class="tcard-price">26 €<small data-fr="PDF · 31 pages" data-es="PDF · 31 páginas">PDF · 31 pages</small></div>
-            <button class="btn-get" data-fr="Obtenir" data-es="Obtener" onclick="window.open('https://jennandrea.gumroad.com/l/vyxyc','_blank')" onclick="window.open('https://jennandrea.gumroad.com/l/vyxyc','_blank')">Obtenir</button>
+            <a href="https://jennandrea.gumroad.com/l/vyxyc" target="_blank" rel="noopener" class="btn-get" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
           </div>
         </div>
       </div>
@@ -465,7 +465,7 @@ footer { background:#c98080; color:white; padding:2.5rem 3rem; display:flex; jus
           <p class="tcard-desc" data-fr="24 jours pour transformer votre regard sur vous-même — origines, dialogue intérieur, self-compassion. 32 pages." data-es="24 días para transformar la mirada sobre uno mismo — orígenes, diálogo interior, autocompasión. 32 páginas.">24 jours pour transformer votre regard sur vous-même — origines, dialogue intérieur, self-compassion. 32 pages.</p>
           <div class="tcard-footer">
             <div class="tcard-price">58 €<small data-fr="PDF · 32 pages" data-es="PDF · 32 páginas">PDF · 32 pages</small></div>
-            <button class="btn-get" data-fr="Commencer" data-es="Comenzar" onclick="window.open('https://jennandrea.gumroad.com/l/irnljk','_blank')" onclick="window.open('https://jennandrea.gumroad.com/l/irnljk','_blank')">Commencer</button>
+            <a href="https://jennandrea.gumroad.com/l/irnljk" target="_blank" rel="noopener" class="btn-get" data-fr="Commencer" data-es="Comenzar">Commencer</a>
           </div>
         </div>
       </div>
@@ -497,7 +497,7 @@ footer { background:#c98080; color:white; padding:2.5rem 3rem; display:flex; jus
           <p class="tcard-desc" data-fr="Anhédonie, 3 voies de Frankl, valeurs, activation comportementale, projet de vie 3 mois. PHQ-9 inclus. 24 pages." data-es="Anhedonia, 3 vías de Frankl, valores, activación conductual, proyecto de vida 3 meses. PHQ-9 incluido. 24 páginas.">Anhédonie, 3 voies de Frankl, valeurs, activation comportementale, projet de vie 3 mois. PHQ-9 inclus. 24 pages.</p>
           <div class="tcard-footer">
             <div class="tcard-price">26 €<small data-fr="PDF · 24 pages" data-es="PDF · 24 páginas">PDF · 24 pages</small></div>
-            <button class="btn-get" data-fr="Obtenir" data-es="Obtener" onclick="window.open('https://jennandrea.gumroad.com/l/keoph','_blank')" onclick="window.open('https://jennandrea.gumroad.com/l/keoph','_blank')">Obtenir</button>
+            <a href="https://jennandrea.gumroad.com/l/keoph" target="_blank" rel="noopener" class="btn-get" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
           </div>
         </div>
       </div>
@@ -528,7 +528,7 @@ footer { background:#c98080; color:white; padding:2.5rem 3rem; display:flex; jus
           <span class="bundle-old">451 EUR</span>
           <div class="bundle-saving" data-fr="Economisez 221 EUR" data-es="Ahorra 221 EUR">Economisez 221 EUR</div>
         </div>
-        <button class="btn-bundle" data-fr="Obtenir l'Integrale" data-es="Obtener la Integral" onclick="window.open('https://jennandrea.gumroad.com/l/ylpuap','_blank')">Obtenir l'Integrale</button>
+        <a href="https://jennandrea.gumroad.com/l/ylpuap" target="_blank" rel="noopener" class="btn-bundle" data-fr="Obtenir l'Integrale" data-es="Obtener la Integral">Obtenir l'Integrale</a>
       </div>
     </div>
     <div class="bundle-visual fade-in">
