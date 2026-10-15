@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casita — Cahiers & Programmes</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --rose:#c98080; --rose-dark:#9b5c5c; --rose-deep:#7a3a3a;
+  --rose-pale:#fce8e8; --rose-mist:#f5dede;
+  --lavande:#7a85c8; --lavande-pale:#eef0f9;
+  --peche:#c87060; --peche-pale:#fdf0ec;
+  --sauge:#5a9465; --sauge-pale:#eef5ee;
+  --sable:#a07850; --sable-pale:#f5ede5;
+  --taupe:#7a5c5c; --taupe-light:#b09090;
+  --cream:#fdf7f4; --text:#5a3a3a;
+}
+html { scroll-behavior:smooth; }
+body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--taupe); font-weight:300; overflow-x:hidden; }
+
+/* NAV */
+nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; align-items:center; justify-content:space-between; padding:1rem 3rem; background:rgba(253,247,244,0.95); backdrop-filter:blur(18px); border-bottom:1px solid var(--rose-mist); }
+.nav-logo { display:flex; align-items:center; gap:.7rem; text-decoration:none; }
+.nav-logo-text { font-family:'Cormorant Garamond',serif; font-size:1.5rem; color:var(--rose-dark); }
+.nav-links { display:flex; gap:2rem; list-style:none; }
+.nav-links a { font-size:.78rem; color:var(--taupe); text-decoration:none; transition:color .2s; }
+.nav-links a:hover { color:var(--rose); }
+.nav-right { display:flex; gap:.5rem; }
+.lang-btn { background:transparent; border:1px solid var(--rose-mist); color:var(--taupe); font-size:.7rem; padding:.2rem .55rem; border-radius:50px; cursor:pointer; font-family:'DM Sans',sans-serif; transition:all .2s; }
+.lang-btn.active { background:var(--rose); color:white; border-color:var(--rose); }
+
+/* HERO */
+.hero { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:8rem 3rem 5rem; background:radial-gradient(ellipse 80% 60% at 50% 40%, var(--rose-pale) 0%, transparent 70%); }
+.hero-eyebrow { font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; color:var(--rose); margin-bottom:1.5rem; display:block; }
+.hero-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2.8rem,6vw,5rem); font-weight:300; line-height:1.1; color:var(--text); margin-bottom:1.6rem; max-width:700px; }
+.hero-title em { font-style:italic; color:var(--rose); }
+.hero-desc { font-size:1rem; line-height:1.85; color:var(--taupe); max-width:52ch; margin:0 auto 2.5rem; }
+.hero-actions { display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; margin-bottom:1.5rem; }
+.btn-primary { background:var(--rose); color:white; padding:.85rem 2rem; border-radius:50px; font-size:.88rem; text-decoration:none; border:none; cursor:pointer; transition:all .25s; display:inline-block; }
+.btn-primary:hover { background:var(--rose-dark); transform:translateY(-2px); }
+.btn-ghost { background:transparent; color:var(--rose-dark); padding:.85rem 2rem; border-radius:50px; font-size:.88rem; text-decoration:none; border:1.5px solid var(--rose-mist); cursor:pointer; transition:all .25s; display:inline-block; }
+.btn-ghost:hover { border-color:var(--rose); background:var(--rose-pale); }
+.hero-by { font-size:.8rem; color:var(--taupe-light); font-style:italic; }
+
+/* FINDER */
+.finder { background:white; padding:5rem 3rem; }
+.finder-inner { max-width:900px; margin:0 auto; }
+.section-label { font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; color:var(--rose); margin-bottom:.8rem; display:block; }
+.finder-title { font-family:'Cormorant Garamond',serif; font-size:clamp(1.8rem,3.5vw,2.8rem); font-weight:300; color:var(--text); margin-bottom:.5rem; line-height:1.2; }
+.finder-title em { font-style:italic; color:var(--rose); }
+.finder-sub { font-size:.9rem; color:var(--taupe); margin-bottom:2.5rem; line-height:1.7; }
+.finder-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:.8rem; }
+.finder-card { background:var(--cream); border:1px solid var(--rose-mist); border-radius:16px; padding:1.2rem 1.4rem; cursor:pointer; transition:all .25s; display:flex; align-items:flex-start; gap:1rem; text-decoration:none; }
+.finder-card:hover { border-color:var(--rose); background:var(--rose-pale); transform:translateY(-2px); box-shadow:0 8px 24px rgba(155,92,92,.1); }
+.finder-icon { width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; background:var(--rose-pale); }
+.finder-card-q { font-size:.86rem; color:var(--text); line-height:1.45; margin-bottom:.3rem; font-weight:400; }
+.finder-card-a { font-size:.72rem; color:var(--rose); letter-spacing:.06em; text-transform:uppercase; }
+
+/* COLLECTIONS */
+.collections { padding:5rem 3rem; }
+.collections-inner { max-width:1100px; margin:0 auto; }
+.collections-title { font-family:'Cormorant Garamond',serif; font-size:clamp(1.8rem,3.5vw,2.8rem); font-weight:300; color:var(--text); margin-bottom:3rem; line-height:1.2; }
+.collections-title em { font-style:italic; color:var(--rose); }
+.collection { margin-bottom:4rem; }
+.collection-header { display:flex; align-items:center; gap:1.2rem; padding-bottom:1.4rem; border-bottom:1px solid; margin-bottom:2rem; }
+.col-apaiser .collection-header { border-color:var(--rose-mist); }
+.col-comprendre .collection-header { border-color:#d0d4f0; }
+.col-reconstruire .collection-header { border-color:#c0dcc8; }
+.col-oser .collection-header { border-color:#f0d0c8; }
+.col-sens .collection-header { border-color:#ddd0c0; }
+.collection-icon { width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.col-apaiser .collection-icon { background:var(--rose-pale); }
+.col-comprendre .collection-icon { background:var(--lavande-pale); }
+.col-reconstruire .collection-icon { background:var(--sauge-pale); }
+.col-oser .collection-icon { background:var(--peche-pale); }
+.col-sens .collection-icon { background:var(--sable-pale); }
+.collection-meta { flex:1; }
+.collection-name { font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:400; line-height:1.2; }
+.col-apaiser .collection-name { color:var(--rose-dark); }
+.col-comprendre .collection-name { color:var(--lavande); }
+.col-reconstruire .collection-name { color:var(--sauge); }
+.col-oser .collection-name { color:var(--peche); }
+.col-sens .collection-name { color:var(--sable); }
+.collection-desc { font-size:.78rem; color:var(--taupe-light); margin-top:.2rem; }
+.collection-link { font-size:.75rem; color:var(--rose); text-decoration:none; letter-spacing:.05em; white-space:nowrap; }
+.cards-row { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.2rem; }
+.pcard { background:white; border-radius:20px; overflow:hidden; transition:all .3s; box-shadow:0 2px 12px rgba(0,0,0,.05); display:flex; flex-direction:column; }
+.pcard:hover { transform:translateY(-4px); box-shadow:0 16px 48px rgba(0,0,0,.1); }
+.pcard-cover { height:120px; display:flex; align-items:center; justify-content:center; position:relative; }
+.col-apaiser .pcard-cover { background:linear-gradient(135deg,var(--rose-pale),var(--rose-mist)); }
+.col-comprendre .pcard-cover { background:linear-gradient(135deg,var(--lavande-pale),#d0d4f0); }
+.col-reconstruire .pcard-cover { background:linear-gradient(135deg,var(--sauge-pale),#c0dcc8); }
+.col-oser .pcard-cover { background:linear-gradient(135deg,var(--peche-pale),#f0d0c8); }
+.col-sens .pcard-cover { background:linear-gradient(135deg,var(--sable-pale),#ddd0c0); }
+.pcard-badge { position:absolute; top:.7rem; right:.7rem; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; padding:.2rem .6rem; border-radius:50px; }
+.col-apaiser .pcard-badge { background:var(--rose-pale); color:var(--rose-dark); }
+.col-comprendre .pcard-badge { background:var(--lavande-pale); color:var(--lavande); }
+.col-reconstruire .pcard-badge { background:var(--sauge-pale); color:var(--sauge); }
+.col-oser .pcard-badge { background:var(--peche-pale); color:var(--peche); }
+.col-sens .pcard-badge { background:var(--sable-pale); color:var(--sable); }
+.pcard-body { padding:1.2rem; flex:1; display:flex; flex-direction:column; }
+.pcard-label { font-size:.65rem; letter-spacing:.14em; text-transform:uppercase; margin-bottom:.3rem; }
+.col-apaiser .pcard-label { color:var(--rose); }
+.col-comprendre .pcard-label { color:var(--lavande); }
+.col-reconstruire .pcard-label { color:var(--sauge); }
+.col-oser .pcard-label { color:var(--peche); }
+.col-sens .pcard-label { color:var(--sable); }
+.pcard-title { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:400; color:var(--text); margin-bottom:.15rem; line-height:1.35; }
+.pcard-subtitle { font-size:.74rem; color:var(--taupe-light); font-style:italic; margin-bottom:.6rem; }
+.pcard-desc { font-size:.78rem; color:var(--taupe); line-height:1.65; flex:1; margin-bottom:.9rem; }
+.pcard-footer { display:flex; align-items:center; justify-content:space-between; border-top:1px solid var(--rose-mist); padding-top:.8rem; }
+.pcard-price { font-family:'Cormorant Garamond',serif; font-size:1.3rem; color:var(--rose-dark); font-weight:600; }
+.pcard-price small { font-size:.62rem; color:var(--taupe-light); font-family:'DM Sans',sans-serif; font-weight:300; display:block; }
+.btn-card { padding:.4rem 1rem; border-radius:50px; font-size:.74rem; cursor:pointer; border:1.5px solid; font-family:'DM Sans',sans-serif; text-decoration:none; transition:all .2s; display:inline-block; }
+.col-apaiser .btn-card { background:var(--rose-pale); color:var(--rose-dark); border-color:var(--rose-mist); }
+.col-comprendre .btn-card { background:var(--lavande-pale); color:var(--lavande); border-color:#d0d4f0; }
+.col-reconstruire .btn-card { background:var(--sauge-pale); color:var(--sauge); border-color:#c0dcc8; }
+.col-oser .btn-card { background:var(--peche-pale); color:var(--peche); border-color:#f0d0c8; }
+.col-sens .btn-card { background:var(--sable-pale); color:var(--sable); border-color:#ddd0c0; }
+
+/* BUNDLE */
+.bundle { background:linear-gradient(135deg,var(--rose) 0%,var(--rose-deep) 100%); padding:5rem 3rem; }
+.bundle-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+.bundle-eyebrow { font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.6); margin-bottom:.8rem; }
+.bundle-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,4vw,3rem); font-weight:300; color:white; line-height:1.2; margin-bottom:.8rem; }
+.bundle-title em { font-style:italic; color:var(--rose-pale); }
+.bundle-desc { font-size:.88rem; color:rgba(255,255,255,.8); line-height:1.85; margin-bottom:1.5rem; }
+.bundle-includes { list-style:none; display:flex; flex-direction:column; gap:.5rem; margin-bottom:2rem; }
+.bundle-includes li { font-size:.82rem; color:rgba(255,255,255,.75); display:flex; gap:.6rem; }
+.bundle-includes li::before { content:'—'; color:rgba(255,255,255,.4); }
+.bundle-cta { display:flex; align-items:center; gap:2rem; flex-wrap:wrap; }
+.bundle-price { font-family:'Cormorant Garamond',serif; font-size:4rem; color:white; line-height:1; }
+.bundle-old { font-size:1rem; color:rgba(255,255,255,.45); text-decoration:line-through; display:block; }
+.bundle-saving { font-size:.7rem; color:rgba(255,255,255,.6); letter-spacing:.1em; text-transform:uppercase; }
+.btn-bundle { background:white; color:var(--rose-dark); padding:1rem 2.2rem; border-radius:50px; font-size:.9rem; font-weight:500; border:none; cursor:pointer; transition:all .3s; text-decoration:none; display:inline-block; }
+.btn-bundle:hover { background:var(--cream); transform:translateY(-2px); }
+.bundle-mini-grid { display:grid; grid-template-columns:1fr 1fr; gap:.8rem; }
+.bundle-mini { background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.18); border-radius:14px; padding:.9rem 1rem; }
+.bundle-mini-label { font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.5); margin-bottom:.3rem; }
+.bundle-mini-title { font-family:'Cormorant Garamond',serif; font-size:.95rem; color:white; line-height:1.3; }
+
+/* ABOUT */
+.about { padding:5rem 3rem; background:white; }
+.about-inner { max-width:980px; margin:0 auto; display:grid; grid-template-columns:280px 1fr; gap:4rem; align-items:start; }
+.about-photo { width:100%; border-radius:18px; display:block; box-shadow:0 16px 48px rgba(155,92,92,.14); }
+.about-label { font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; color:var(--rose); margin-bottom:.3rem; display:block; }
+.about-name { font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:300; color:var(--rose-dark); line-height:1.1; margin-bottom:.3rem; }
+.about-role { font-size:.82rem; color:var(--taupe-light); margin-bottom:.8rem; }
+.about-divider { width:36px; height:1.5px; background:var(--rose); margin:.8rem 0 1.4rem; }
+.about-p { font-size:.88rem; color:var(--taupe); line-height:1.95; margin-bottom:.9rem; }
+.about-quote { border-left:2px solid var(--rose); padding-left:1rem; margin-top:1.5rem; font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-style:italic; color:var(--rose-dark); line-height:1.6; }
+.about-tags { display:flex; flex-wrap:wrap; gap:.4rem; margin-top:1.2rem; }
+.about-tag { background:var(--rose-pale); border:1px solid var(--rose-mist); border-radius:50px; padding:.25rem .8rem; font-size:.72rem; color:var(--taupe); }
+
+/* INSTAGRAM */
+.instagram { background:var(--rose-pale); padding:4rem 3rem; text-align:center; }
+.instagram h2 { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:300; color:var(--rose-dark); margin-bottom:.6rem; }
+.instagram p { font-size:.9rem; color:var(--taupe); margin-bottom:2rem; line-height:1.7; }
+.btn-ig { display:inline-flex; align-items:center; gap:.7rem; background:var(--rose); color:white; text-decoration:none; padding:.9rem 2.2rem; border-radius:50px; font-size:.9rem; transition:all .3s; }
+.btn-ig:hover { background:var(--rose-dark); transform:translateY(-2px); }
+
+/* FOOTER */
+footer { background:var(--rose); color:white; padding:2.5rem 3rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1.5rem; }
+.footer-logo { display:flex; align-items:center; gap:.5rem; }
+.footer-logo-text { font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:white; }
+.footer-links { display:flex; gap:1.5rem; list-style:none; flex-wrap:wrap; }
+.footer-links a { color:white; text-decoration:none; font-size:.76rem; opacity:.8; }
+.footer-links a:hover { opacity:1; }
+.footer-copy { font-size:.7rem; color:white; opacity:.6; }
+.footer-legal { display:flex; gap:1rem; }
+.footer-legal a { color:white; text-decoration:none; font-size:.7rem; opacity:.65; }
+
+@media(max-width:900px) {
+  nav { padding:1rem 1.5rem; }
+  .nav-links { display:none; }
+  .hero { padding:7rem 1.5rem 4rem; }
+  .finder,.collections,.about,.instagram { padding:4rem 1.5rem; }
+  .bundle-inner { grid-template-columns:1fr; gap:2.5rem; }
+  .bundle-mini-grid { display:none; }
+  .about-inner { grid-template-columns:1fr; gap:2rem; }
+  .about-photo { max-width:220px; }
+  footer { padding:2rem 1.5rem; flex-direction:column; text-align:center; }
+  .footer-links,.footer-legal { justify-content:center; }
+}
+
+.hero-prog { padding:7rem 3rem 4rem; text-align:center; background:radial-gradient(ellipse 80% 60% at 50% 30%, var(--rose-pale) 0%, transparent 70%); }
+.page-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2.4rem,5vw,4rem); font-weight:300; line-height:1.1; color:var(--text); margin-bottom:1.2rem; }
+.page-title em { font-style:italic; color:var(--rose); }
+.page-desc { font-size:.95rem; line-height:1.85; color:var(--taupe); max-width:52ch; margin:0 auto 2rem; }
+.pills { display:flex; flex-wrap:wrap; gap:.5rem; justify-content:center; margin-top:1rem; }
+.pill { display:inline-flex; align-items:center; border-radius:50px; padding:.4rem .9rem; font-size:.76rem; text-decoration:none; transition:all .25s; }
+.pill:hover { transform:translateY(-2px); box-shadow:0 4px 14px rgba(0,0,0,.1); }
+.pill-apaiser { background:var(--rose-pale); color:var(--rose-dark); }
+.pill-comprendre { background:var(--lavande-pale); color:var(--lavande); }
+.pill-reconstruire { background:var(--sauge-pale); color:var(--sauge); }
+.pill-oser { background:var(--peche-pale); color:var(--peche); }
+.pill-sens { background:var(--sable-pale); color:var(--sable); }
+
+.collections-page { padding:4rem 3rem; }
+.collections-inner { max-width:1100px; margin:0 auto; }
+
+.collection { margin-bottom:5rem; }
+.collection-header { display:flex; align-items:center; gap:1.2rem; padding-bottom:1.4rem; border-bottom:2px solid; margin-bottom:2rem; }
+.col-apaiser .collection-header { border-color:var(--rose-mist); }
+.col-comprendre .collection-header { border-color:#d0d4f0; }
+.col-reconstruire .collection-header { border-color:#c0dcc8; }
+.col-oser .collection-header { border-color:#f0d0c8; }
+.col-sens .collection-header { border-color:#ddd0c0; }
+.collection-num { font-family:'Cormorant Garamond',serif; font-size:3.5rem; font-weight:300; opacity:.1; line-height:1; }
+.col-apaiser .collection-num { color:var(--rose); }
+.col-comprendre .collection-num { color:var(--lavande); }
+.col-reconstruire .collection-num { color:var(--sauge); }
+.col-oser .collection-num { color:var(--peche); }
+.col-sens .collection-num { color:var(--sable); }
+.collection-dot { width:12px; height:12px; border-radius:50%; flex-shrink:0; }
+.col-apaiser .collection-dot { background:var(--rose); }
+.col-comprendre .collection-dot { background:var(--lavande); }
+.col-reconstruire .collection-dot { background:var(--sauge); }
+.col-oser .collection-dot { background:var(--peche); }
+.col-sens .collection-dot { background:var(--sable); }
+.collection-meta { flex:1; }
+.collection-tag { font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; margin-bottom:.3rem; display:block; }
+.col-apaiser .collection-tag { color:var(--rose); }
+.col-comprendre .collection-tag { color:var(--lavande); }
+.col-reconstruire .collection-tag { color:var(--sauge); }
+.col-oser .collection-tag { color:var(--peche); }
+.col-sens .collection-tag { color:var(--sable); }
+.collection-name { font-family:'Cormorant Garamond',serif; font-size:clamp(1.6rem,3vw,2.4rem); font-weight:300; line-height:1.15; }
+.col-apaiser .collection-name { color:var(--rose-dark); }
+.col-comprendre .collection-name { color:var(--lavande); }
+.col-reconstruire .collection-name { color:var(--sauge); }
+.col-oser .collection-name { color:var(--peche); }
+.col-sens .collection-name { color:var(--sable); }
+.collection-name em { font-style:italic; }
+.collection-desc-text { font-size:.84rem; color:var(--taupe-light); margin-top:.4rem; max-width:500px; line-height:1.6; }
+
+.details-toggle { display:flex; align-items:center; justify-content:space-between; font-size:.75rem; color:var(--taupe); cursor:pointer; padding:.5rem 0; border-top:1px solid var(--rose-mist); user-select:none; margin-bottom:.4rem; }
+.details-toggle:hover { color:var(--rose); }
+.details-arrow { transition:transform .3s; font-size:.65rem; }
+.details-toggle.open .details-arrow { transform:rotate(180deg); }
+.details-list { display:none; flex-direction:column; gap:.35rem; padding:.4rem 0; }
+.details-list.visible { display:flex; }
+.details-list li { font-size:.77rem; color:var(--taupe); line-height:1.5; list-style:none; padding-left:.8rem; position:relative; }
+.details-list li::before { content:'—'; position:absolute; left:0; color:var(--rose); font-size:.7rem; }
+
+.faq-section { padding:5rem 3rem; background:white; }
+.faq-inner { max-width:720px; margin:0 auto; }
+.faq-h { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:300; color:var(--rose-dark); margin-bottom:2.5rem; text-align:center; }
+.faq-item { border-bottom:1px solid var(--rose-mist); }
+.faq-q { display:flex; justify-content:space-between; align-items:center; padding:1.2rem 0; cursor:pointer; font-size:.9rem; color:var(--text); user-select:none; gap:1rem; }
+.faq-q:hover { color:var(--rose); }
+.faq-arrow { color:var(--rose); transition:transform .3s; font-size:.75rem; flex-shrink:0; }
+.faq-q.open .faq-arrow { transform:rotate(180deg); }
+.faq-a { display:none; padding:0 0 1.2rem; font-size:.86rem; color:var(--taupe); line-height:1.85; }
+.faq-a.visible { display:block; }
+.fade-in { opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease; }
+.fade-in.visible { opacity:1; transform:translateY(0); }
+@media(max-width:900px) {
+  .hero-prog,.collections-page,.faq-section { padding:4rem 1.5rem; }
+  footer { flex-direction:column; text-align:center; padding:2rem 1.5rem; }
+  .footer-links,.footer-legal { justify-content:center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <svg width="28" height="26" viewBox="0 0 46 44" fill="none"><path d="M5 32 L23 6 L41 32" stroke="#c98080" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="11" y1="39" x2="35" y2="39" stroke="#c98080" stroke-width="1.4" stroke-linecap="round"/><line x1="23" y1="32" x2="23" y2="39" stroke="#c98080" stroke-width="1.4" stroke-linecap="round"/></svg>
+    <span class="nav-logo-text">Casita</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#apaiser" data-fr="S'apaiser" data-es="Apaciguarse">S'apaiser</a></li>
+    <li><a href="#comprendre" data-fr="Se comprendre" data-es="Comprenderse">Se comprendre</a></li>
+    <li><a href="#reconstruire" data-fr="Se reconstruire" data-es="Reconstruirse">Se reconstruire</a></li>
+    <li><a href="#oser" data-fr="Oser" data-es="Atreverse">Oser</a></li>
+    <li><a href="#sens" data-fr="Donner du sens" data-es="Dar sentido">Donner du sens</a></li>
+    <li><a href="index_v2.html#about" style="color:var(--rose);" data-fr="A propos" data-es="Sobre mi">A propos</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="lang-btn active" onclick="setLang('fr')" id="btn-fr">FR</button>
+    <button class="lang-btn" onclick="setLang('es')" id="btn-es">ES</button>
+  </div>
+</nav>
+
+<section class="hero-prog">
+  <div class="fade-in">
+    <span class="section-label" data-fr="Cahiers & Programmes" data-es="Cuadernos & Programas">Cahiers & Programmes</span>
+    <h1 class="page-title">Des outils pour <em data-fr="aller vers l'interieur" data-es="ir hacia el interior">aller vers l'interieur</em></h1>
+    <p class="page-desc" data-fr="8 cahiers d'exercices et 4 programmes guides — pour travailler en profondeur, à votre rythme, depuis chez vous." data-es="8 cuadernos de ejercicios y 4 programas guiados — para trabajar en profundidad, a tu ritmo, desde casa.">8 cahiers d'exercices et 4 programmes guides — pour travailler en profondeur, à votre rythme, depuis chez vous.</p>
+    <div class="pills">
+      <a href="#apaiser" class="pill pill-apaiser" data-fr="S'apaiser" data-es="Apaciguarse">S'apaiser</a>
+      <a href="#comprendre" class="pill pill-comprendre" data-fr="Se comprendre" data-es="Comprenderse">Se comprendre</a>
+      <a href="#reconstruire" class="pill pill-reconstruire" data-fr="Se reconstruire" data-es="Reconstruirse">Se reconstruire</a>
+      <a href="#oser" class="pill pill-oser" data-fr="Oser" data-es="Atreverse">Oser</a>
+      <a href="#sens" class="pill pill-sens" data-fr="Donner du sens" data-es="Dar sentido">Donner du sens</a>
+    </div>
+  </div>
+</section>
+
+<section class="collections-page">
+  <div class="collections-inner">
+    <div class="collection col-apaiser fade-in" id="apaiser">
+  <div class="collection-header">
+    <span class="collection-dot"></span>
+    <div class="collection-meta">
+      <span class="collection-tag" data-fr="Collection 01" data-es="Coleccion 01">Collection 01</span>
+      <h2 class="collection-name"><span data-fr="S'apaiser" data-es="Apaciguarse">S'apaiser</span> — <em data-fr="Anxiete & Stress" data-es="Ansiedad & Estres">Anxiete & Stress</em></h2>
+      <p class="collection-desc-text" data-fr="Comprendre ce qui se passe dans votre corps et votre esprit, calmer le système nerveux et retrouver un ancrage profond." data-es="Comprender lo que pasa en tu cuerpo y tu mente, calmar el sistema nervioso y encontrar un anclaje profundo.">Comprendre ce qui se passe dans votre corps et votre esprit, calmer le système nerveux et retrouver un ancrage profond.</p>
+    </div>
+    <span class="collection-num">01</span>
+  </div>
+  <div class="cards-row"><div class="pcard">
+  <div class="pcard-cover"><svg width="46" height="46" viewBox="0 0 60 60" fill="none"><path d="M10 30 Q18 10 30 30 Q42 50 50 30" stroke="#9b5c5c" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".4"/><path d="M16 30 Q22 14 30 30 Q38 46 44 30" stroke="#9b5c5c" stroke-width="1.8" fill="none" stroke-linecap="round"/><circle cx="30" cy="30" r="3" fill="#c98080"/></svg><span class="pcard-badge"  data-fr="Cahier" data-es="Cahier">Cahier</span></div>
+  <div class="pcard-body">
+    <p class="pcard-label" data-fr="S'apaiser" data-es="Apaciguarse">S'apaiser</p>
+    <h4 class="pcard-title" data-fr="Je n'arrive plus a me calmer" data-es="Ya no puedo calmarme">Je n'arrive plus a me calmer</h4>
+    <p class="pcard-subtitle" data-fr="Apprivoiser l'Anxiété" data-es="Dominar la Ansiedad">Apprivoiser l'Anxiété</p>
+    <div class="details-toggle" onclick="toggleDetails(this)"><span data-fr="Voir les 6 parties" data-es="Ver las 6 partes">Voir les 6 parties</span><span class="details-arrow">&#9660;</span></div>
+    <ul class="details-list"><li data-fr="Comprendre : roue de l'anxiété, declencheurs, profil" data-es="Comprender : rueda de la ansiedad, desencadenantes, perfil">Comprendre : roue de l'anxiété, declencheurs, profil</li><li data-fr="Corps : coherence cardiaque, respiration 4-7-8, ancrage" data-es="Cuerpo : coherencia cardiaca, respiracion 4-7-8, anclaje">Corps : coherence cardiaque, respiration 4-7-8, ancrage</li><li data-fr="Pensees TCC : distorsions cognitives, restructuration" data-es="Pensamientos TCC : distorsiones cognitivas, reestructuracion">Pensees TCC : distorsions cognitives, restructuration</li><li data-fr="ACT : defusion cognitive, valeurs comme boussole" data-es="ACT : defusion cognitiva, valores como brujula">ACT : defusion cognitive, valeurs comme boussole</li><li data-fr="Corps en profondeur : cartographie des sensations" data-es="Cuerpo en profundidad : cartografia de sensaciones">Corps en profondeur : cartographie des sensations</li><li data-fr="Bilan & protocole : plan de crise, lettre a l'anxiété" data-es="Balance & protocolo : plan de crisis, carta a la ansiedad">Bilan & protocole : plan de crise, lettre a l'anxiété</li></ul>
+    <div class="pcard-footer">
+      <div class="pcard-price">30 €<small>PDF · 29 pages</small></div>
+      <a href="https://jennandrea.gumroad.com/l/gjvfx" target="_blank" class="btn-card" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
+    </div>
+  </div>
+</div><div class="pcard">
+  <div class="pcard-cover"><svg width="46" height="46" viewBox="0 0 60 60" fill="none"><path d="M10 30 Q18 10 30 30 Q42 50 50 30" stroke="#9b5c5c" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".4"/><path d="M16 30 Q22 14 30 30 Q38 46 44 30" stroke="#9b5c5c" stroke-width="1.8" fill="none" stroke-linecap="round"/><circle cx="30" cy="30" r="3" fill="#c98080"/></svg><span class="pcard-badge"  data-fr="Kit Essentiel" data-es="Kit Essentiel">Kit Essentiel</span></div>
+  <div class="pcard-body">
+    <p class="pcard-label" data-fr="Urgence" data-es="Urgencia">Urgence</p>
+    <h4 class="pcard-title" data-fr="Kit de Crise Anxieuse" data-es="Kit de Crisis de Ansiedad">Kit de Crise Anxieuse</h4>
+    <p class="pcard-subtitle" data-fr="Pour les moments difficiles" data-es="Para los momentos dificiles">Pour les moments difficiles</p>
+    <div class="details-toggle" onclick="toggleDetails(this)"><span data-fr="Voir le contenu" data-es="Ver el contenido">Voir le contenu</span><span class="details-arrow">&#9660;</span></div>
+    <ul class="details-list"><li data-fr="Fiche SOS imprimable — 5 etapes de gestion de crise" data-es="Ficha SOS imprimible — 5 etapas de gestion de crisis">Fiche SOS imprimable — 5 etapes de gestion de crise</li><li data-fr="4 fiches de respiration comparees" data-es="4 fichas de respiracion comparadas">4 fiches de respiration comparees</li><li data-fr="Plan anti-crise personalise en 5 etapes" data-es="Plan anti-crisis personalizado en 5 etapas">Plan anti-crise personalise en 5 etapes</li><li data-fr="Tableau de suivi mensuel sur 2 mois" data-es="Tabla de seguimiento mensual durante 2 meses">Tableau de suivi mensuel sur 2 mois</li></ul>
+    <div class="pcard-footer">
+      <div class="pcard-price">14 €<small>PDF · 17 pages</small></div>
+      <a href="https://jennandrea.gumroad.com/l/nwxih" target="_blank" class="btn-card" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
+    </div>
+  </div>
+</div><div class="pcard prog">
+  <div class="pcard-cover"><svg width="46" height="46" viewBox="0 0 60 60" fill="none"><path d="M10 30 Q18 10 30 30 Q42 50 50 30" stroke="#9b5c5c" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".4"/><path d="M16 30 Q22 14 30 30 Q38 46 44 30" stroke="#9b5c5c" stroke-width="1.8" fill="none" stroke-linecap="round"/><circle cx="30" cy="30" r="3" fill="#c98080"/></svg><span class="pcard-badge"  data-fr="Programme 4 sem." data-es="Programme 4 sem.">Programme 4 sem.</span></div>
+  <div class="pcard-body">
+    <p class="pcard-label" data-fr="20 jours guides" data-es="20 dias guiados">20 jours guides</p>
+    <h4 class="pcard-title" data-fr="Sortir de l'anxiété en 20 jours" data-es="Salir de la ansiedad en 20 dias">Sortir de l'anxiété en 20 jours</h4>
+    <p class="pcard-subtitle" data-fr="Traverser l'Anxiété" data-es="Atravesar la Ansiedad">Traverser l'Anxiété</p>
+    <div class="details-toggle" onclick="toggleDetails(this)"><span data-fr="Voir les 4 semaines" data-es="Ver las 4 semanas">Voir les 4 semaines</span><span class="details-arrow">&#9660;</span></div>
+    <ul class="details-list"><li data-fr="Semaine 1 — Rencontre : profil, declencheurs, coherence cardiaque" data-es="Semana 1 — Encuentro : perfil, desencadenantes, coherencia cardiaca">Semaine 1 — Rencontre : profil, declencheurs, coherence cardiaque</li><li data-fr="Semaine 2 — Corps : scan corporel, 4 respirations, regulation" data-es="Semana 2 — Cuerpo : escaneo corporal, 4 respiraciones, regulacion">Semaine 2 — Corps : scan corporel, 4 respirations, regulation</li><li data-fr="Semaine 3 — Esprit : restructuration TCC, defusion ACT" data-es="Semana 3 — Mente : reestructuracion TCC, defusion ACT">Semaine 3 — Esprit : restructuration TCC, defusion ACT</li><li data-fr="Semaine 4 — Ancrage : valeurs, plan de vie, lettre" data-es="Semana 4 — Anclaje : valores, plan de vida, carta">Semaine 4 — Ancrage : valeurs, plan de vie, lettre</li></ul>
+    <div class="pcard-footer">
+      <div class="pcard-price">59 €<small>PDF · 29 pages</small></div>
+      <a href="https://jennandrea.gumroad.com/l/lsstww" target="_blank" class="btn-card" data-fr="Commencer" data-es="Comenzar">Commencer</a>
+    </div>
+  </div>
+</div></div>
+</div>
+    <div class="collection col-comprendre fade-in" id="comprendre">
+  <div class="collection-header">
+    <span class="collection-dot"></span>
+    <div class="collection-meta">
+      <span class="collection-tag" data-fr="Collection 02" data-es="Coleccion 02">Collection 02</span>
+      <h2 class="collection-name"><span data-fr="Se comprendre" data-es="Comprenderse">Se comprendre</span> — <em data-fr="Connaissance de soi" data-es="Autoconocimiento">Connaissance de soi</em></h2>
+      <p class="collection-desc-text" data-fr="Se rencontrer vraiment. Explorer ses valeurs, ses schemas repetitifs et construire une relation authentique avec soi-meme." data-es="Encontrarse de verdad. Explorar los valores, los esquemas repetitivos y construir una relacion autentica con uno mismo.">Se rencontrer vraiment. Explorer ses valeurs, ses schemas repetitifs et construire une relation authentique avec soi-meme.</p>
+    </div>
+    <span class="collection-num">02</span>
+  </div>
+  <div class="cards-row"><div class="pcard">
+  <div class="pcard-cover"><svg width="46" height="46" viewBox="0 0 60 60" fill="none"><path d="M30 30 C30 24 36 18 42 20 C48 22 48 32 42 38 C36 44 24 44 18 36 C12 28 16 14 28 10 C40 6 54 14 54 30" stroke="#7a85c8" stroke-width="1.8" fill="none" stroke-linecap="round"/><line x1="30" y1="30" x2="30" y2="50" stroke="#c98080" stroke-width="1.5" stroke-linecap="round"/></svg><span class="pcard-badge"  data-fr="Cahier 25 ex." data-es="Cahier 25 ex.">Cahier 25 ex.</span></div>
+  <div class="pcard-body">
+    <p class="pcard-label" data-fr="Se comprendre" data-es="Comprenderse">Se comprendre</p>
+    <h4 class="pcard-title" data-fr="Qui suis-je vraiment ?" data-es="Quien soy realmente?">Qui suis-je vraiment ?</h4>
+    <p class="pcard-subtitle" data-fr="Connais-toi, toi-meme" data-es="Conocete a ti mismo">Connais-toi, toi-meme</p>
+    <div class="details-toggle" onclick="toggleDetails(this)"><span data-fr="Voir les 7 parties" data-es="Ver las 7 partes">Voir les 7 parties</span><span class="details-arrow">&#9660;</span></div>
+    <ul class="details-list"><li data-fr="Qui suis-je ? : cartographie des roles, 25 valeurs, auto-portrait" data-es="Quien soy? : cartografia de roles, 25 valores, autorretrato">Qui suis-je ? : cartographie des roles, 25 valeurs, auto-portrait</li><li data-fr="Blessures & besoins : 5 blessures (Bourbeau), enfant interieur" data-es="Heridas & necesidades : 5 heridas (Bourbeau), nino interior">Blessures & besoins : 5 blessures (Bourbeau), enfant interieur</li><li data-fr="Schemas : 9 schemas (J. Young), patterns relationnels" data-es="Esquemas : 9 esquemas (J. Young), patrones relacionales">Schemas : 9 schemas (J. Young), patterns relationnels</li><li data-fr="Mecanismes de defense : 8 mecanismes, croyances limitantes" data-es="Mecanismos de defensa : 8 mecanismos, creencias limitantes">Mecanismes de defense : 8 mecanismes, croyances limitantes</li><li data-fr="Emotions : roue des 10 emotions, protocole d'accueil" data-es="Emociones : rueda de las 10 emociones, protocolo de acogida">Emotions : roue des 10 emotions, protocole d'accueil</li><li data-fr="Relations : 4 styles d'attachement, limites saines" data-es="Relaciones : 4 estilos de apego, limites sanos">Relations : 4 styles d'attachement, limites saines</li><li data-fr="Lettres therapeutiques : a l'enfant interieur, au futur moi" data-es="Cartas terapeuticas : al nino interior, al yo futuro">Lettres therapeutiques : a l'enfant interieur, au futur moi</li></ul>
+    <div class="pcard-footer">
+      <div class="pcard-price">27 €<small>PDF · 33 pages</small></div>
+      <a href="https://jennandrea.gumroad.com/l/tqlwld" target="_blank" class="btn-card" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
+    </div>
+  </div>
+</div><div class="pcard">
+  <div class="pcard-cover"><svg width="46" height="46" viewBox="0 0 60 60" fill="none"><path d="M30 30 C30 24 36 18 42 20 C48 22 48 32 42 38 C36 44 24 44 18 36 C12 28 16 14 28 10 C40 6 54 14 54 30" stroke="#7a85c8" stroke-width="1.8" fill="none" stroke-linecap="round"/><line x1="30" y1="30" x2="30" y2="50" stroke="#c98080" stroke-width="1.5" stroke-linecap="round"/></svg><span class="pcard-badge"  data-fr="Journal 30 jours" data-es="Journal 30 jours">Journal 30 jours</span></div>
+  <div class="pcard-body">
+    <p class="pcard-label" data-fr="30 jours" data-es="30 dias">30 jours</p>
+    <h4 class="pcard-title" data-fr="Journal de l'Interieur" data-es="Diario Interior">Journal de l'Interieur</h4>
+    <p class="pcard-subtitle" data-fr="Questions profondes, une par jour" data-es="Preguntas profundas, una por dia">Questions profondes, une par jour</p>
+    <div class="details-toggle" onclick="toggleDetails(this)"><span data-fr="Voir les 4 semaines" data-es="Ver las 4 semanas">Voir les 4 semaines</span><span class="details-arrow">&#9660;</span></div>
+    <ul class="details-list"><li data-fr="Semaine 1 — Les Emotions (J.1-7) + Bilan ACT" data-es="Semana 1 — Las Emociones (J.1-7) + Balance ACT">Semaine 1 — Les Emotions (J.1-7) + Bilan ACT</li><li data-fr="Semaine 2 — Les Relations (J.8-14) + Bilan TCC" data-es="Semana 2 — Las Relaciones (J.8-14) + Balance TCC">Semaine 2 — Les Relations (J.8-14) + Bilan TCC</li><li data-fr="Semaine 3 — Peurs & Desirs (J.15-21) + Bilan defusion" data-es="Semana 3 — Miedos & Deseos (J.15-21) + Balance defusion">Semaine 3 — Peurs & Desirs (J.15-21) + Bilan defusion</li><li data-fr="Semaine 4 — Soi & Croissance (J.22-30) + lettre de compassion" data-es="Semana 4 — Yo & Crecimiento (J.22-30) + carta de compasion">Semaine 4 — Soi & Croissance (J.22-30) + lettre de compassion</li></ul>
+    <div class="pcard-footer">
+      <div class="pcard-price">32 €<small>PDF · 60 pages</small></div>
+      <a href="https://jennandrea.gumroad.com/l/ewlbyx" target="_blank" class="btn-card" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
+    </div>
+  </div>
+</div><div class="pcard prog">
+  <div class="pcard-cover"><svg width="46" height="46" viewBox="0 0 60 60" fill="none"><path d="M30 30 C30 24 36 18 42 20 C48 22 48 32 42 38 C36 44 24 44 18 36 C12 28 16 14 28 10 C40 6 54 14 54 30" stroke="#7a85c8" stroke-width="1.8" fill="none" stroke-linecap="round"/><line x1="30" y1="30" x2="30" y2="50" stroke="#c98080" stroke-width="1.5" stroke-linecap="round"/></svg><span class="pcard-badge"  data-fr="Programme 6 sem." data-es="Programme 6 sem.">Programme 6 sem.</span></div>
+  <div class="pcard-body">
+    <p class="pcard-label" data-fr="35 jours guides" data-es="35 dias guiados">35 jours guides</p>
+    <h4 class="pcard-title" data-fr="Voyage Interieur" data-es="Viaje Interior">Voyage Interieur</h4>
+    <p class="pcard-subtitle" data-fr="Le programme le plus complet de Casita" data-es="El programa mas completo de Casita">Le programme le plus complet de Casita</p>
+    <div class="details-toggle" onclick="toggleDetails(this)"><span data-fr="Voir les 6 semaines" data-es="Ver las 6 semanas">Voir les 6 semaines</span><span class="details-arrow">&#9660;</span></div>
+    <ul class="details-list"><li data-fr="Semaine 1 — L'Invitation : roles, 25 valeurs, auto-portrait" data-es="Semana 1 — La Invitacion : roles, 25 valores, autorretrato">Semaine 1 — L'Invitation : roles, 25 valeurs, auto-portrait</li><li data-fr="Semaine 2 — Les Racines : enfant interieur, 5 blessures" data-es="Semana 2 — Las Raices : nino interior, 5 heridas">Semaine 2 — Les Racines : enfant interieur, 5 blessures</li><li data-fr="Semaine 3 — Les Masques : schemas, mecanismes, patterns" data-es="Semana 3 — Las Mascaras : esquemas, mecanismos, patrones">Semaine 3 — Les Masques : schemas, mecanismes, patterns</li><li data-fr="Semaine 4 — Les Valeurs : vraies vs imposees, manifeste" data-es="Semana 4 — Los Valores : verdaderos vs impuestos, manifiesto">Semaine 4 — Les Valeurs : vraies vs imposees, manifeste</li><li data-fr="Semaine 5 — Les Besoins : CNV (Rosenberg), limites saines" data-es="Semana 5 — Las Necesidades : CNV (Rosenberg), limites sanos">Semaine 5 — Les Besoins : CNV (Rosenberg), limites saines</li><li data-fr="Semaine 6 — L'Integration : synthese, lettre du futur moi" data-es="Semana 6 — La Integracion : sintesis, carta del yo futuro">Semaine 6 — L'Integration : synthese, lettre du futur moi</li></ul>
+    <div class="pcard-footer">
+      <div class="pcard-price">69 €<small>PDF · 46 pages</small></div>
+      <a href="https://jennandrea.gumroad.com/l/rbjpn" target="_blank" class="btn-card" data-fr="Commencer" data-es="Comenzar">Commencer</a>
+    </div>
+  </div>
+</div></div>
+</div>
+    <div class="collection col-reconstruire fade-in" id="reconstruire">
+  <div class="collection-header">
+    <span class="collection-dot"></span>
+    <div class="collection-meta">
+      <span class="collection-tag" data-fr="Collection 03" data-es="Coleccion 03">Collection 03</span>
+      <h2 class="collection-name"><span data-fr="Se reconstruire" data-es="Reconstruirse">Se reconstruire</span> — <em data-fr="Estime de soi" data-es="Autoestima">Estime de soi</em></h2>
+      <p class="collection-desc-text" data-fr="Reconstruire une relation bienveillante avec soi-meme. Apprendre a se valoir, s'accueillir et avancer sans se saboter." data-es="Reconstruir una relacion compasiva con uno mismo. Aprender a valorarse, acogerse y avanzar sin sabotearse.">Reconstruire une relation bienveillante avec soi-meme. Apprendre a se valoir, s'accueillir et avancer sans se saboter.</p>
+    </div>
+    <span class="collection-num">03</span>
+  </div>
+  <div class="cards-row"><div class="pcard">
+  <div class="pcard-cover"><svg width="46" height="46" viewBox="0 0 60 60" fill="none"><path d="M14 8 Q10 30 14 52" stroke="#5a9465" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M46 8 Q50 30 46 52" stroke="#5a9465" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="30" cy="30" r="7" fill="none" stroke="#c98080" stroke-width="1.5"/></svg><span class="pcard-badge"  data-fr="Cahier 20 ex." data-es="Cahier 20 ex.">Cahier 20 ex.</span></div>
+  <div class="pcard-body">
+    <p class="pcard-label" data-fr="Se reconstruire" data-es="Reconstruirse">Se reconstruire</p>
+    <h4 class="pcard-title" data-fr="J'apprends a m'aimer" data-es="Aprendo a amarme">J'apprends a m'aimer</h4>
+    <p class="pcard-subtitle" data-fr="Se valoir" data-es="Valorarse">Se valoir</p>
+    <div class="details-toggle" onclick="toggleDetails(this)"><span data-fr="Voir les 7 parties" data-es="Ver las 7 partes">Voir les 7 parties</span><span class="details-arrow">&#9660;</span></div>
+    <ul class="details-list"><li data-fr="Comprendre : estime saine vs fausse, 6 masques" data-es="Comprender : autoestima sana vs falsa, 6 mascaras">Comprendre : estime saine vs fausse, 6 masques</li><li data-fr="Origines : messages de 6 figures, ligne de vie" data-es="Origenes : mensajes de 6 figuras, linea de vida">Origines : messages de 6 figures, ligne de vie</li><li data-fr="Critique interieur : portrait, reformulations bienveillantes" data-es="Critico interior : retrato, reformulaciones compasivas">Critique interieur : portrait, reformulations bienveillantes</li><li data-fr="Croyances limitantes : 3 fiches de demantelement TCC" data-es="Creencias limitantes : 3 fichas de desmantelamiento TCC">Croyances limitantes : 3 fiches de demantelement TCC</li><li data-fr="Self-compassion : protocole Kristin Neff, journal gratitude 14j" data-es="Autocompasion : protocolo Kristin Neff, diario gratitud 14d">Self-compassion : protocole Kristin Neff, journal gratitude 14j</li><li data-fr="Construire : 6 piliers internes, affirmations ancrees" data-es="Construir : 6 pilares internos, afirmaciones ancladas">Construire : 6 piliers internes, affirmations ancrees</li><li data-fr="Integration : lettre a l'enfant interieur, plan" data-es="Integracion : carta al nino interior, plan">Integration : lettre a l'enfant interieur, plan</li></ul>
+    <div class="pcard-footer">
+      <div class="pcard-price">26 €<small>PDF · 31 pages</small></div>
+      <a href="https://jennandrea.gumroad.com/l/vyxyc" target="_blank" class="btn-card" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
+    </div>
+  </div>
+</div><div class="pcard">
+  <div class="pcard-cover"><svg width="46" height="46" viewBox="0 0 60 60" fill="none"><path d="M14 8 Q10 30 14 52" stroke="#5a9465" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M46 8 Q50 30 46 52" stroke="#5a9465" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="30" cy="30" r="7" fill="none" stroke="#c98080" stroke-width="1.5"/></svg><span class="pcard-badge"  data-fr="Cahier 20 ex." data-es="Cahier 20 ex.">Cahier 20 ex.</span></div>
+  <div class="pcard-body">
+    <p class="pcard-label" data-fr="Se reconstruire" data-es="Reconstruirse">Se reconstruire</p>
+    <h4 class="pcard-title" data-fr="Cette voix qui me detruit" data-es="Esa voz que me destruye">Cette voix qui me detruit</h4>
+    <p class="pcard-subtitle" data-fr="Mon Dialogue Interieur" data-es="Mi Dialogo Interior">Mon Dialogue Interieur</p>
+    <div class="details-toggle" onclick="toggleDetails(this)"><span data-fr="Voir les 7 parties" data-es="Ver las 7 partes">Voir les 7 parties</span><span class="details-arrow">&#9660;</span></div>
+    <ul class="details-list"><li data-fr="Cartographie : 5 voix (Critique, Enfant, Adulte Sain...)" data-es="Cartografia : 5 voces (Critico, Nino, Adulto Sano...)">Cartographie : 5 voix (Critique, Enfant, Adulte Sain...)</li><li data-fr="Declencheurs : tableau par voix, signature corporelle" data-es="Desencadenantes : tabla por voz, firma corporal">Declencheurs : tableau par voix, signature corporelle</li><li data-fr="Dialogues : Critique / Adulte Sain, chaise vide (Gestalt)" data-es="Dialogos : Critico / Adulto Sano, silla vacia (Gestalt)">Dialogues : Critique / Adulte Sain, chaise vide (Gestalt)</li><li data-fr="Transformer : 9 phrases destructrices, defusion ACT" data-es="Transformar : 9 frases destructivas, defusion ACT">Transformer : 9 phrases destructrices, defusion ACT</li><li data-fr="Ecriture therapeutique : 3 lettres entre les parts" data-es="Escritura terapeutica : 3 cartas entre las partes">Ecriture therapeutique : 3 lettres entre les parts</li><li data-fr="Affirmations & suivi 14 jours" data-es="Afirmaciones & seguimiento 14 dias">Affirmations & suivi 14 jours</li><li data-fr="Integration : plan en 5 axes avec engagement date" data-es="Integracion : plan en 5 ejes con compromiso fechado">Integration : plan en 5 axes avec engagement date</li></ul>
+    <div class="pcard-footer">
+      <div class="pcard-price">24 €<small>PDF · 31 pages</small></div>
+      <a href="https://jennandrea.gumroad.com/l/qsdloo" target="_blank" class="btn-card" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
+    </div>
+  </div>
+</div><div class="pcard prog">
+  <div class="pcard-cover"><svg width="46" height="46" viewBox="0 0 60 60" fill="none"><path d="M14 8 Q10 30 14 52" stroke="#5a9465" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M46 8 Q50 30 46 52" stroke="#5a9465" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="30" cy="30" r="7" fill="none" stroke="#c98080" stroke-width="1.5"/></svg><span class="pcard-badge" style="background:#c98080;color:white;" data-fr="Bestseller" data-es="Bestseller">Bestseller</span></div>
+  <div class="pcard-body">
+    <p class="pcard-label" data-fr="24 jours guides" data-es="24 dias guiados">24 jours guides</p>
+    <h4 class="pcard-title" data-fr="Reprendre confiance en 24 jours" data-es="Recuperar la confianza en 24 dias">Reprendre confiance en 24 jours</h4>
+    <p class="pcard-subtitle" data-fr="Reconstruire son Estime" data-es="Reconstruir su Autoestima">Reconstruire son Estime</p>
+    <div class="details-toggle" onclick="toggleDetails(this)"><span data-fr="Voir les 4 semaines" data-es="Ver las 4 semanas">Voir les 4 semaines</span><span class="details-arrow">&#9660;</span></div>
+    <ul class="details-list"><li data-fr="Semaine 1 — Observer : diagnostic, 6 masques, cout reel" data-es="Semana 1 — Observar : diagnostico, 6 mascaras, costo real">Semaine 1 — Observer : diagnostic, 6 masques, cout reel</li><li data-fr="Semaine 2 — Comprendre : messages fondateurs, 5 croyances TCC" data-es="Semana 2 — Comprender : mensajes fundadores, 5 creencias TCC">Semaine 2 — Comprendre : messages fondateurs, 5 croyances TCC</li><li data-fr="Semaine 3 — Transformer : self-compassion (Neff), 5 piliers" data-es="Semana 3 — Transformar : autocompasion (Neff), 5 pilares">Semaine 3 — Transformer : self-compassion (Neff), 5 piliers</li><li data-fr="Semaine 4 — Incarner : affirmations, lettre enfant interieur" data-es="Semana 4 — Encarnar : afirmaciones, carta nino interior">Semaine 4 — Incarner : affirmations, lettre enfant interieur</li></ul>
+    <div class="pcard-footer">
+      <div class="pcard-price">58 €<small>PDF · 32 pages</small></div>
+      <a href="https://jennandrea.gumroad.com/l/irnljk" target="_blank" class="btn-card" data-fr="Commencer" data-es="Comenzar">Commencer</a>
+    </div>
+  </div>
+</div></div>
+</div>
+    <div class="collection col-oser fade-in" id="oser">
+  <div class="collection-header">
+    <span class="collection-dot"></span>
+    <div class="collection-meta">
+      <span class="collection-tag" data-fr="Collection 04" data-es="Coleccion 04">Collection 04</span>
+      <h2 class="collection-name"><span data-fr="Oser" data-es="Atreverse">Oser</span> — <em data-fr="Peurs & Confiance" data-es="Miedos & Confianza">Peurs & Confiance</em></h2>
+      <p class="collection-desc-text" data-fr="Nommer ce qui paralyse, comprendre les origines et apprendre a avancer malgre la peur — non pas sans elle." data-es="Nombrar lo que paraliza, comprender los origenes y aprender a avanzar a pesar del miedo — no sin el.">Nommer ce qui paralyse, comprendre les origines et apprendre a avancer malgre la peur — non pas sans elle.</p>
+    </div>
+    <span class="collection-num">04</span>
+  </div>
+  <div class="cards-row"><div class="pcard">
+  <div class="pcard-cover"><svg width="46" height="46" viewBox="0 0 60 60" fill="none"><path d="M30 8 L50 44 L10 44 Z" stroke="#8a5040" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="30" y1="20" x2="30" y2="34" stroke="#c87060" stroke-width="1.8" stroke-linecap="round"/><circle cx="30" cy="38" r="2" fill="#c87060"/></svg><span class="pcard-badge"  data-fr="Cahier 20 ex." data-es="Cahier 20 ex.">Cahier 20 ex.</span></div>
+  <div class="pcard-body">
+    <p class="pcard-label" data-fr="Oser" data-es="Atreverse">Oser</p>
+    <h4 class="pcard-title" data-fr="Ce qui me paralyse" data-es="Lo que me paraliza">Ce qui me paralyse</h4>
+    <p class="pcard-subtitle" data-fr="Nommer ses Peurs" data-es="Nombrar sus Miedos">Nommer ses Peurs</p>
+    <div class="details-toggle" onclick="toggleDetails(this)"><span data-fr="Voir les 6 parties" data-es="Ver las 6 partes">Voir les 6 parties</span><span class="details-arrow">&#9660;</span></div>
+    <ul class="details-list"><li data-fr="Comprendre : physiologie, 4 types de peur, habituation" data-es="Comprender : fisiologia, 4 tipos de miedo, habituacion">Comprendre : physiologie, 4 types de peur, habituation</li><li data-fr="Cartographie : roue des peurs en 6 domaines" data-es="Cartografia : rueda de los miedos en 6 dominios">Cartographie : roue des peurs en 6 domaines</li><li data-fr="Origines : fiche d'origine, peurs transmises, memoire" data-es="Origenes : ficha de origen, miedos transmitidos, memoria">Origines : fiche d'origine, peurs transmises, memoire</li><li data-fr="Exposition progressive : hierarchie 10 niveaux, journal" data-es="Exposicion progresiva : jerarquia 10 niveles, diario">Exposition progressive : hierarchie 10 niveaux, journal</li><li data-fr="Pensees : 5 distorsions, restructuration TCC, defusion ACT" data-es="Pensamientos : 5 distorsiones, reestructuracion TCC, defusion ACT">Pensees : 5 distorsions, restructuration TCC, defusion ACT</li><li data-fr="Avancer : valeurs, inventaire des victoires" data-es="Avanzar : valores, inventario de victorias">Avancer : valeurs, inventaire des victoires</li></ul>
+    <div class="pcard-footer">
+      <div class="pcard-price">24 €<small>PDF · 24 pages</small></div>
+      <a href="https://jennandrea.gumroad.com/l/aorhra" target="_blank" class="btn-card" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
+    </div>
+  </div>
+</div><div class="pcard prog">
+  <div class="pcard-cover"><svg width="46" height="46" viewBox="0 0 60 60" fill="none"><path d="M30 8 L50 44 L10 44 Z" stroke="#8a5040" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="30" y1="20" x2="30" y2="34" stroke="#c87060" stroke-width="1.8" stroke-linecap="round"/><circle cx="30" cy="38" r="2" fill="#c87060"/></svg><span class="pcard-badge"  data-fr="Programme 5 sem." data-es="Programme 5 sem.">Programme 5 sem.</span></div>
+  <div class="pcard-body">
+    <p class="pcard-label" data-fr="28 jours guides" data-es="28 dias guiados">28 jours guides</p>
+    <h4 class="pcard-title" data-fr="Oser enfin en 28 jours" data-es="Atreverse por fin en 28 dias">Oser enfin en 28 jours</h4>
+    <p class="pcard-subtitle" data-fr="Avancer malgre la Peur" data-es="Avanzar a pesar del Miedo">Avancer malgre la Peur</p>
+    <div class="details-toggle" onclick="toggleDetails(this)"><span data-fr="Voir les 5 semaines" data-es="Ver las 5 semanas">Voir les 5 semaines</span><span class="details-arrow">&#9660;</span></div>
+    <ul class="details-list"><li data-fr="Semaine 1 — Cartographie : physiologie, inventaire complet" data-es="Semana 1 — Cartografia : fisiologia, inventario completo">Semaine 1 — Cartographie : physiologie, inventaire complet</li><li data-fr="Semaine 2 — Comprendre : origines, peurs transmises" data-es="Semana 2 — Comprender : origenes, miedos transmitidos">Semaine 2 — Comprendre : origines, peurs transmises</li><li data-fr="Semaine 3 — Corps : exposition somatique, 4 techniques" data-es="Semana 3 — Cuerpo : exposicion somatica, 4 tecnicas">Semaine 3 — Corps : exposition somatique, 4 techniques</li><li data-fr="Semaine 4 — Exposition progressive : hierarchie 10 niveaux" data-es="Semana 4 — Exposicion progresiva : jerarquia 10 niveles">Semaine 4 — Exposition progressive : hierarchie 10 niveaux</li><li data-fr="Semaine 5 — Liberte : valeurs, plan de vie, lettre" data-es="Semana 5 — Libertad : valores, plan de vida, carta">Semaine 5 — Liberte : valeurs, plan de vie, lettre</li></ul>
+    <div class="pcard-footer">
+      <div class="pcard-price">62 €<small>PDF · 33 pages</small></div>
+      <a href="https://jennandrea.gumroad.com/l/fktqwy" target="_blank" class="btn-card" data-fr="Commencer" data-es="Comenzar">Commencer</a>
+    </div>
+  </div>
+</div></div>
+</div>
+    <div class="collection col-sens fade-in" id="sens">
+  <div class="collection-header">
+    <span class="collection-dot"></span>
+    <div class="collection-meta">
+      <span class="collection-tag" data-fr="Collection 05" data-es="Coleccion 05">Collection 05</span>
+      <h2 class="collection-name"><span data-fr="Donner du sens" data-es="Dar sentido">Donner du sens</span> — <em data-fr="Valeurs & Projet de vie" data-es="Valores & Proyecto de vida">Valeurs & Projet de vie</em></h2>
+      <p class="collection-desc-text" data-fr="Explorer ce qui donne envie de se lever le matin, retrouver le fil quand tout semble vide." data-es="Explorar que da ganas de levantarse por la manana, encontrar el hilo cuando todo parece vacio.">Explorer ce qui donne envie de se lever le matin, retrouver le fil quand tout semble vide.</p>
+    </div>
+    <span class="collection-num">05</span>
+  </div>
+  <div class="cards-row"><div class="pcard">
+  <div class="pcard-cover"><svg width="46" height="46" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="18" stroke="#a07850" stroke-width="1.5" fill="none"/><path d="M30 18 L30 30 L40 40" stroke="#a07850" stroke-width="1.8" stroke-linecap="round"/><circle cx="30" cy="30" r="2.5" fill="#a07850"/></svg><span class="pcard-badge"  data-fr="Cahier 20 ex." data-es="Cahier 20 ex.">Cahier 20 ex.</span></div>
+  <div class="pcard-body">
+    <p class="pcard-label" data-fr="Donner du sens" data-es="Dar sentido">Donner du sens</p>
+    <h4 class="pcard-title" data-fr="Je ne sais plus pourquoi je me leve" data-es="Ya no se por que me levanto">Je ne sais plus pourquoi je me leve</h4>
+    <p class="pcard-subtitle" data-fr="Trouver son Sens" data-es="Encontrar su Sentido">Trouver son Sens</p>
+    <div class="details-toggle" onclick="toggleDetails(this)"><span data-fr="Voir les 5 parties" data-es="Ver las 5 partes">Voir les 5 parties</span><span class="details-arrow">&#9660;</span></div>
+    <ul class="details-list"><li data-fr="Comprendre : nommer l'anhedonie, courbe temporelle, corps" data-es="Comprender : nombrar la anhedonia, curva temporal, cuerpo">Comprendre : nommer l'anhedonie, courbe temporelle, corps</li><li data-fr="Le sens : 3 voies de Frankl, valeurs profondes" data-es="El sentido : 3 vias de Frankl, valores profundos">Le sens : 3 voies de Frankl, valeurs profondes</li><li data-fr="Reconnexion : activation comportementale, journal micro-joies 7j" data-es="Reconexion : activacion conductual, diario micro-alegrias 7d">Reconnexion : activation comportementale, journal micro-joies 7j</li><li data-fr="Les pensees : restructuration TCC, defusion ACT" data-es="Los pensamientos : reestructuracion TCC, defusion ACT">Les pensees : restructuration TCC, defusion ACT</li><li data-fr="Construire : directions de vie ACT, projet de sens 3 mois" data-es="Construir : direcciones de vida ACT, proyecto de sentido 3 meses">Construire : directions de vie ACT, projet de sens 3 mois</li></ul>
+    <div class="pcard-footer">
+      <div class="pcard-price">26 €<small>PDF · 24 pages</small></div>
+      <a href="https://jennandrea.gumroad.com/l/keoph" target="_blank" class="btn-card" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
+    </div>
+  </div>
+</div><div class="pcard" style="background:linear-gradient(160deg,var(--sable-pale),#e8d5c0);border:none;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2.5rem;gap:1rem;">
+  <svg width="40" height="36" viewBox="0 0 46 44" fill="none"><path d="M5 32 L23 6 L41 32" stroke="#a07850" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="11" y1="39" x2="35" y2="39" stroke="#a07850" stroke-width="1.4" stroke-linecap="round"/><line x1="23" y1="32" x2="23" y2="39" stroke="#a07850" stroke-width="1.4" stroke-linecap="round"/></svg>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:#7a5535;line-height:1.65;" data-fr="Se connaitre, c'est oser regarder sans jugement ce qui vit en soi." data-es="Conocerse es atreverse a mirar sin juicio lo que vive en uno mismo.">"Se connaitre, c'est oser regarder sans jugement ce qui vit en soi."</p>
+  <p style="font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#a07850;">— Casita</p>
+</div></div>
+</div>
+  </div>
+</section>
+
+<section class="bundle" id="bundle">
+  <div class="bundle-inner">
+    <div>
+      <p class="bundle-eyebrow" data-fr="Offre complete" data-es="Oferta completa">Offre complete</p>
+      <h2 class="bundle-title">L'Integrale <em>Casita</em></h2>
+      <p class="bundle-desc" data-fr="Les 8 cahiers et les 4 programmes des 5 collections. Un acces complet pour travailler en profondeur." data-es="Los 8 cuadernos y los 4 programas de las 5 colecciones. Acceso completo para trabajar en profundidad.">Les 8 cahiers et les 4 programmes des 5 collections. Un acces complet pour travailler en profondeur.</p>
+      <ul class="bundle-includes">
+        <li data-fr="8 cahiers d'exercices PDF — 285 pages" data-es="8 cuadernos de ejercicios PDF — 285 paginas">8 cahiers d'exercices PDF — 285 pages</li>
+        <li data-fr="4 programmes guides complets — 140 pages" data-es="4 programas guiados completos — 140 paginas">4 programmes guides complets — 140 pages</li>
+        <li data-fr="Mises a jour gratuites a vie" data-es="Actualizaciones gratuitas de por vida">Mises a jour gratuites a vie</li>
+      </ul>
+      <div class="bundle-cta">
+        <div>
+          <div class="bundle-price">230 €</div>
+          <span class="bundle-old">451 €</span>
+          <div class="bundle-saving" data-fr="Economisez 221 €" data-es="Ahorra 221 €">Economisez 221 €</div>
+        </div>
+        <a href="https://jennandrea.gumroad.com/l/ylpuap" target="_blank" class="btn-bundle" data-fr="Obtenir l'Intégrale" data-es="Obtener la Integral">Obtenir l'Intégrale</a>
+      </div>
+    </div>
+    <div class="bundle-mini-grid">
+      <div class="bundle-mini"><div class="bundle-mini-label">S'apaiser</div><div class="bundle-mini-title">Anxiete — 3 ressources</div></div>
+      <div class="bundle-mini"><div class="bundle-mini-label">Se comprendre</div><div class="bundle-mini-title">Connaissance — 3 ressources</div></div>
+      <div class="bundle-mini"><div class="bundle-mini-label">Se reconstruire</div><div class="bundle-mini-title">Estime — 3 ressources</div></div>
+      <div class="bundle-mini"><div class="bundle-mini-label">Oser</div><div class="bundle-mini-title">Peurs — 2 ressources</div></div>
+      <div class="bundle-mini"><div class="bundle-mini-label">Donner du sens</div><div class="bundle-mini-title">Sens — 1 ressource</div></div>
+    </div>
+  </div>
+</section>
+<section class="faq-section">
+  <div class="faq-inner">
+    <h2 class="faq-h" data-fr="Questions fréquentes" data-es="Preguntas frecuentes">Questions fréquentes</h2>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span data-fr="Ces contenus remplacent-ils un suivi psychologique ?" data-es="Estos contenidos reemplazan un seguimiento psicologico?">Ces contenus remplacent-ils un suivi psychologique ?</span><span class="faq-arrow">&#9660;</span></div><div class="faq-a" data-fr="Non. Les cahiers Casita sont des outils de développement personnel fondes sur la psychologie clinique. Ils ne remplacent pas une psychothérapie ni un suivi professionnel." data-es="No. Los cuadernos Casita son herramientas de desarrollo personal. No reemplazan una psicoterapia ni un seguimiento profesional.">Non. Les cahiers Casita sont des outils de développement personnel fondes sur la psychologie clinique. Ils ne remplacent pas une psychothérapie.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span data-fr="Par quoi commencer si je ne sais pas ?" data-es="Por donde empezar si no lo se?">Par quoi commencer si je ne sais pas ?</span><span class="faq-arrow">&#9660;</span></div><div class="faq-a" data-fr="Commencez par Connais-toi, toi-meme pour le travail identitaire. Si vous avez une urgence émotionnelle, commencez par le Kit de Crise ou Apprivoiser l'Anxiété." data-es="Empieza por Conocete a ti mismo para el trabajo identitario. Si tienes una urgencia emocional, empieza por el Kit de Crisis.">Commencez par Connais-toi, toi-meme pour le travail identitaire. Si vous avez une urgence émotionnelle, commencez par le Kit de Crise.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span data-fr="Combien de temps par jour faut-il ?" data-es="Cuanto tiempo al dia se necesita?">Combien de temps par jour faut-il ?</span><span class="faq-arrow">&#9660;</span></div><div class="faq-a" data-fr="Les cahiers sont flexibles — avancez à votre rythme. Les programmes prevoient 15 a 25 minutes par jour." data-es="Los cuadernos son flexibles — avanza a tu ritmo. Los programas preveen 15 a 25 minutos por dia.">Les cahiers sont flexibles — avancez à votre rythme. Les programmes prevoient 15 a 25 minutes par jour.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span data-fr="Comment sont livres les contenus ?" data-es="Como se entregan los contenidos?">Comment sont livres les contenus ?</span><span class="faq-arrow">&#9660;</span></div><div class="faq-a" data-fr="Immédiatement apres paiement, vous recevez un lien de téléchargement par e-mail. Les PDF peuvent etre imprimés ou annotés sur tablette." data-es="Inmediatamente despues del pago, recibes un enlace de descarga por email. Los PDF pueden imprimirse o anotarse en tableta.">Immédiatement apres paiement, vous recevez un lien de téléchargement par e-mail.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span data-fr="Puis-je etre rembourse(e) ?" data-es="Puedo pedir un reembolso?">Puis-je être remboursé(e) ?</span><span class="faq-arrow">&#9660;</span></div><div class="faq-a" data-fr="Conformement a l'art. L221-28 du Code de la consommation, le droit de retractation de 14 jours ne s'applique pas aux contenus numeriques telechargeables des lors que vous avez consenti a leur acces immediat. En cas de litige : CM2C (cm2c.net) ou ANM Conso (anm-conso.com)." data-es="De acuerdo con la normativa europea, no aplica el derecho de desistimiento una vez iniciada la descarga con tu consentimiento. Para litigios: mediador de consumo disponible.">Conformément à l'article L221-28 du Code de la consommation, le droit de rétractation de 14 jours ne s'applique pas aux contenus numériques téléchargeables une fois que vous avez consenti à leur accès immédiat. Pour tout litige, un médiateur est disponible : <a href="https://www.cm2c.net" target="_blank" style="color:var(--rose-dark);">CM2C</a> ou <a href="https://www.anm-conso.com" target="_blank" style="color:var(--rose-dark);">ANM Conso</a>.</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">
+    <svg width="26" height="24" viewBox="0 0 46 44" fill="none"><path d="M5 32 L23 6 L41 32" stroke="rgba(255,255,255,.8)" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="11" y1="39" x2="35" y2="39" stroke="rgba(255,255,255,.8)" stroke-width="1.4" stroke-linecap="round"/><line x1="23" y1="32" x2="23" y2="39" stroke="rgba(255,255,255,.5)" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <span class="footer-logo-text">Casita</span>
+  </div>
+  <ul class="footer-links">
+    <li><a href="#apaiser" data-fr="S'apaiser" data-es="Apaciguarse">S'apaiser</a></li>
+    <li><a href="#comprendre" data-fr="Se comprendre" data-es="Comprenderse">Se comprendre</a></li>
+    <li><a href="#reconstruire" data-fr="Se reconstruire" data-es="Reconstruirse">Se reconstruire</a></li>
+    <li><a href="#oser" data-fr="Oser" data-es="Atreverse">Oser</a></li>
+    <li><a href="#about" data-fr="A propos" data-es="Sobre mi">A propos</a></li>
+  </ul>
+  <p class="footer-copy">2026 Casita · Jennyfer Rodriguez · Siret : 79056029700044 · TVA non applicable art. 293B CGI</p>
+  <div class="footer-legal">
+    <a href="mentions.html" data-fr="Mentions legales" data-es="Aviso legal">Mentions legales</a>
+    <a href="mentions.html#rgpd" data-fr="Confidentialite" data-es="Privacidad">Confidentialite</a>
+    <a href="https://instagram.com/psychoclinique" target="_blank">@psychoclinique</a>
+  </div>
+</footer>
+
+<script>
+function setLang(lang) {
+  document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+  document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+  document.querySelectorAll('[data-fr][data-es]').forEach(function(el) {
+    el.textContent = lang === 'es' ? el.getAttribute('data-es') : el.getAttribute('data-fr');
+  });
+  document.title = lang === 'es' ? 'Casita - Cuadernos & Programas' : 'Casita - Cahiers & Programmes';
+  localStorage.setItem('casita-lang', lang);
+}
+document.addEventListener('DOMContentLoaded', function() {
+  var saved = localStorage.getItem('casita-lang');
+  setLang(saved || (navigator.language.startsWith('es') ? 'es' : 'fr'));
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var h = a.getAttribute('href');
+      if (h === '#') return;
+      e.preventDefault();
+      var t = document.querySelector(h);
+      if (t) t.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.fade-in').forEach(function(el) { obs.observe(el); });
+});
+function toggleDetails(el) { el.classList.toggle('open'); el.nextElementSibling.classList.toggle('visible'); }
+function toggleFaq(el) {
+  document.querySelectorAll('.faq-q').forEach(function(q) { if (q !== el) q.classList.remove('open'); });
+  document.querySelectorAll('.faq-a').forEach(function(a) { if (a !== el.nextElementSibling) a.classList.remove('visible'); });
+  el.classList.toggle('open');
+  el.nextElementSibling.classList.toggle('visible');
+}
+</script>
+
+<!-- Bandeau cookies RGPD -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#2c2c2c;color:#fff;padding:14px 20px;z-index:9999;font-family:Georgia,serif;font-size:13px;line-height:1.5;box-shadow:0 -2px 8px rgba(0,0,0,.2);">
+  <div style="max-width:860px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:12px;">
+    <p style="margin:0;flex:1;min-width:220px;">
+      Ce site utilise des cookies essentiels à son fonctionnement. Aucun cookie publicitaire n'est déposé sans votre consentement.
+      <a href="mentions.html#cookies" style="color:#c98080;text-decoration:underline;">En savoir plus</a>
+    </p>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button onclick="acceptCookies()" style="background:#c98080;color:#fff;border:none;padding:8px 18px;border-radius:4px;cursor:pointer;font-size:13px;">Accepter</button>
+      <button onclick="refuseCookies()" style="background:transparent;color:#ccc;border:1px solid #ccc;padding:8px 18px;border-radius:4px;cursor:pointer;font-size:13px;">Refuser</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  try {
+    if (!localStorage.getItem('casita_cookies')) {
+      document.getElementById('cookie-banner').style.display='block';
+    }
+  } catch(e) {
+    document.getElementById('cookie-banner').style.display='block';
+  }
+  function acceptCookies(){
+    try { localStorage.setItem('casita_cookies','accepted'); } catch(e){}
+    document.getElementById('cookie-banner').style.display='none';
+  }
+  function refuseCookies(){
+    try { localStorage.setItem('casita_cookies','refused'); } catch(e){}
+    document.getElementById('cookie-banner').style.display='none';
+  }
+  window.acceptCookies=acceptCookies;
+  window.refuseCookies=refuseCookies;
+})();
+</script>
+</body>
+</html>
