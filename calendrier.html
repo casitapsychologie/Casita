@@ -390,6 +390,11 @@
   .card.ax-apaiser{--axtxt:#9A5050} .card.ax-comprendre{--axtxt:#4E58A0} .card.ax-reconstruire{--axtxt:#36703F}
   .card.ax-oser{--axtxt:#9E4636} .card.ax-sens{--axtxt:#755230}
   .card .tag,.fiche .fk{color:var(--axtxt,#2E6A50)!important}
+
+  .share{display:flex;align-items:center;justify-content:center;gap:10px;margin:18px auto 4px;min-height:48px;padding:12px 22px;border:0;border-radius:999px;background:#2F5544;color:#FFF8EE;font:700 15px/1.2 'Lato',system-ui,sans-serif;cursor:pointer;box-shadow:0 6px 16px rgba(47,85,68,.28);animation:pop .6s ease}
+  .share svg{width:18px;height:18px;flex:none}
+  .share:hover{background:#244436}
+  .share.done{background:#A8323C}
 </style>
 </head>
 <body>
@@ -521,7 +526,13 @@ const store = {
   get(k, d){ try { const v = localStorage.getItem('casita-' + k); return v === null ? d : JSON.parse(v); } catch(e){ return d; } },
   set(k, v){ try { localStorage.setItem('casita-' + k, JSON.stringify(v)); } catch(e){} }
 };
-const moreHTML = () => { const m = MORE[curDay]; if (!m) return ''; const p = PRODUCTS[m[0]]; return `<div class="more"><span class="mk">Pour aller plus loin</span><p><strong>${p[0]}</strong> <span class="mt">· ${p[1]}</span></p><p>${m[1]}</p><a href="${p[2]}">Découvrir</a></div>`; };
+const shareHTML = () => `<button type="button" class="share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22 11 13 2 9z"/></svg><span>Envoyer à quelqu’un qui en a besoin</span></button>`;
+const moreHTML = () => { const m = MORE[curDay]; if (!m) return shareHTML(); const p = PRODUCTS[m[0]]; return shareHTML() + `<div class="more"><span class="mk">Pour aller plus loin</span><p><strong>${p[0]}</strong> <span class="mt">· ${p[1]}</span></p><p>${m[1]}</p><a href="${p[2]}">Découvrir</a></div>`; };
+document.addEventListener('click', async e => { const b = e.target.closest('.share'); if (!b) return;
+  const url = 'https://casita-psychologie.com/calendrier.html', text = "Je pense à toi 🤍 Regarde ce calendrier de l’Avent pour prendre soin de soi : une petite fenêtre à ouvrir chaque jour, c’est gratuit.";
+  try { if (navigator.share) { await navigator.share({ title: document.title, text, url }); return; } } catch (err) { if (err && err.name === 'AbortError') return; }
+  try { await navigator.clipboard.writeText(text + ' ' + url); b.querySelector('span').textContent = 'Lien copié ✨'; b.classList.add('done'); } catch (err) { window.open('https://wa.me/?text=' + encodeURIComponent(text + ' ' + url), '_blank'); }
+});
 const finish = (html, party) => { const el = $('#fin'); if (!el) return; el.innerHTML = `<p class="end"><strong>Pour finir</strong> ${html}</p>${moreHTML()}`; el.classList.remove('hidden'); if (party) confetti(); };
 const FIN = `<div id="fin" class="hidden"></div>`;
 function chips(list, max, onChange){
