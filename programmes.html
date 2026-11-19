@@ -701,19 +701,17 @@ function setLang(lang) {
   document.querySelectorAll('[data-fr][data-es]').forEach(function(el) {
     var val = lang === 'es' ? el.getAttribute('data-es') : el.getAttribute('data-fr');
     if (el.children.length === 0) {
-      // Pas d'enfants HTML : mise à jour simple
       el.textContent = val;
     } else {
-      // A des enfants HTML (ex: pcard-price avec <small>) : mettre à jour uniquement le nœud texte direct
-      var updated = false;
-      el.childNodes.forEach(function(node) {
-        if (node.nodeType === 3 && node.textContent.trim()) {
-          node.textContent = val + ' ';
-          updated = true;
+      // Élément avec enfants HTML (ex: pcard-price avec <small>)
+      // Remplacer uniquement le premier nœud texte direct
+      for (var i = 0; i < el.childNodes.length; i++) {
+        var node = el.childNodes[i];
+        if (node.nodeType === 3) {
+          node.nodeValue = val + ' ';
+          break;
         }
-      });
-      // Fallback si aucun nœud texte direct trouvé
-      if (!updated) el.firstChild && (el.firstChild.textContent = val + ' ');
+      }
     }
   });
   // Mettre à jour les liens Gumroad selon la langue
