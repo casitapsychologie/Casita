@@ -14,6 +14,7 @@
   --peche:#c87060; --peche-pale:#fdf0ec;
   --sauge:#5a9465; --sauge-pale:#eef5ee;
   --sable:#a07850; --sable-pale:#f5ede5;
+  --bleu:#3F5C77; --bleu-pale:#E8EEF3; --bleu-mist:#ccdae5;
   --taupe:#7a5c5c; --taupe-light:#b09090;
   --cream:#fdf7f4; --text:#5a3a3a;
 }
@@ -70,6 +71,7 @@ nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; align-i
 .col-reconstruire .collection-header { border-color:#c0dcc8; }
 .col-oser .collection-header { border-color:#f0d0c8; }
 .col-sens .collection-header { border-color:#ddd0c0; }
+.col-relier .collection-header { border-color:#ccdae5; }
 .collection-icon { width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
 .col-apaiser .collection-icon { background:var(--rose-pale); }
 .col-comprendre .collection-icon { background:var(--lavande-pale); }
@@ -83,6 +85,7 @@ nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; align-i
 .col-reconstruire .collection-name { color:var(--sauge); }
 .col-oser .collection-name { color:var(--peche); }
 .col-sens .collection-name { color:var(--sable); }
+.col-relier .collection-name { color:var(--bleu); }
 .collection-desc { font-size:.78rem; color:var(--taupe-light); margin-top:.2rem; }
 .collection-link { font-size:.75rem; color:var(--rose); text-decoration:none; letter-spacing:.05em; white-space:nowrap; }
 .cards-row { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.2rem; }
@@ -119,6 +122,7 @@ nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; align-i
 .col-reconstruire .btn-card { background:var(--sauge-pale); color:var(--sauge); border-color:#c0dcc8; }
 .col-oser .btn-card { background:var(--peche-pale); color:var(--peche); border-color:#f0d0c8; }
 .col-sens .btn-card { background:var(--sable-pale); color:var(--sable); border-color:#ddd0c0; }
+.col-relier .btn-card { background:var(--bleu-pale); color:var(--bleu); border-color:#ccdae5; }
 
 /* BUNDLE */
 .bundle { background:linear-gradient(135deg,var(--rose) 0%,var(--rose-deep) 100%); padding:5rem 3rem; }
@@ -135,7 +139,11 @@ nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; align-i
 .bundle-old { font-size:1rem; color:rgba(255,255,255,.45); text-decoration:line-through; display:block; }
 .bundle-saving { font-size:.7rem; color:rgba(255,255,255,.6); letter-spacing:.1em; text-transform:uppercase; }
 .btn-bundle { background:white; color:var(--rose-dark); padding:1rem 2.2rem; border-radius:50px; font-size:.9rem; font-weight:500; border:none; cursor:pointer; transition:all .3s; text-decoration:none; display:inline-block; }
-.btn-bundle:hover { background:var(--cream); transform:translateY(-2px); }
+
+  .btn-card.btn-soon { opacity:0.45; cursor:not-allowed; pointer-events:none; font-style:italic; }
+  .btn-bundle.btn-soon { opacity:0.45; cursor:not-allowed; pointer-events:none; }
+
+  .btn-bundle:hover { background:var(--cream); transform:translateY(-2px); }
 .bundle-mini-grid { display:grid; grid-template-columns:1fr 1fr; gap:.8rem; }
 .bundle-mini { background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.18); border-radius:14px; padding:.9rem 1rem; }
 .bundle-mini-label { font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.5); margin-bottom:.3rem; }
@@ -208,18 +216,21 @@ footer { background:var(--rose); color:white; padding:2.5rem 3rem; display:flex;
 .col-reconstruire .collection-header { border-color:#c0dcc8; }
 .col-oser .collection-header { border-color:#f0d0c8; }
 .col-sens .collection-header { border-color:#ddd0c0; }
+.col-relier .collection-header { border-color:#ccdae5; }
 .collection-num { font-family:'Cormorant Garamond',serif; font-size:3.5rem; font-weight:300; opacity:.1; line-height:1; }
 .col-apaiser .collection-num { color:var(--rose); }
 .col-comprendre .collection-num { color:var(--lavande); }
 .col-reconstruire .collection-num { color:var(--sauge); }
 .col-oser .collection-num { color:var(--peche); }
 .col-sens .collection-num { color:var(--sable); }
+.col-relier .collection-num { color:var(--bleu); }
 .collection-dot { width:12px; height:12px; border-radius:50%; flex-shrink:0; }
 .col-apaiser .collection-dot { background:var(--rose); }
 .col-comprendre .collection-dot { background:var(--lavande); }
 .col-reconstruire .collection-dot { background:var(--sauge); }
 .col-oser .collection-dot { background:var(--peche); }
 .col-sens .collection-dot { background:var(--sable); }
+.col-relier .collection-dot { background:var(--bleu); }
 .collection-meta { flex:1; }
 .collection-tag { font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; margin-bottom:.3rem; display:block; }
 .col-apaiser .collection-tag { color:var(--rose); }
@@ -227,12 +238,14 @@ footer { background:var(--rose); color:white; padding:2.5rem 3rem; display:flex;
 .col-reconstruire .collection-tag { color:var(--sauge); }
 .col-oser .collection-tag { color:var(--peche); }
 .col-sens .collection-tag { color:var(--sable); }
+.col-relier .collection-tag { color:var(--bleu); }
 .collection-name { font-family:'Cormorant Garamond',serif; font-size:clamp(1.6rem,3vw,2.4rem); font-weight:300; line-height:1.15; }
 .col-apaiser .collection-name { color:var(--rose-dark); }
 .col-comprendre .collection-name { color:var(--lavande); }
 .col-reconstruire .collection-name { color:var(--sauge); }
 .col-oser .collection-name { color:var(--peche); }
 .col-sens .collection-name { color:var(--sable); }
+.col-relier .collection-name { color:var(--bleu); }
 .collection-name em { font-style:italic; }
 .collection-desc-text { font-size:.84rem; color:var(--taupe-light); margin-top:.4rem; max-width:500px; line-height:1.6; }
 
@@ -277,6 +290,7 @@ footer { background:var(--rose); color:white; padding:2.5rem 3rem; display:flex;
     <li><a href="#reconstruire" data-fr="Se reconstruire" data-es="Reconstruirse">Se reconstruire</a></li>
     <li><a href="#oser" data-fr="Oser" data-es="Atreverse">Oser</a></li>
     <li><a href="#sens" data-fr="Donner du sens" data-es="Dar sentido">Donner du sens</a></li>
+    <li><a href="#relier" data-fr="Se relier" data-es="Mis relaciones">Se relier</a></li>
     <li><a href="index_v2.html#about" style="color:var(--rose);" data-fr="A propos" data-es="Sobre mi">A propos</a></li>
   </ul>
   <div class="nav-right">
@@ -289,13 +303,14 @@ footer { background:var(--rose); color:white; padding:2.5rem 3rem; display:flex;
   <div class="fade-in">
     <span class="section-label" data-fr="Cahiers & Programmes" data-es="Cuadernos & Programas">Cahiers & Programmes</span>
     <h1 class="page-title">Des outils pour <em data-fr="aller vers l'interieur" data-es="ir hacia el interior">aller vers l'interieur</em></h1>
-    <p class="page-desc" data-fr="8 cahiers d'exercices et 4 programmes guides — pour travailler en profondeur, à votre rythme, depuis chez vous." data-es="8 cuadernos de ejercicios y 4 programas guiados — para trabajar en profundidad, a tu ritmo, desde casa.">8 cahiers d'exercices et 4 programmes guides — pour travailler en profondeur, à votre rythme, depuis chez vous.</p>
+    <p class="page-desc" data-fr="8 cahiers d'exercices et 4 programmes guides — pour travailler en profondeur, à votre rythme, depuis chez vous." data-es="Cuadernos, programas y fichas SOS — para trabajar en profundidad, a tu ritmo, desde casa.">Des cahiers, programmes et fiches SOS — pour travailler en profondeur, à votre rythme, depuis chez vous.</p>
     <div class="pills">
       <a href="#apaiser" class="pill pill-apaiser" data-fr="S'apaiser" data-es="Apaciguarse">S'apaiser</a>
       <a href="#comprendre" class="pill pill-comprendre" data-fr="Se comprendre" data-es="Comprenderse">Se comprendre</a>
       <a href="#reconstruire" class="pill pill-reconstruire" data-fr="Se reconstruire" data-es="Reconstruirse">Se reconstruire</a>
       <a href="#oser" class="pill pill-oser" data-fr="Oser" data-es="Atreverse">Oser</a>
       <a href="#sens" class="pill pill-sens" data-fr="Donner du sens" data-es="Dar sentido">Donner du sens</a>
+      <a href="#relier" class="pill" style="background:var(--bleu-pale);color:var(--bleu);" data-fr="Se relier" data-es="Mis relaciones">Se relier</a>
     </div>
   </div>
 </section>
@@ -316,39 +331,39 @@ footer { background:var(--rose); color:white; padding:2.5rem 3rem; display:flex;
   <div class="pcard-cover"><svg width="46" height="46" viewBox="0 0 60 60" fill="none"><path d="M10 30 Q18 10 30 30 Q42 50 50 30" stroke="#9b5c5c" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".4"/><path d="M16 30 Q22 14 30 30 Q38 46 44 30" stroke="#9b5c5c" stroke-width="1.8" fill="none" stroke-linecap="round"/><circle cx="30" cy="30" r="3" fill="#c98080"/></svg><span class="pcard-badge"  data-fr="Cahier" data-es="Cahier">Cahier</span></div>
   <div class="pcard-body">
     <p class="pcard-label" data-fr="S'apaiser" data-es="Apaciguarse">S'apaiser</p>
-    <h4 class="pcard-title" data-fr="Je n'arrive plus a me calmer" data-es="Ya no puedo calmarme">Je n'arrive plus a me calmer</h4>
+    <h4 class="pcard-title" data-fr="Je n'arrive plus a me calmer" data-es="Comprender y calmar la ansiedad">Je n'arrive plus a me calmer</h4>
     <p class="pcard-subtitle" data-fr="Apprivoiser l'Anxiété" data-es="Dominar la Ansiedad">Apprivoiser l'Anxiété</p>
     <div class="details-toggle" onclick="toggleDetails(this)"><span data-fr="Voir les 6 parties" data-es="Ver las 6 partes">Voir les 6 parties</span><span class="details-arrow">&#9660;</span></div>
     <ul class="details-list"><li data-fr="Comprendre : roue de l'anxiété, declencheurs, profil" data-es="Comprender : rueda de la ansiedad, desencadenantes, perfil">Comprendre : roue de l'anxiété, declencheurs, profil</li><li data-fr="Corps : coherence cardiaque, respiration 4-7-8, ancrage" data-es="Cuerpo : coherencia cardiaca, respiracion 4-7-8, anclaje">Corps : coherence cardiaque, respiration 4-7-8, ancrage</li><li data-fr="Pensees TCC : distorsions cognitives, restructuration" data-es="Pensamientos TCC : distorsiones cognitivas, reestructuracion">Pensees TCC : distorsions cognitives, restructuration</li><li data-fr="ACT : defusion cognitive, valeurs comme boussole" data-es="ACT : defusion cognitiva, valores como brujula">ACT : defusion cognitive, valeurs comme boussole</li><li data-fr="Corps en profondeur : cartographie des sensations" data-es="Cuerpo en profundidad : cartografia de sensaciones">Corps en profondeur : cartographie des sensations</li><li data-fr="Bilan & protocole : plan de crise, lettre a l'anxiété" data-es="Balance & protocolo : plan de crisis, carta a la ansiedad">Bilan & protocole : plan de crise, lettre a l'anxiété</li></ul>
     <div class="pcard-footer">
-      <div class="pcard-price">30 €<small>PDF · 29 pages</small></div>
-      <a href="https://jennandrea.gumroad.com/l/gjvfx" target="_blank" class="btn-card" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
+      <div class="pcard-price" data-fr="30 €" data-es="25 €">30 €<small>PDF · <span data-fr="29" data-es="48">29</span> pages</small></div>
+      <a href="https://jennandrea.gumroad.com/l/gjvfx" data-href-fr="https://jennandrea.gumroad.com/l/gjvfx" data-href-es="" target="_blank" class="btn-card" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
     </div>
   </div>
 </div><div class="pcard">
   <div class="pcard-cover"><svg width="46" height="46" viewBox="0 0 60 60" fill="none"><path d="M10 30 Q18 10 30 30 Q42 50 50 30" stroke="#9b5c5c" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".4"/><path d="M16 30 Q22 14 30 30 Q38 46 44 30" stroke="#9b5c5c" stroke-width="1.8" fill="none" stroke-linecap="round"/><circle cx="30" cy="30" r="3" fill="#c98080"/></svg><span class="pcard-badge"  data-fr="Kit Essentiel" data-es="Kit Essentiel">Kit Essentiel</span></div>
   <div class="pcard-body">
     <p class="pcard-label" data-fr="Urgence" data-es="Urgencia">Urgence</p>
-    <h4 class="pcard-title" data-fr="Kit de Crise Anxieuse" data-es="Kit de Crisis de Ansiedad">Kit de Crise Anxieuse</h4>
+    <h4 class="pcard-title" data-fr="Kit de Crise Anxieuse" data-es="Kit de emergencia para la ansiedad">Kit de Crise Anxieuse</h4>
     <p class="pcard-subtitle" data-fr="Pour les moments difficiles" data-es="Para los momentos dificiles">Pour les moments difficiles</p>
     <div class="details-toggle" onclick="toggleDetails(this)"><span data-fr="Voir le contenu" data-es="Ver el contenido">Voir le contenu</span><span class="details-arrow">&#9660;</span></div>
     <ul class="details-list"><li data-fr="Fiche SOS imprimable — 5 etapes de gestion de crise" data-es="Ficha SOS imprimible — 5 etapas de gestion de crisis">Fiche SOS imprimable — 5 etapes de gestion de crise</li><li data-fr="4 fiches de respiration comparees" data-es="4 fichas de respiracion comparadas">4 fiches de respiration comparees</li><li data-fr="Plan anti-crise personalise en 5 etapes" data-es="Plan anti-crisis personalizado en 5 etapas">Plan anti-crise personalise en 5 etapes</li><li data-fr="Tableau de suivi mensuel sur 2 mois" data-es="Tabla de seguimiento mensual durante 2 meses">Tableau de suivi mensuel sur 2 mois</li></ul>
     <div class="pcard-footer">
-      <div class="pcard-price">14 €<small>PDF · 17 pages</small></div>
-      <a href="https://jennandrea.gumroad.com/l/nwxih" target="_blank" class="btn-card" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
+      <div class="pcard-price" data-fr="14 €" data-es="10 €">14 €<small>PDF · <span data-fr="17" data-es="23">17</span> pages</small></div>
+      <a href="https://jennandrea.gumroad.com/l/nwxih" data-href-fr="https://jennandrea.gumroad.com/l/nwxih" data-href-es="" target="_blank" class="btn-card" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
     </div>
   </div>
 </div><div class="pcard prog">
   <div class="pcard-cover"><svg width="46" height="46" viewBox="0 0 60 60" fill="none"><path d="M10 30 Q18 10 30 30 Q42 50 50 30" stroke="#9b5c5c" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".4"/><path d="M16 30 Q22 14 30 30 Q38 46 44 30" stroke="#9b5c5c" stroke-width="1.8" fill="none" stroke-linecap="round"/><circle cx="30" cy="30" r="3" fill="#c98080"/></svg><span class="pcard-badge"  data-fr="Programme 4 sem." data-es="Programme 4 sem.">Programme 4 sem.</span></div>
   <div class="pcard-body">
     <p class="pcard-label" data-fr="20 jours guides" data-es="20 dias guiados">20 jours guides</p>
-    <h4 class="pcard-title" data-fr="Sortir de l'anxiété en 20 jours" data-es="Salir de la ansiedad en 20 dias">Sortir de l'anxiété en 20 jours</h4>
+    <h4 class="pcard-title" data-fr="Sortir de l'anxiété en 20 jours" data-es="Atravesar la ansiedad en 4 semanas">Sortir de l'anxiété en 20 jours</h4>
     <p class="pcard-subtitle" data-fr="Traverser l'Anxiété" data-es="Atravesar la Ansiedad">Traverser l'Anxiété</p>
     <div class="details-toggle" onclick="toggleDetails(this)"><span data-fr="Voir les 4 semaines" data-es="Ver las 4 semanas">Voir les 4 semaines</span><span class="details-arrow">&#9660;</span></div>
     <ul class="details-list"><li data-fr="Semaine 1 — Rencontre : profil, declencheurs, coherence cardiaque" data-es="Semana 1 — Encuentro : perfil, desencadenantes, coherencia cardiaca">Semaine 1 — Rencontre : profil, declencheurs, coherence cardiaque</li><li data-fr="Semaine 2 — Corps : scan corporel, 4 respirations, regulation" data-es="Semana 2 — Cuerpo : escaneo corporal, 4 respiraciones, regulacion">Semaine 2 — Corps : scan corporel, 4 respirations, regulation</li><li data-fr="Semaine 3 — Esprit : restructuration TCC, defusion ACT" data-es="Semana 3 — Mente : reestructuracion TCC, defusion ACT">Semaine 3 — Esprit : restructuration TCC, defusion ACT</li><li data-fr="Semaine 4 — Ancrage : valeurs, plan de vie, lettre" data-es="Semana 4 — Anclaje : valores, plan de vida, carta">Semaine 4 — Ancrage : valeurs, plan de vie, lettre</li></ul>
     <div class="pcard-footer">
-      <div class="pcard-price">59 €<small>PDF · 29 pages</small></div>
-      <a href="https://jennandrea.gumroad.com/l/lsstww" target="_blank" class="btn-card" data-fr="Commencer" data-es="Comenzar">Commencer</a>
+      <div class="pcard-price" data-fr="59 €" data-es="40 €">59 €<small>PDF · <span data-fr="29" data-es="69">29</span> pages</small></div>
+      <a href="https://jennandrea.gumroad.com/l/lsstww" data-href-fr="https://jennandrea.gumroad.com/l/lsstww" data-href-es="" target="_blank" class="btn-card" data-fr="Commencer" data-es="Comenzar">Commencer</a>
     </div>
   </div>
 </div></div>
@@ -367,39 +382,39 @@ footer { background:var(--rose); color:white; padding:2.5rem 3rem; display:flex;
   <div class="pcard-cover"><svg width="46" height="46" viewBox="0 0 60 60" fill="none"><path d="M30 30 C30 24 36 18 42 20 C48 22 48 32 42 38 C36 44 24 44 18 36 C12 28 16 14 28 10 C40 6 54 14 54 30" stroke="#7a85c8" stroke-width="1.8" fill="none" stroke-linecap="round"/><line x1="30" y1="30" x2="30" y2="50" stroke="#c98080" stroke-width="1.5" stroke-linecap="round"/></svg><span class="pcard-badge"  data-fr="Cahier 25 ex." data-es="Cahier 25 ex.">Cahier 25 ex.</span></div>
   <div class="pcard-body">
     <p class="pcard-label" data-fr="Se comprendre" data-es="Comprenderse">Se comprendre</p>
-    <h4 class="pcard-title" data-fr="Qui suis-je vraiment ?" data-es="Quien soy realmente?">Qui suis-je vraiment ?</h4>
-    <p class="pcard-subtitle" data-fr="Connais-toi, toi-meme" data-es="Conocete a ti mismo">Connais-toi, toi-meme</p>
+    <h4 class="pcard-title" data-fr="Qui suis-je vraiment ?" data-es="¿Quién soy realmente?">Qui suis-je vraiment ?</h4>
+    <p class="pcard-subtitle" data-fr="Connais-toi, toi-meme" data-es="Conócete a ti mismo">Connais-toi, toi-meme</p>
     <div class="details-toggle" onclick="toggleDetails(this)"><span data-fr="Voir les 7 parties" data-es="Ver las 7 partes">Voir les 7 parties</span><span class="details-arrow">&#9660;</span></div>
     <ul class="details-list"><li data-fr="Qui suis-je ? : cartographie des roles, 25 valeurs, auto-portrait" data-es="Quien soy? : cartografia de roles, 25 valores, autorretrato">Qui suis-je ? : cartographie des roles, 25 valeurs, auto-portrait</li><li data-fr="Blessures & besoins : 5 blessures (Bourbeau), enfant interieur" data-es="Heridas & necesidades : 5 heridas (Bourbeau), nino interior">Blessures & besoins : 5 blessures (Bourbeau), enfant interieur</li><li data-fr="Schemas : 9 schemas (J. Young), patterns relationnels" data-es="Esquemas : 9 esquemas (J. Young), patrones relacionales">Schemas : 9 schemas (J. Young), patterns relationnels</li><li data-fr="Mecanismes de defense : 8 mecanismes, croyances limitantes" data-es="Mecanismos de defensa : 8 mecanismos, creencias limitantes">Mecanismes de defense : 8 mecanismes, croyances limitantes</li><li data-fr="Emotions : roue des 10 emotions, protocole d'accueil" data-es="Emociones : rueda de las 10 emociones, protocolo de acogida">Emotions : roue des 10 emotions, protocole d'accueil</li><li data-fr="Relations : 4 styles d'attachement, limites saines" data-es="Relaciones : 4 estilos de apego, limites sanos">Relations : 4 styles d'attachement, limites saines</li><li data-fr="Lettres therapeutiques : a l'enfant interieur, au futur moi" data-es="Cartas terapeuticas : al nino interior, al yo futuro">Lettres therapeutiques : a l'enfant interieur, au futur moi</li></ul>
     <div class="pcard-footer">
-      <div class="pcard-price">27 €<small>PDF · 33 pages</small></div>
-      <a href="https://jennandrea.gumroad.com/l/tqlwld" target="_blank" class="btn-card" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
+      <div class="pcard-price" data-fr="27 €" data-es="25 €">27 €<small>PDF · <span data-fr="33" data-es="39">33</span> pages</small></div>
+      <a href="https://jennandrea.gumroad.com/l/tqlwld" data-href-fr="https://jennandrea.gumroad.com/l/tqlwld" data-href-es="" target="_blank" class="btn-card" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
     </div>
   </div>
 </div><div class="pcard">
   <div class="pcard-cover"><svg width="46" height="46" viewBox="0 0 60 60" fill="none"><path d="M30 30 C30 24 36 18 42 20 C48 22 48 32 42 38 C36 44 24 44 18 36 C12 28 16 14 28 10 C40 6 54 14 54 30" stroke="#7a85c8" stroke-width="1.8" fill="none" stroke-linecap="round"/><line x1="30" y1="30" x2="30" y2="50" stroke="#c98080" stroke-width="1.5" stroke-linecap="round"/></svg><span class="pcard-badge"  data-fr="Journal 30 jours" data-es="Journal 30 jours">Journal 30 jours</span></div>
   <div class="pcard-body">
     <p class="pcard-label" data-fr="30 jours" data-es="30 dias">30 jours</p>
-    <h4 class="pcard-title" data-fr="Journal de l'Interieur" data-es="Diario Interior">Journal de l'Interieur</h4>
+    <h4 class="pcard-title" data-fr="Journal de l'Interieur" data-es="Diario interior (30 días)">Journal de l'Interieur</h4>
     <p class="pcard-subtitle" data-fr="Questions profondes, une par jour" data-es="Preguntas profundas, una por dia">Questions profondes, une par jour</p>
     <div class="details-toggle" onclick="toggleDetails(this)"><span data-fr="Voir les 4 semaines" data-es="Ver las 4 semanas">Voir les 4 semaines</span><span class="details-arrow">&#9660;</span></div>
     <ul class="details-list"><li data-fr="Semaine 1 — Les Emotions (J.1-7) + Bilan ACT" data-es="Semana 1 — Las Emociones (J.1-7) + Balance ACT">Semaine 1 — Les Emotions (J.1-7) + Bilan ACT</li><li data-fr="Semaine 2 — Les Relations (J.8-14) + Bilan TCC" data-es="Semana 2 — Las Relaciones (J.8-14) + Balance TCC">Semaine 2 — Les Relations (J.8-14) + Bilan TCC</li><li data-fr="Semaine 3 — Peurs & Desirs (J.15-21) + Bilan defusion" data-es="Semana 3 — Miedos & Deseos (J.15-21) + Balance defusion">Semaine 3 — Peurs & Desirs (J.15-21) + Bilan defusion</li><li data-fr="Semaine 4 — Soi & Croissance (J.22-30) + lettre de compassion" data-es="Semana 4 — Yo & Crecimiento (J.22-30) + carta de compasion">Semaine 4 — Soi & Croissance (J.22-30) + lettre de compassion</li></ul>
     <div class="pcard-footer">
-      <div class="pcard-price">32 €<small>PDF · 60 pages</small></div>
-      <a href="https://jennandrea.gumroad.com/l/ewlbyx" target="_blank" class="btn-card" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
+      <div class="pcard-price" data-fr="32 €" data-es="25 €">32 €<small>PDF · <span data-fr="60" data-es="35">60</span> pages</small></div>
+      <a href="https://jennandrea.gumroad.com/l/ewlbyx" data-href-fr="https://jennandrea.gumroad.com/l/ewlbyx" data-href-es="" target="_blank" class="btn-card" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
     </div>
   </div>
 </div><div class="pcard prog">
   <div class="pcard-cover"><svg width="46" height="46" viewBox="0 0 60 60" fill="none"><path d="M30 30 C30 24 36 18 42 20 C48 22 48 32 42 38 C36 44 24 44 18 36 C12 28 16 14 28 10 C40 6 54 14 54 30" stroke="#7a85c8" stroke-width="1.8" fill="none" stroke-linecap="round"/><line x1="30" y1="30" x2="30" y2="50" stroke="#c98080" stroke-width="1.5" stroke-linecap="round"/></svg><span class="pcard-badge"  data-fr="Programme 6 sem." data-es="Programme 6 sem.">Programme 6 sem.</span></div>
   <div class="pcard-body">
     <p class="pcard-label" data-fr="35 jours guides" data-es="35 dias guiados">35 jours guides</p>
-    <h4 class="pcard-title" data-fr="Voyage Interieur" data-es="Viaje Interior">Voyage Interieur</h4>
+    <h4 class="pcard-title" data-fr="Voyage Interieur" data-es="Un viaje profundo hacia ti mismo">Voyage Interieur</h4>
     <p class="pcard-subtitle" data-fr="Le programme le plus complet de Casita" data-es="El programa mas completo de Casita">Le programme le plus complet de Casita</p>
     <div class="details-toggle" onclick="toggleDetails(this)"><span data-fr="Voir les 6 semaines" data-es="Ver las 6 semanas">Voir les 6 semaines</span><span class="details-arrow">&#9660;</span></div>
     <ul class="details-list"><li data-fr="Semaine 1 — L'Invitation : roles, 25 valeurs, auto-portrait" data-es="Semana 1 — La Invitacion : roles, 25 valores, autorretrato">Semaine 1 — L'Invitation : roles, 25 valeurs, auto-portrait</li><li data-fr="Semaine 2 — Les Racines : enfant interieur, 5 blessures" data-es="Semana 2 — Las Raices : nino interior, 5 heridas">Semaine 2 — Les Racines : enfant interieur, 5 blessures</li><li data-fr="Semaine 3 — Les Masques : schemas, mecanismes, patterns" data-es="Semana 3 — Las Mascaras : esquemas, mecanismos, patrones">Semaine 3 — Les Masques : schemas, mecanismes, patterns</li><li data-fr="Semaine 4 — Les Valeurs : vraies vs imposees, manifeste" data-es="Semana 4 — Los Valores : verdaderos vs impuestos, manifiesto">Semaine 4 — Les Valeurs : vraies vs imposees, manifeste</li><li data-fr="Semaine 5 — Les Besoins : CNV (Rosenberg), limites saines" data-es="Semana 5 — Las Necesidades : CNV (Rosenberg), limites sanos">Semaine 5 — Les Besoins : CNV (Rosenberg), limites saines</li><li data-fr="Semaine 6 — L'Integration : synthese, lettre du futur moi" data-es="Semana 6 — La Integracion : sintesis, carta del yo futuro">Semaine 6 — L'Integration : synthese, lettre du futur moi</li></ul>
     <div class="pcard-footer">
-      <div class="pcard-price">69 €<small>PDF · 46 pages</small></div>
-      <a href="https://jennandrea.gumroad.com/l/rbjpn" target="_blank" class="btn-card" data-fr="Commencer" data-es="Comenzar">Commencer</a>
+      <div class="pcard-price" data-fr="69 €" data-es="40 €">69 €<small>PDF · <span data-fr="46" data-es="51">46</span> pages</small></div>
+      <a href="https://jennandrea.gumroad.com/l/rbjpn" data-href-fr="https://jennandrea.gumroad.com/l/rbjpn" data-href-es="" target="_blank" class="btn-card" data-fr="Commencer" data-es="Comenzar">Commencer</a>
     </div>
   </div>
 </div></div>
@@ -415,7 +430,7 @@ footer { background:var(--rose); color:white; padding:2.5rem 3rem; display:flex;
     <span class="collection-num">03</span>
   </div>
   <div class="cards-row"><div class="pcard">
-  <div class="pcard-cover"><svg width="46" height="46" viewBox="0 0 60 60" fill="none"><path d="M14 8 Q10 30 14 52" stroke="#5a9465" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M46 8 Q50 30 46 52" stroke="#5a9465" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="30" cy="30" r="7" fill="none" stroke="#c98080" stroke-width="1.5"/></svg><span class="pcard-badge"  data-fr="Cahier 20 ex." data-es="Cahier 20 ex.">Cahier 20 ex.</span></div>
+  <div class="pcard-cover"><svg width="46" height="46" viewBox="0 0 60 60" fill="none"><path d="M14 8 Q10 30 14 52" stroke="#5a9465" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M46 8 Q50 30 46 52" stroke="#5a9465" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="30" cy="30" r="7" fill="none" stroke="#c98080" stroke-width="1.5"/></svg><span class="pcard-badge"  data-fr="Cahier 20 ex." data-es="Cuaderno 35 p.">Cahier 20 ex.</span></div>
   <div class="pcard-body">
     <p class="pcard-label" data-fr="Se reconstruire" data-es="Reconstruirse">Se reconstruire</p>
     <h4 class="pcard-title" data-fr="J'apprends a m'aimer" data-es="Aprendo a amarme">J'apprends a m'aimer</h4>
@@ -423,12 +438,12 @@ footer { background:var(--rose); color:white; padding:2.5rem 3rem; display:flex;
     <div class="details-toggle" onclick="toggleDetails(this)"><span data-fr="Voir les 7 parties" data-es="Ver las 7 partes">Voir les 7 parties</span><span class="details-arrow">&#9660;</span></div>
     <ul class="details-list"><li data-fr="Comprendre : estime saine vs fausse, 6 masques" data-es="Comprender : autoestima sana vs falsa, 6 mascaras">Comprendre : estime saine vs fausse, 6 masques</li><li data-fr="Origines : messages de 6 figures, ligne de vie" data-es="Origenes : mensajes de 6 figuras, linea de vida">Origines : messages de 6 figures, ligne de vie</li><li data-fr="Critique interieur : portrait, reformulations bienveillantes" data-es="Critico interior : retrato, reformulaciones compasivas">Critique interieur : portrait, reformulations bienveillantes</li><li data-fr="Croyances limitantes : 3 fiches de demantelement TCC" data-es="Creencias limitantes : 3 fichas de desmantelamiento TCC">Croyances limitantes : 3 fiches de demantelement TCC</li><li data-fr="Self-compassion : protocole Kristin Neff, journal gratitude 14j" data-es="Autocompasion : protocolo Kristin Neff, diario gratitud 14d">Self-compassion : protocole Kristin Neff, journal gratitude 14j</li><li data-fr="Construire : 6 piliers internes, affirmations ancrees" data-es="Construir : 6 pilares internos, afirmaciones ancladas">Construire : 6 piliers internes, affirmations ancrees</li><li data-fr="Integration : lettre a l'enfant interieur, plan" data-es="Integracion : carta al nino interior, plan">Integration : lettre a l'enfant interieur, plan</li></ul>
     <div class="pcard-footer">
-      <div class="pcard-price">26 €<small>PDF · 31 pages</small></div>
-      <a href="https://jennandrea.gumroad.com/l/vyxyc" target="_blank" class="btn-card" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
+      <div class="pcard-price" data-fr="26 €" data-es="25 €">26 €<small>PDF · <span data-fr="31" data-es="33">31</span> pages</small></div>
+      <a href="https://jennandrea.gumroad.com/l/vyxyc" data-href-fr="https://jennandrea.gumroad.com/l/vyxyc" data-href-es="" target="_blank" class="btn-card" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
     </div>
   </div>
 </div><div class="pcard">
-  <div class="pcard-cover"><svg width="46" height="46" viewBox="0 0 60 60" fill="none"><path d="M14 8 Q10 30 14 52" stroke="#5a9465" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M46 8 Q50 30 46 52" stroke="#5a9465" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="30" cy="30" r="7" fill="none" stroke="#c98080" stroke-width="1.5"/></svg><span class="pcard-badge"  data-fr="Cahier 20 ex." data-es="Cahier 20 ex.">Cahier 20 ex.</span></div>
+  <div class="pcard-cover"><svg width="46" height="46" viewBox="0 0 60 60" fill="none"><path d="M14 8 Q10 30 14 52" stroke="#5a9465" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M46 8 Q50 30 46 52" stroke="#5a9465" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="30" cy="30" r="7" fill="none" stroke="#c98080" stroke-width="1.5"/></svg><span class="pcard-badge"  data-fr="Cahier 20 ex." data-es="Cuaderno 38 p.">Cahier 20 ex.</span></div>
   <div class="pcard-body">
     <p class="pcard-label" data-fr="Se reconstruire" data-es="Reconstruirse">Se reconstruire</p>
     <h4 class="pcard-title" data-fr="Cette voix qui me detruit" data-es="Esa voz que me destruye">Cette voix qui me detruit</h4>
@@ -436,8 +451,8 @@ footer { background:var(--rose); color:white; padding:2.5rem 3rem; display:flex;
     <div class="details-toggle" onclick="toggleDetails(this)"><span data-fr="Voir les 7 parties" data-es="Ver las 7 partes">Voir les 7 parties</span><span class="details-arrow">&#9660;</span></div>
     <ul class="details-list"><li data-fr="Cartographie : 5 voix (Critique, Enfant, Adulte Sain...)" data-es="Cartografia : 5 voces (Critico, Nino, Adulto Sano...)">Cartographie : 5 voix (Critique, Enfant, Adulte Sain...)</li><li data-fr="Declencheurs : tableau par voix, signature corporelle" data-es="Desencadenantes : tabla por voz, firma corporal">Declencheurs : tableau par voix, signature corporelle</li><li data-fr="Dialogues : Critique / Adulte Sain, chaise vide (Gestalt)" data-es="Dialogos : Critico / Adulto Sano, silla vacia (Gestalt)">Dialogues : Critique / Adulte Sain, chaise vide (Gestalt)</li><li data-fr="Transformer : 9 phrases destructrices, defusion ACT" data-es="Transformar : 9 frases destructivas, defusion ACT">Transformer : 9 phrases destructrices, defusion ACT</li><li data-fr="Ecriture therapeutique : 3 lettres entre les parts" data-es="Escritura terapeutica : 3 cartas entre las partes">Ecriture therapeutique : 3 lettres entre les parts</li><li data-fr="Affirmations & suivi 14 jours" data-es="Afirmaciones & seguimiento 14 dias">Affirmations & suivi 14 jours</li><li data-fr="Integration : plan en 5 axes avec engagement date" data-es="Integracion : plan en 5 ejes con compromiso fechado">Integration : plan en 5 axes avec engagement date</li></ul>
     <div class="pcard-footer">
-      <div class="pcard-price">24 €<small>PDF · 31 pages</small></div>
-      <a href="https://jennandrea.gumroad.com/l/qsdloo" target="_blank" class="btn-card" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
+      <div class="pcard-price" data-fr="24 €" data-es="25 €">24 €<small>PDF · <span data-fr="31" data-es="40">31</span> pages</small></div>
+      <a href="https://jennandrea.gumroad.com/l/qsdloo" data-href-fr="https://jennandrea.gumroad.com/l/qsdloo" data-href-es="" target="_blank" class="btn-card" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
     </div>
   </div>
 </div><div class="pcard prog">
@@ -449,8 +464,8 @@ footer { background:var(--rose); color:white; padding:2.5rem 3rem; display:flex;
     <div class="details-toggle" onclick="toggleDetails(this)"><span data-fr="Voir les 4 semaines" data-es="Ver las 4 semanas">Voir les 4 semaines</span><span class="details-arrow">&#9660;</span></div>
     <ul class="details-list"><li data-fr="Semaine 1 — Observer : diagnostic, 6 masques, cout reel" data-es="Semana 1 — Observar : diagnostico, 6 mascaras, costo real">Semaine 1 — Observer : diagnostic, 6 masques, cout reel</li><li data-fr="Semaine 2 — Comprendre : messages fondateurs, 5 croyances TCC" data-es="Semana 2 — Comprender : mensajes fundadores, 5 creencias TCC">Semaine 2 — Comprendre : messages fondateurs, 5 croyances TCC</li><li data-fr="Semaine 3 — Transformer : self-compassion (Neff), 5 piliers" data-es="Semana 3 — Transformar : autocompasion (Neff), 5 pilares">Semaine 3 — Transformer : self-compassion (Neff), 5 piliers</li><li data-fr="Semaine 4 — Incarner : affirmations, lettre enfant interieur" data-es="Semana 4 — Encarnar : afirmaciones, carta nino interior">Semaine 4 — Incarner : affirmations, lettre enfant interieur</li></ul>
     <div class="pcard-footer">
-      <div class="pcard-price">58 €<small>PDF · 32 pages</small></div>
-      <a href="https://jennandrea.gumroad.com/l/irnljk" target="_blank" class="btn-card" data-fr="Commencer" data-es="Comenzar">Commencer</a>
+      <div class="pcard-price" data-fr="58 €" data-es="40 €">58 €<small>PDF · <span data-fr="32" data-es="34">32</span> pages</small></div>
+      <a href="https://jennandrea.gumroad.com/l/irnljk" data-href-fr="https://jennandrea.gumroad.com/l/irnljk" data-href-es="" target="_blank" class="btn-card" data-fr="Commencer" data-es="Comenzar">Commencer</a>
     </div>
   </div>
 </div></div>
@@ -474,12 +489,12 @@ footer { background:var(--rose); color:white; padding:2.5rem 3rem; display:flex;
     <div class="details-toggle" onclick="toggleDetails(this)"><span data-fr="Voir les 6 parties" data-es="Ver las 6 partes">Voir les 6 parties</span><span class="details-arrow">&#9660;</span></div>
     <ul class="details-list"><li data-fr="Comprendre : physiologie, 4 types de peur, habituation" data-es="Comprender : fisiologia, 4 tipos de miedo, habituacion">Comprendre : physiologie, 4 types de peur, habituation</li><li data-fr="Cartographie : roue des peurs en 6 domaines" data-es="Cartografia : rueda de los miedos en 6 dominios">Cartographie : roue des peurs en 6 domaines</li><li data-fr="Origines : fiche d'origine, peurs transmises, memoire" data-es="Origenes : ficha de origen, miedos transmitidos, memoria">Origines : fiche d'origine, peurs transmises, memoire</li><li data-fr="Exposition progressive : hierarchie 10 niveaux, journal" data-es="Exposicion progresiva : jerarquia 10 niveles, diario">Exposition progressive : hierarchie 10 niveaux, journal</li><li data-fr="Pensees : 5 distorsions, restructuration TCC, defusion ACT" data-es="Pensamientos : 5 distorsiones, reestructuracion TCC, defusion ACT">Pensees : 5 distorsions, restructuration TCC, defusion ACT</li><li data-fr="Avancer : valeurs, inventaire des victoires" data-es="Avanzar : valores, inventario de victorias">Avancer : valeurs, inventaire des victoires</li></ul>
     <div class="pcard-footer">
-      <div class="pcard-price">24 €<small>PDF · 24 pages</small></div>
-      <a href="https://jennandrea.gumroad.com/l/aorhra" target="_blank" class="btn-card" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
+      <div class="pcard-price" data-fr="24 €" data-es="25 €">24 €<small>PDF · <span data-fr="24" data-es="35">24</span> pages</small></div>
+      <a href="https://jennandrea.gumroad.com/l/aorhra" data-href-fr="https://jennandrea.gumroad.com/l/aorhra" data-href-es="" target="_blank" class="btn-card" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
     </div>
   </div>
 </div><div class="pcard prog">
-  <div class="pcard-cover"><svg width="46" height="46" viewBox="0 0 60 60" fill="none"><path d="M30 8 L50 44 L10 44 Z" stroke="#8a5040" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="30" y1="20" x2="30" y2="34" stroke="#c87060" stroke-width="1.8" stroke-linecap="round"/><circle cx="30" cy="38" r="2" fill="#c87060"/></svg><span class="pcard-badge"  data-fr="Programme 5 sem." data-es="Programme 5 sem.">Programme 5 sem.</span></div>
+  <div class="pcard-cover"><svg width="46" height="46" viewBox="0 0 60 60" fill="none"><path d="M30 8 L50 44 L10 44 Z" stroke="#8a5040" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="30" y1="20" x2="30" y2="34" stroke="#c87060" stroke-width="1.8" stroke-linecap="round"/><circle cx="30" cy="38" r="2" fill="#c87060"/></svg><span class="pcard-badge"  data-fr="Programme 5 sem." data-es="Programa 34 p.">Programme 5 sem.</span></div>
   <div class="pcard-body">
     <p class="pcard-label" data-fr="28 jours guides" data-es="28 dias guiados">28 jours guides</p>
     <h4 class="pcard-title" data-fr="Oser enfin en 28 jours" data-es="Atreverse por fin en 28 dias">Oser enfin en 28 jours</h4>
@@ -487,11 +502,25 @@ footer { background:var(--rose); color:white; padding:2.5rem 3rem; display:flex;
     <div class="details-toggle" onclick="toggleDetails(this)"><span data-fr="Voir les 5 semaines" data-es="Ver las 5 semanas">Voir les 5 semaines</span><span class="details-arrow">&#9660;</span></div>
     <ul class="details-list"><li data-fr="Semaine 1 — Cartographie : physiologie, inventaire complet" data-es="Semana 1 — Cartografia : fisiologia, inventario completo">Semaine 1 — Cartographie : physiologie, inventaire complet</li><li data-fr="Semaine 2 — Comprendre : origines, peurs transmises" data-es="Semana 2 — Comprender : origenes, miedos transmitidos">Semaine 2 — Comprendre : origines, peurs transmises</li><li data-fr="Semaine 3 — Corps : exposition somatique, 4 techniques" data-es="Semana 3 — Cuerpo : exposicion somatica, 4 tecnicas">Semaine 3 — Corps : exposition somatique, 4 techniques</li><li data-fr="Semaine 4 — Exposition progressive : hierarchie 10 niveaux" data-es="Semana 4 — Exposicion progresiva : jerarquia 10 niveles">Semaine 4 — Exposition progressive : hierarchie 10 niveaux</li><li data-fr="Semaine 5 — Liberte : valeurs, plan de vie, lettre" data-es="Semana 5 — Libertad : valores, plan de vida, carta">Semaine 5 — Liberte : valeurs, plan de vie, lettre</li></ul>
     <div class="pcard-footer">
-      <div class="pcard-price">62 €<small>PDF · 33 pages</small></div>
-      <a href="https://jennandrea.gumroad.com/l/fktqwy" target="_blank" class="btn-card" data-fr="Commencer" data-es="Comenzar">Commencer</a>
+      <div class="pcard-price" data-fr="62 €" data-es="40 €">62 €<small>PDF · <span data-fr="33" data-es="34">33</span> pages</small></div>
+      <a href="https://jennandrea.gumroad.com/l/fktqwy" data-href-fr="https://jennandrea.gumroad.com/l/fktqwy" data-href-es="" target="_blank" class="btn-card" data-fr="Commencer" data-es="Comenzar">Commencer</a>
     </div>
   </div>
 </div></div>
+</div>
+<div class="pcard">
+  <div class="pcard-cover"><svg width="46" height="46" viewBox="0 0 60 60" fill="none"><path d="M30 8 L50 44 L10 44 Z" stroke="#8a5040" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="30" y1="20" x2="30" y2="34" stroke="#c87060" stroke-width="1.8" stroke-linecap="round"/><circle cx="30" cy="38" r="2" fill="#c87060"/></svg><span class="pcard-badge" data-fr="Fiche SOS 23 p." data-es="Ficha SOS 23 p.">Fiche SOS 23 p.</span></div>
+  <div class="pcard-body">
+    <p class="pcard-label" data-fr="Oser" data-es="Atreverse">Oser</p>
+    <h4 class="pcard-title" data-fr="Fiche SOS Peurs" data-es="Ficha SOS Miedos">Fiche SOS Peurs</h4>
+    <p class="pcard-subtitle" data-fr="Outils d'urgence face a la peur" data-es="Herramientas de urgencia frente al miedo">Outils d'urgence face a la peur</p>
+    <div class="details-toggle" onclick="toggleDetails(this)"><span data-fr="Voir le contenu" data-es="Ver el contenido">Voir le contenu</span><span class="details-arrow">&#9660;</span></div>
+    <ul class="details-list"><li data-fr="Thermometre de la peur : evaluer l'intensite" data-es="Termometro del miedo : evaluar la intensidad">Thermometre de la peur : evaluer l'intensite</li><li data-fr="Protocole de desactivation en 5 etapes" data-es="Protocolo de desactivacion en 5 etapas">Protocole de desactivation en 5 etapes</li><li data-fr="Technique de recadrage cognitif express" data-es="Tecnica de reencuadre cognitivo expres">Technique de recadrage cognitif express</li><li data-fr="Scripts pour affronter la situation redoutee" data-es="Scripts para afrontar la situacion temida">Scripts pour affronter la situation redoutee</li></ul>
+    <div class="pcard-footer">
+      <div class="pcard-price" data-fr="10 €" data-es="10 €">10 €<small>PDF · 23 pages</small></div>
+      <a href="https://jennandrea.gumroad.com/l/oser-sos" data-href-fr="https://jennandrea.gumroad.com/l/oser-sos" data-href-es="" target="_blank" class="btn-card" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
+    </div>
+  </div>
 </div>
     <div class="collection col-sens fade-in" id="sens">
   <div class="collection-header">
@@ -512,11 +541,25 @@ footer { background:var(--rose); color:white; padding:2.5rem 3rem; display:flex;
     <div class="details-toggle" onclick="toggleDetails(this)"><span data-fr="Voir les 5 parties" data-es="Ver las 5 partes">Voir les 5 parties</span><span class="details-arrow">&#9660;</span></div>
     <ul class="details-list"><li data-fr="Comprendre : nommer l'anhedonie, courbe temporelle, corps" data-es="Comprender : nombrar la anhedonia, curva temporal, cuerpo">Comprendre : nommer l'anhedonie, courbe temporelle, corps</li><li data-fr="Le sens : 3 voies de Frankl, valeurs profondes" data-es="El sentido : 3 vias de Frankl, valores profundos">Le sens : 3 voies de Frankl, valeurs profondes</li><li data-fr="Reconnexion : activation comportementale, journal micro-joies 7j" data-es="Reconexion : activacion conductual, diario micro-alegrias 7d">Reconnexion : activation comportementale, journal micro-joies 7j</li><li data-fr="Les pensees : restructuration TCC, defusion ACT" data-es="Los pensamientos : reestructuracion TCC, defusion ACT">Les pensees : restructuration TCC, defusion ACT</li><li data-fr="Construire : directions de vie ACT, projet de sens 3 mois" data-es="Construir : direcciones de vida ACT, proyecto de sentido 3 meses">Construire : directions de vie ACT, projet de sens 3 mois</li></ul>
     <div class="pcard-footer">
-      <div class="pcard-price">26 €<small>PDF · 24 pages</small></div>
-      <a href="https://jennandrea.gumroad.com/l/keoph" target="_blank" class="btn-card" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
+      <div class="pcard-price" data-fr="26 €" data-es="25 €">26 €<small>PDF · <span data-fr="24" data-es="38">24</span> pages</small></div>
+      <a href="https://jennandrea.gumroad.com/l/keoph" data-href-fr="https://jennandrea.gumroad.com/l/keoph" data-href-es="" target="_blank" class="btn-card" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
     </div>
   </div>
-</div><div class="pcard" style="background:linear-gradient(160deg,var(--sable-pale),#e8d5c0);border:none;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2.5rem;gap:1rem;">
+</div><div class="pcard">
+  <div class="pcard-cover"><svg width="46" height="46" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="18" stroke="#a07850" stroke-width="1.5" fill="none"/><path d="M30 18 L30 30 L40 40" stroke="#a07850" stroke-width="1.8" stroke-linecap="round"/><circle cx="30" cy="30" r="2.5" fill="#a07850"/></svg><span class="pcard-badge" data-fr="Fiche guide 8 p." data-es="Ficha guia 8 p.">Fiche guide 8 p.</span></div>
+  <div class="pcard-body">
+    <p class="pcard-label" data-fr="Donner du sens" data-es="Dar sentido">Donner du sens</p>
+    <h4 class="pcard-title" data-fr="Fiche guide Sens" data-es="Ficha guia Sentido">Fiche guide Sens</h4>
+    <p class="pcard-subtitle" data-fr="Clarifier ses valeurs et sa direction" data-es="Clarificar valores y direccion de vida">Clarifier ses valeurs et sa direction</p>
+    <div class="details-toggle" onclick="toggleDetails(this)"><span data-fr="Voir le contenu" data-es="Ver el contenido">Voir le contenu</span><span class="details-arrow">&#9660;</span></div>
+    <ul class="details-list"><li data-fr="Boussole de valeurs : identifier ce qui compte vraiment" data-es="Brujula de valores : identificar lo que realmente importa">Boussole de valeurs : identifier ce qui compte vraiment</li><li data-fr="Exercice des 3 cercles : plaisir, force, utilite" data-es="Ejercicio de los 3 circulos : placer, fuerza, utilidad">Exercice des 3 cercles : plaisir, force, utilite</li><li data-fr="Ma declaration de sens personnelle" data-es="Mi declaracion de sentido personal">Ma declaration de sens personnelle</li></ul>
+    <div class="pcard-footer">
+      <div class="pcard-price" data-fr="10 €" data-es="10 €">10 €<small>PDF · 8 pages</small></div>
+      <a href="https://jennandrea.gumroad.com/l/sens-guide" data-href-fr="https://jennandrea.gumroad.com/l/sens-guide" data-href-es="" target="_blank" class="btn-card" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
+    </div>
+  </div>
+</div>
+<div class="pcard" style="background:linear-gradient(160deg,var(--sable-pale),#e8d5c0);border:none;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2.5rem;gap:1rem;">
   <svg width="40" height="36" viewBox="0 0 46 44" fill="none"><path d="M5 32 L23 6 L41 32" stroke="#a07850" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="11" y1="39" x2="35" y2="39" stroke="#a07850" stroke-width="1.4" stroke-linecap="round"/><line x1="23" y1="32" x2="23" y2="39" stroke="#a07850" stroke-width="1.4" stroke-linecap="round"/></svg>
   <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:#7a5535;line-height:1.65;" data-fr="Se connaitre, c'est oser regarder sans jugement ce qui vit en soi." data-es="Conocerse es atreverse a mirar sin juicio lo que vive en uno mismo.">"Se connaitre, c'est oser regarder sans jugement ce qui vit en soi."</p>
   <p style="font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#a07850;">— Casita</p>
@@ -525,24 +568,89 @@ footer { background:var(--rose); color:white; padding:2.5rem 3rem; display:flex;
   </div>
 </section>
 
+<section class="collections-page" style="padding-top:0;padding-bottom:0;background:#f9f4f0;">
+  <div style="max-width:1200px;margin:0 auto;padding:0 3rem;">
+<div class="collection col-relier fade-in" id="relier">
+  <div class="collection-header">
+    <span class="collection-dot"></span>
+    <div class="collection-meta">
+      <span class="collection-tag" data-fr="Collection 06" data-es="Coleccion 06">Collection 06</span>
+      <h2 class="collection-name"><span data-fr="Se relier" data-es="Mis relaciones">Se relier</span> — <em data-fr="Attachement &amp; Relations" data-es="Apego &amp; Relaciones">Attachement &amp; Relations</em></h2>
+      <p class="collection-desc-text" data-fr="Explorer ses schemas relationnels, apprendre a poser des limites et construire des liens authentiques." data-es="Explorar los patrones relacionales, aprender a poner limites y construir vinculos autenticos.">Explorer ses schemas relationnels, apprendre a poser des limites et construire des liens authentiques.</p>
+    </div>
+    <span class="collection-num">06</span>
+  </div>
+  <div class="cards-row">
+
+<div class="pcard">
+  <div class="pcard-cover col-relier"><svg width="46" height="46" viewBox="0 0 60 60" fill="none"><circle cx="22" cy="24" r="9" stroke="#3F5C77" stroke-width="1.5" fill="none"/><circle cx="38" cy="24" r="9" stroke="#3F5C77" stroke-width="1.5" fill="none"/><path d="M22 33 Q30 42 38 33" stroke="#3F5C77" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg><span class="pcard-badge col-relier" data-fr="Cahier 31 p." data-es="Cuaderno 31 p.">Cahier 31 p.</span></div>
+  <div class="pcard-body">
+    <p class="pcard-label col-relier" data-fr="Se relier" data-es="Mis relaciones">Se relier</p>
+    <h4 class="pcard-title" data-fr="Mes patterns en relation" data-es="Mis patrones en relacion">Mes patterns en relation</h4>
+    <p class="pcard-subtitle" data-fr="Comprendre mes schemas relationnels" data-es="Comprender mis esquemas relacionales">Comprendre mes schemas relationnels</p>
+    <div class="details-toggle" onclick="toggleDetails(this)"><span data-fr="Voir les 5 parties" data-es="Ver las 5 partes">Voir les 5 parties</span><span class="details-arrow">&#9660;</span></div>
+    <ul class="details-list"><li data-fr="Identifier : types d'attachement, carte relationnelle" data-es="Identificar : tipos de apego, mapa relacional">Identifier : types d'attachement, carte relationnelle</li><li data-fr="Comprendre : schemas repetitifs, blessures d'enfance" data-es="Comprender : esquemas repetitivos, heridas de infancia">Comprendre : schemas repetitifs, blessures d'enfance</li><li data-fr="Limites : fixer, dire non, frontières saines" data-es="Limites : fijar, decir no, fronteras sanas">Limites : fixer, dire non, frontières saines</li><li data-fr="Communication : CNV, expression des besoins" data-es="Comunicacion : CNV, expresion de necesidades">Communication : CNV, expression des besoins</li><li data-fr="Construire : relations authentiques, sortir des cycles toxiques" data-es="Construir : relaciones autenticas, salir de ciclos toxicos">Construire : relations authentiques, sortir des cycles toxiques</li></ul>
+    <div class="pcard-footer">
+      <div class="pcard-price">25 €<small>PDF · 31 pages</small></div>
+      <a href="https://jennandrea.gumroad.com/l/relier-cahier" data-href-fr="https://jennandrea.gumroad.com/l/relier-cahier" data-href-es="" target="_blank" class="btn-card col-relier" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
+    </div>
+  </div>
+</div>
+
+<div class="pcard">
+  <div class="pcard-cover col-relier"><svg width="46" height="46" viewBox="0 0 60 60" fill="none"><path d="M15 30 Q22 18 30 24 Q38 30 45 18" stroke="#3F5C77" stroke-width="1.6" fill="none" stroke-linecap="round"/><circle cx="30" cy="38" r="6" stroke="#3F5C77" stroke-width="1.5" fill="none"/><line x1="30" y1="32" x2="30" y2="24" stroke="#3F5C77" stroke-width="1.5"/></svg><span class="pcard-badge col-relier" data-fr="Programme 35 p." data-es="Programa 35 p.">Programme 35 p.</span></div>
+  <div class="pcard-body">
+    <p class="pcard-label col-relier" data-fr="Se relier" data-es="Mis relaciones">Se relier</p>
+    <h4 class="pcard-title" data-fr="Construire des liens sains" data-es="Construir vinculos sanos">Construire des liens sains</h4>
+    <p class="pcard-subtitle" data-fr="Programme guide : relations authentiques" data-es="Programa guiado : relaciones autenticas">Programme guide : relations authentiques</p>
+    <div class="details-toggle" onclick="toggleDetails(this)"><span data-fr="Voir les 5 etapes" data-es="Ver las 5 etapas">Voir les 5 etapes</span><span class="details-arrow">&#9660;</span></div>
+    <ul class="details-list"><li data-fr="Etape 1 — Diagnostic : evaluer mes relations actuelles" data-es="Etapa 1 — Diagnostico : evaluar mis relaciones actuales">Etape 1 — Diagnostic : evaluer mes relations actuelles</li><li data-fr="Etape 2 — Racines : comprendre l'histoire familiale" data-es="Etapa 2 — Raices : comprender la historia familiar">Etape 2 — Racines : comprendre l'histoire familiale</li><li data-fr="Etape 3 — Ancrage : securite interieure et confiance" data-es="Etapa 3 — Anclaje : seguridad interior y confianza">Etape 3 — Ancrage : securite interieure et confiance</li><li data-fr="Etape 4 — Communication : assertivite, CNV, conflits sains" data-es="Etapa 4 — Comunicacion : asertividad, CNV, conflictos sanos">Etape 4 — Communication : assertivite, CNV, conflits sains</li><li data-fr="Etape 5 — Liens : choisir ses relations, nourrir la connection" data-es="Etapa 5 — Vinculos : elegir relaciones, nutrir la conexion">Etape 5 — Liens : choisir ses relations, nourrir la connection</li></ul>
+    <div class="pcard-footer">
+      <div class="pcard-price" data-fr="35 €" data-es="40 €">35 €<small>PDF · 35 pages</small></div>
+      <a href="https://jennandrea.gumroad.com/l/relier-programme" data-href-fr="https://jennandrea.gumroad.com/l/relier-programme" data-href-es="" target="_blank" class="btn-card col-relier" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
+    </div>
+  </div>
+</div>
+
+<div class="pcard">
+  <div class="pcard-cover col-relier"><svg width="46" height="46" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="22" r="10" stroke="#3F5C77" stroke-width="1.5" fill="none"/><path d="M18 46 Q18 36 30 36 Q42 36 42 46" stroke="#3F5C77" stroke-width="1.5" fill="none" stroke-linecap="round"/><line x1="22" y1="22" x2="38" y2="22" stroke="#3F5C77" stroke-width="1.2" stroke-dasharray="2,2"/></svg><span class="pcard-badge col-relier" data-fr="Fiche SOS 23 p." data-es="Ficha SOS 23 p.">Fiche SOS 23 p.</span></div>
+  <div class="pcard-body">
+    <p class="pcard-label col-relier" data-fr="Se relier" data-es="Mis relaciones">Se relier</p>
+    <h4 class="pcard-title" data-fr="Fiche SOS Relations" data-es="Ficha SOS Relaciones">Fiche SOS Relations</h4>
+    <p class="pcard-subtitle" data-fr="Outils d'urgence relationnelle" data-es="Herramientas de urgencia relacional">Outils d'urgence relationnelle</p>
+    <div class="details-toggle" onclick="toggleDetails(this)"><span data-fr="Voir le contenu" data-es="Ver el contenido">Voir le contenu</span><span class="details-arrow">&#9660;</span></div>
+    <ul class="details-list"><li data-fr="Thermometre relationnel : evaluer une situation difficile" data-es="Termometro relacional : evaluar una situacion dificil">Thermometre relationnel : evaluer une situation difficile</li><li data-fr="Scripts CNV pour les moments de tension" data-es="Scripts CNV para los momentos de tension">Scripts CNV pour les moments de tension</li><li data-fr="Protocole de desescalade en 4 etapes" data-es="Protocolo de desescalada en 4 etapas">Protocole de desescalade en 4 etapes</li><li data-fr="Fiche : poser une limite sans blesser" data-es="Ficha : poner un limite sin herir">Fiche : poser une limite sans blesser</li></ul>
+    <div class="pcard-footer">
+      <div class="pcard-price">10 €<small>PDF · 23 pages</small></div>
+      <a href="https://jennandrea.gumroad.com/l/relier-sos" data-href-fr="https://jennandrea.gumroad.com/l/relier-sos" data-href-es="" target="_blank" class="btn-card col-relier" data-fr="Obtenir" data-es="Obtener">Obtenir</a>
+    </div>
+  </div>
+</div>
+
+  </div>
+</div>
+  </div>
+</section>
+
+
 <section class="bundle" id="bundle">
   <div class="bundle-inner">
     <div>
       <p class="bundle-eyebrow" data-fr="Offre complete" data-es="Oferta completa">Offre complete</p>
       <h2 class="bundle-title">L'Integrale <em>Casita</em></h2>
-      <p class="bundle-desc" data-fr="Les 8 cahiers et les 4 programmes des 5 collections. Un acces complet pour travailler en profondeur." data-es="Los 8 cuadernos y los 4 programas de las 5 colecciones. Acceso completo para trabajar en profundidad.">Les 8 cahiers et les 4 programmes des 5 collections. Un acces complet pour travailler en profondeur.</p>
+      <p class="bundle-desc" data-fr="Les 17 ressources des 6 collections — cahiers, programmes et fiches SOS. Tout Casita pour travailler en profondeur." data-es="Los 17 recursos de las 6 colecciones — cuadernos, programas y fichas SOS. Todo Casita para trabajar en profundidad.">Les 17 ressources des 6 collections — cahiers, programmes et fiches SOS. Tout Casita pour travailler en profondeur.</p>
       <ul class="bundle-includes">
-        <li data-fr="8 cahiers d'exercices PDF — 285 pages" data-es="8 cuadernos de ejercicios PDF — 285 paginas">8 cahiers d'exercices PDF — 285 pages</li>
-        <li data-fr="4 programmes guides complets — 140 pages" data-es="4 programas guiados completos — 140 paginas">4 programmes guides complets — 140 pages</li>
+        <li data-fr="10 cahiers & journaux PDF" data-es="10 cuadernos y diarios PDF">10 cahiers & journaux PDF</li>
+        <li data-fr="5 programmes guides + 4 fiches SOS" data-es="5 programas guiados + 4 fichas SOS">5 programmes guides + 4 fiches SOS</li>
         <li data-fr="Mises a jour gratuites a vie" data-es="Actualizaciones gratuitas de por vida">Mises a jour gratuites a vie</li>
       </ul>
       <div class="bundle-cta">
         <div>
           <div class="bundle-price">230 €</div>
-          <span class="bundle-old">451 €</span>
-          <div class="bundle-saving" data-fr="Economisez 221 €" data-es="Ahorra 221 €">Economisez 221 €</div>
+          <span class="bundle-old" data-fr="valeur 490 €" data-es="valor 490 €">valeur 490 €</span>
+          <div class="bundle-saving" data-fr="Economisez 260 €" data-es="Ahorra 260 €">Economisez 260 €</div>
         </div>
-        <a href="https://jennandrea.gumroad.com/l/ylpuap" target="_blank" class="btn-bundle" data-fr="Obtenir l'Intégrale" data-es="Obtener la Integral">Obtenir l'Intégrale</a>
+        <a href="https://jennandrea.gumroad.com/l/ylpuap" data-href-fr="https://jennandrea.gumroad.com/l/ylpuap" data-href-es="" target="_blank" class="btn-bundle" data-fr="Obtenir l'Intégrale" data-es="Obtener la Integral">Obtenir l'Intégrale</a>
       </div>
     </div>
     <div class="bundle-mini-grid">
@@ -551,6 +659,7 @@ footer { background:var(--rose); color:white; padding:2.5rem 3rem; display:flex;
       <div class="bundle-mini"><div class="bundle-mini-label">Se reconstruire</div><div class="bundle-mini-title">Estime — 3 ressources</div></div>
       <div class="bundle-mini"><div class="bundle-mini-label">Oser</div><div class="bundle-mini-title">Peurs — 2 ressources</div></div>
       <div class="bundle-mini"><div class="bundle-mini-label">Donner du sens</div><div class="bundle-mini-title">Sens — 1 ressource</div></div>
+      <div class="bundle-mini"><div class="bundle-mini-label" style="color:rgba(180,210,235,.7);">Se relier</div><div class="bundle-mini-title">Relations — 3 ressources</div></div>
     </div>
   </div>
 </section>
@@ -591,6 +700,31 @@ function setLang(lang) {
   document.getElementById('btn-es').classList.toggle('active', lang === 'es');
   document.querySelectorAll('[data-fr][data-es]').forEach(function(el) {
     el.textContent = lang === 'es' ? el.getAttribute('data-es') : el.getAttribute('data-fr');
+  });
+  // Mettre à jour les liens Gumroad selon la langue
+  document.querySelectorAll('[data-href-fr]').forEach(function(btn) {
+    var hrefFr = btn.getAttribute('data-href-fr') || '';
+    var hrefEs = btn.getAttribute('data-href-es') || '';
+    if (lang === 'es') {
+      if (hrefEs) {
+        btn.setAttribute('href', hrefEs);
+        btn.classList.remove('btn-soon');
+        btn.style.pointerEvents = '';
+      } else {
+        btn.setAttribute('href', '#');
+        btn.classList.add('btn-soon');
+        // Garder le texte "Próximamente" sans écraser le data-es du texte
+        btn.setAttribute('data-es-orig', btn.textContent);
+        btn.textContent = 'Próximamente';
+      }
+    } else {
+      btn.setAttribute('href', hrefFr);
+      btn.classList.remove('btn-soon');
+      btn.style.pointerEvents = '';
+      var orig = btn.getAttribute('data-es-orig');
+      if (orig) btn.removeAttribute('data-es-orig');
+      btn.textContent = btn.getAttribute('data-fr') || btn.textContent;
+    }
   });
   document.title = lang === 'es' ? 'Casita - Cuadernos & Programas' : 'Casita - Cahiers & Programmes';
   localStorage.setItem('casita-lang', lang);
