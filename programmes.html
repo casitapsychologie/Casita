@@ -699,7 +699,22 @@ function setLang(lang) {
   document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
   document.getElementById('btn-es').classList.toggle('active', lang === 'es');
   document.querySelectorAll('[data-fr][data-es]').forEach(function(el) {
-    el.textContent = lang === 'es' ? el.getAttribute('data-es') : el.getAttribute('data-fr');
+    var val = lang === 'es' ? el.getAttribute('data-es') : el.getAttribute('data-fr');
+    if (el.children.length === 0) {
+      // Pas d'enfants HTML : mise à jour simple
+      el.textContent = val;
+    } else {
+      // A des enfants HTML (ex: pcard-price avec <small>) : mettre à jour uniquement le nœud texte direct
+      var updated = false;
+      el.childNodes.forEach(function(node) {
+        if (node.nodeType === 3 && node.textContent.trim()) {
+          node.textContent = val + ' ';
+          updated = true;
+        }
+      });
+      // Fallback si aucun nœud texte direct trouvé
+      if (!updated) el.firstChild && (el.firstChild.textContent = val + ' ');
+    }
   });
   // Mettre à jour les liens Gumroad selon la langue
   document.querySelectorAll('[data-href-fr]').forEach(function(btn) {
