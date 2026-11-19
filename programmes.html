@@ -701,16 +701,20 @@ function setLang(lang) {
   document.querySelectorAll('[data-fr][data-es]').forEach(function(el) {
     var val = lang === 'es' ? el.getAttribute('data-es') : el.getAttribute('data-fr');
     if (el.children.length === 0) {
+      // Pas d'enfants : mise à jour simple
       el.textContent = val;
     } else {
-      // Élément avec enfants HTML (ex: pcard-price avec <small>)
-      // Remplacer uniquement le premier nœud texte direct
-      for (var i = 0; i < el.childNodes.length; i++) {
-        var node = el.childNodes[i];
-        if (node.nodeType === 3) {
-          node.nodeValue = val + ' ';
-          break;
-        }
+      // A des enfants HTML : stocker le HTML interne au premier appel, puis remplacer le texte
+      if (!el.hasAttribute('data-html-fr')) {
+        el.setAttribute('data-html-fr', el.innerHTML);
+      }
+      var htmlFr = el.getAttribute('data-html-fr');
+      if (lang === 'fr') {
+        el.innerHTML = htmlFr;
+      } else {
+        // Remplacer le texte de prix dans le HTML stocké
+        var htmlEs = htmlFr.replace(/^([^<]+)/, val + ' ');
+        el.innerHTML = htmlEs;
       }
     }
   });
