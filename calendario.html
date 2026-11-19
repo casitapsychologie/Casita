@@ -395,6 +395,66 @@
   .share svg{width:18px;height:18px;flex:none}
   .share:hover{background:#244436}
   .share.done{background:#A8323C}
+
+  /* ===== audit nov. 2026 ===== */
+  .card p.end,.card .end{margin-top:40px}
+  .inp,.fiche{background-image:none}
+  .fiche li{margin-bottom:14px}
+  .fiche .prep{margin-bottom:16px!important}
+  .glass span{font-size:15px;line-height:1.15;padding:0 6px}
+  .share{font-size:14px;padding:12px 18px;gap:8px;text-align:center}
+  .sealed{margin-bottom:34px}
+  .cloud{isolation:isolate} .cloud::before,.cloud::after{z-index:-1}
+  /* bougie : la cire etait decalee par la regle du sceau (.wax) */
+  .croom{position:relative;margin:12px 0 4px;padding:18px 14px 16px;border-radius:18px;background:linear-gradient(180deg,#1E1B3F,#2D2858);transition:background 2s ease,box-shadow 2s ease;overflow:hidden}
+  .croom.lit{background:radial-gradient(ellipse at 50% 32%,#7A4A2A 0%,#3B2A4A 48%,#1E1B3F 100%);box-shadow:inset 0 0 60px rgba(255,190,90,.25)}
+  .candle{display:block}
+  .candle .wax{margin-left:0;box-shadow:inset -8px 0 12px rgba(170,120,80,.25)}
+  .croom .lines p{color:#FFE9C2;text-shadow:0 1px 6px rgba(0,0,0,.4);animation:fadeup 1.6s ease both}
+  .croom .hint{margin:0!important;text-align:center;font-size:14px!important;color:#C9C3EA;font-style:italic}
+  .croom.lit .hint{display:none}
+  @keyframes fadeup{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  /* neige : la nuit reste vivante */
+  .night .sf{position:absolute;top:-12px;width:6px;height:6px;border-radius:50%;background:#fff;opacity:.85;animation:sfall linear infinite}
+  @keyframes sfall{to{transform:translate(var(--dx,0),190px)}}
+  .night .gone{position:absolute;inset:auto 10px 16px;text-align:center;margin:0!important;font-family:"Dancing Script",cursive;font-size:22px!important;line-height:1.2;color:#FFF6EA;animation:fadeup 1.4s ease both}
+  .night .house{position:absolute;left:50%;bottom:52px;width:64px;margin-left:-32px;animation:fadeup 1.4s ease both}
+  /* boussole */
+  .compass .lab{font-size:15px;width:auto;padding:3px 10px;border-radius:999px;background:#FFF6EA;box-shadow:0 2px 6px rgba(0,0,0,.15);white-space:nowrap;z-index:3}
+  /* poche */
+  .pocket{width:130px;height:100px}
+  .pocket.in{animation:pocketin .6s cubic-bezier(.3,1.6,.5,1)}
+  @keyframes pocketin{0%{transform:scale(1)}40%{transform:scale(1.12,.9)}100%{transform:scale(1)}}
+  /* bonhomme */
+  .snowman{height:300px}
+  .b3{width:84px;height:84px;padding-top:30px}
+  .scarf{bottom:200px;width:92px;margin-left:-46px}
+  .scarf::after{right:auto;left:6px;height:26px}
+  .smface{position:absolute;left:50%;bottom:238px;width:40px;height:24px;margin-left:-20px;z-index:3;animation:pop .5s ease both}
+  .smface i{position:absolute;top:0;width:7px;height:7px;border-radius:50%;background:#2B2238}
+  .smface i:first-child{left:6px} .smface i:nth-child(2){right:6px}
+  .smface b{position:absolute;left:50%;top:9px;width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:20px solid #E9853A;margin-left:-4px}
+  .smhat{position:absolute;left:50%;bottom:274px;width:64px;height:12px;margin-left:-32px;border-radius:6px;background:#2B2238;z-index:3;animation:hatdrop .7s cubic-bezier(.3,1.5,.5,1) both}
+  .smhat::before{content:"";position:absolute;left:12px;bottom:10px;width:40px;height:34px;border-radius:5px 5px 0 0;background:#2B2238;box-shadow:inset 0 -8px 0 #A8323C}
+  @keyframes hatdrop{from{transform:translateY(-60px);opacity:0}to{transform:none;opacity:1}}
+  .smarm{position:absolute;bottom:170px;width:58px;height:5px;border-radius:3px;background:#7A4A2A;z-index:1;animation:pop .5s ease both}
+  .smarm.l{left:50%;margin-left:-104px;transform:rotate(18deg)} .smarm.r{left:50%;margin-left:46px;transform:rotate(-18deg)}
+  .snowman .sf{position:absolute;top:-10px;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 4px rgba(120,120,200,.6);animation:sfall2 linear infinite}
+  @keyframes sfall2{to{transform:translate(var(--dx,0),320px);opacity:0}}
+  /* peur */
+  .fear{margin-left:auto;margin-right:auto;transition:font-size 1s ease,opacity 1s,max-width 1s ease,padding 1s ease}
+  /* escalier */
+  .stairs{height:200px}
+  .step{font-size:14px}
+  /* bocal */
+  .jar svg path{transition:fill 1.2s ease}
+  .jar.full svg path{fill:rgba(255,226,140,.55)}
+  .jar .st{animation:stardrop .7s cubic-bezier(.3,1.5,.5,1) both}
+  @keyframes stardrop{from{transform:translateY(-120px) rotate(-90deg);opacity:0}to{transform:none;opacity:1}}
+  .jar.full .st{text-shadow:0 0 10px #FFD36B,0 0 22px #FFB800}
+  /* phrase douce (jour 13) */
+  #fnew.kind{position:relative;padding:22px 20px;background:#FFFDF8;box-shadow:inset 0 0 0 2px var(--gold),0 8px 24px rgba(201,149,47,.25);font-size:21px;line-height:1.35}
+  #fnew.kind::before{content:"✦";position:absolute;top:6px;left:10px;color:var(--gold)} #fnew.kind::after{content:"✦";position:absolute;bottom:6px;right:10px;color:var(--gold)}
 </style>
 </head>
 <body>
@@ -649,7 +709,7 @@ const XP = {
           f.style.animationDelay = (i*0.025) + 's'; f.style.setProperty('--dx', (Math.random()*80 - 40) + 'px');
           box.appendChild(f);
         });
-        later(() => { t.value = ''; }, 600);
+        later(() => { t.value = ''; t.classList.add('hidden'); for (let k = 0; k < 34; k++){ const sf = document.createElement('i'); sf.className = 'sf'; const z = 3 + Math.random()*4; sf.style.width = sf.style.height = z + 'px'; sf.style.left = Math.random()*100 + '%'; sf.style.animationDuration = (4 + Math.random()*5) + 's'; sf.style.animationDelay = (-Math.random()*8) + 's'; sf.style.setProperty('--dx', (Math.random()*40 - 20) + 'px'); box.appendChild(sf); } box.insertAdjacentHTML('beforeend', `<svg class="house" viewBox="0 0 64 56" aria-hidden="true"><path d="M32 4 L60 26 H52 V54 H12 V26 H4 Z" fill="#F3BCCB"/><path d="M32 4 L60 26 H4 Z" fill="#FFF6EA"/><rect x="27" y="34" width="10" height="20" rx="2" fill="#A8323C"/><rect x="16" y="32" width="8" height="8" fill="#FFD36B"/><rect x="40" y="32" width="8" height="8" fill="#FFD36B"/></svg><p class="gone">La nieve se lo ha llevado…</p>`); }, 1400);
         later(() => { $$('.flk').forEach(f => f.remove()); finish("Esta preocupación no ha desaparecido, pero esta noche ya no tienes que cargarla en soledad. Si vuelve, ahora sabes dónde dejarla."); }, 3400);
       });
     }
@@ -693,7 +753,7 @@ const XP = {
         sel = s; $('#rgo').disabled = s.length < 3;
         sc.innerHTML = s.length ? s.map((k, i) => `<span style="animation-delay:${i*.1}s" aria-label="${k}">${map[k]}</span>`).join('') + `<em>${s.join(' · ')}</em>` : '<em>Tu refugio aparecerá aquí…</em>';
       }));
-      $('#rgo').addEventListener('click', () => {
+      $('#rgo').addEventListener('click', () => { $('#rgo').classList.add('hidden');
         sc.style.transition = 'transform 1.2s'; sc.style.transform = 'scale(1.06)'; store.set('refuge', sel);
         finish(`Cierra los ojos unas respiraciones e imagínate en este refugio: ${sel.join(', ').toLowerCase()}. Elige un gesto clave, como una mano en el corazón. Cuando suba la ansiedad, repite ese gesto: te traerá suavemente de vuelta aquí.`);
       });
@@ -707,7 +767,7 @@ const XP = {
       let sel = [];
       const vals = ["Bondad","Libertad","Familia","Creatividad","Seguridad","Autenticidad","Amistad","Aprender","Justicia","Calma","Aventura","Transmitir"];
       $('#cchips').appendChild(chips(vals, 2, s => { sel = s; $('#cgo').disabled = s.length < 2; }));
-      $('#cgo').addEventListener('click', () => {
+      $('#cgo').addEventListener('click', () => { $('#cgo').classList.add('hidden');
         const cmp = $('#cmp'); $$('.lab').forEach(l => l.remove()); store.set('valeurs', sel);
         [[sel[0], 50, 14], [sel[1], 50, 86]].forEach(([t, x, y]) => { const l = document.createElement('span'); l.className = 'lab'; l.style.left = x + '%'; l.style.top = y + '%'; l.textContent = t; cmp.appendChild(l); });
         $('#ndl').style.transform = 'rotate(720deg)';
@@ -751,7 +811,7 @@ const XP = {
         grid.appendChild(b);
       });
       $('#wr').addEventListener('input', e => $('#wv').textContent = e.target.value);
-      $('#wgo').addEventListener('click', () => {
+      $('#wgo').addEventListener('click', () => { $('#wgo').classList.add('hidden');
         const v = +$('#wr').value;
         finish(`<strong>${pick[1]}, ${v}/10.</strong> ${pick[2]} ${v >= 8 ? "Es intenso: trátate con especial cuidado y no dudes en hablarlo con alguien." : "Una emoción acogida suele disminuir por sí sola."}`);
       });
@@ -759,13 +819,12 @@ const XP = {
   },
   candle:{
     html:`<p class="why">Mantén el dedo presionado sobre la vela para encenderla. Luego lee despacio, dejando una respiración entre cada frase.</p>
-      <button class="candle" id="cdl" aria-label="Mantener presionado para encender la vela"><span class="aura"></span><span class="flame" id="flm"></span><span class="wick"></span><span class="wax"></span></button>
-      <div class="lines" id="lines" aria-live="polite"></div>${FIN}`,
+      <div class="croom" id="croom"><button class="candle" id="cdl" aria-label="Mantener presionado para encender la vela"><span class="aura"></span><span class="flame" id="flm"></span><span class="wick"></span><span class="wax"></span></button><div class="lines" id="lines" aria-live="polite"></div></div>${FIN}`,
     init(){
       const c = $('#cdl'), f = $('#flm');
       const L = ["Me acomodo. Siento el peso de mi cuerpo, sostenido.","Inspiro, y el aire entra despacio.","Espiro, y dejo ir un poco del día.","Ahora no tengo nada que lograr.","Solo estar aquí, como una luz en la ventana."];
       holdable(c, 1600, p => { f.style.transform = `scale(${p})`; }, () => {
-        c.classList.add('lit'); f.style.transform = 'scale(1)'; c.setAttribute('aria-label','Vela encendida');
+        c.classList.add('lit'); $('#croom').classList.add('lit'); f.style.transform = 'scale(1)'; c.setAttribute('aria-label','Vela encendida');
         L.forEach((l, i) => later(() => { const p = document.createElement('p'); p.textContent = l; $('#lines').appendChild(p); }, 600 + i*3200));
         later(() => finish("Quédate un instante más con esta pequeña llama. Esta noche puedes encender una vela de verdad y repetir este momento, solo para ti."), 600 + L.length*3200);
       });
@@ -791,7 +850,7 @@ const XP = {
         box.appendChild(b); });
       $('#pchips').appendChild(box);
       $('#pgo').addEventListener('click', () => {
-        const txt = ph.textContent; $('#pk').classList.remove('hidden'); ph.classList.add('away'); $('#pgo').classList.add('hidden');
+        const txt = ph.textContent; $('#pk').classList.remove('hidden'); ph.classList.add('away'); $('#pgo').classList.add('hidden'); $$('#pchips .chip').forEach(x => x.disabled = true); later(() => { ph.classList.add('hidden'); $('#pk').classList.add('in'); }, 650);
         later(() => finish(`Tu frase está en tu bolsillo: <em>${txt}</em> No hace falta que la uses hoy. Está lista para el día en que la necesites. Dila dos veces en voz alta para hacerla tuya.`), 900);
       });
     }
@@ -824,7 +883,7 @@ const XP = {
       $('#fgo2').addEventListener('click', () => {
         const n = $('#f2').value.trim(); if (!n) return $('#f2').focus();
         $('#f1').classList.add('melt'); $('#fs2').classList.add('hidden');
-        later(() => { $('#f1').previousElementSibling.classList.add('hidden'); $('#f1').classList.add('hidden'); const p = $('#fnew'); p.innerHTML = esc(n); p.classList.remove('hidden'); p.style.animation = 'pop .6s ease'; }, 650);
+        later(() => { $('#f1').previousElementSibling.classList.add('hidden'); $('#f1').classList.add('hidden'); const p = $('#fnew'); p.innerHTML = esc(n); p.classList.add('kind'); p.classList.remove('hidden'); p.style.animation = 'pop .6s ease'; }, 650);
         later(() => finish("Relee esta frase dirigiéndotela a ti. La próxima vez que vuelva la antigua, respóndele con esta. Haz una captura de pantalla si quieres guardarla."), 1100);
       });
     }
@@ -841,7 +900,7 @@ const XP = {
         const v = $('#jv').value.trim(); if (!v) return $('#jv').focus();
         n++; const s = document.createElement('span'); s.className = 'st'; s.textContent = '★'; s.setAttribute('aria-hidden','true'); $('#jst').appendChild(s);
         const li = document.createElement('li'); li.textContent = v; $('#jl').appendChild(li); $('#jv').value = '';
-        if (n >= 3){ $('#jform').classList.add('hidden'); later(() => finish("Tu frasco brilla. Estas victorias ya estaban ahí: solo les has hecho un lugar. Los días difíciles, vuelve a mirarlas.", true), 700); }
+        if (n >= 3){ $('#jform').classList.add('hidden'); later(() => content.querySelector('.jar').classList.add('full'), 300); later(() => finish("Tu frasco brilla. Estas victorias ya estaban ahí: solo les has hecho un lugar. Los días difíciles, vuelve a mirarlas.", true), 700); }
         else $('#jv').focus();
       };
       $('#jgo').addEventListener('click', add);
@@ -855,7 +914,7 @@ const XP = {
       const Q = ["Bondad","Valentía","Humor","Saber escuchar","Constancia","Creatividad","Generosidad","Sensibilidad","Lealtad","Curiosidad","Paciencia","Honestidad"];
       const sm = $('#sm');
       $('#smchips').appendChild(chips(Q, 3, s => {
-        sm.innerHTML = s.map((q, i) => `<div class="ball b${i+1}">${q}</div>`).join('') + (s.length === 3 ? '<div class="scarf" aria-hidden="true"></div>' : '');
+        sm.innerHTML = s.map((q, i) => `<div class="ball b${i+1}">${q}</div>`).join('') + (s.length === 3 ? '<div class="scarf" aria-hidden="true"></div><div class="smface" aria-hidden="true"><i></i><i></i><b></b></div><div class="smhat" aria-hidden="true"></div><span class="smarm l" aria-hidden="true"></span><span class="smarm r" aria-hidden="true"></span>' + Array.from({length: 22}, () => `<i class="sf" aria-hidden="true" style="left:${Math.random()*100}%;animation-duration:${4 + Math.random()*4}s;animation-delay:${-Math.random()*6}s;--dx:${Math.random()*30 - 15}px"></i>`).join('') : '');
         if (s.length === 3) store.set('qualites', s);
         if (s.length === 3) later(() => finish(`Tu muñeco de nieve está hecho de: ${s.join(', ').toLowerCase()}. Para cada cualidad, busca un recuerdo en el que la mostraste. Si te cuesta, pregúntate qué diría de ti una persona que te quiere bien.`, true), 800);
         else $('#fin').classList.add('hidden');
@@ -870,7 +929,7 @@ const XP = {
       <div id="fq" class="hidden"><label class="lbl" for="fqi" id="fql"></label><input id="fqi" class="inp" maxlength="120"><div class="center"><button class="btn" id="fqn">Siguiente</button></div></div>${FIN}`,
     init(){
       const Qs = ["Con sinceridad, ¿cuál sería el escenario más probable?","Si pasara lo peor, ¿qué me ayudaría? (una persona, un recurso)","¿Qué le diría a alguien querido que tuviera este miedo?"];
-      let i = 0; const sizes = [30, 23, 17, 12];
+      let i = 0; const sizes = [30, 24, 19, 15]; const widths = ['100%', '82%', '64%', '48%'];
       $('#frgo').addEventListener('click', () => {
         const v = $('#fr0').value.trim(); if (!v) return $('#fr0').focus();
         $('#fbox').textContent = 'Tengo miedo de ' + v; $('#fbox').classList.remove('hidden'); $('#frgo').classList.add('hidden');
@@ -879,7 +938,7 @@ const XP = {
       });
       $('#fqn').addEventListener('click', () => {
         if (!$('#fqi').value.trim()) return $('#fqi').focus();
-        i++; $('#fbox').style.fontSize = sizes[i] + 'px'; $('#fqi').value = '';
+        i++; $('#fbox').style.fontSize = sizes[i] + 'px'; $('#fbox').style.maxWidth = widths[i]; $('#fbox').style.padding = (16 - i*3) + 'px'; $('#fqi').value = '';
         if (i < Qs.length){ $('#fql').textContent = Qs[i]; $('#fqi').focus(); }
         else { $('#fq').classList.add('hidden'); $('#fbox').style.opacity = '.7';
           finish("Mira: tu miedo se ha encogido. Es una alarma que quiere protegerte, no una orden que tengas que obedecer. Y tienes más recursos de los que creías.", true); }
@@ -950,8 +1009,8 @@ const XP = {
         const v = [1,2,3].map(i => $('#st'+i).value.trim());
         if (v.some(x => !x)) return $('#st' + (v.findIndex(x => !x) + 1)).focus();
         $('#stf').classList.add('hidden'); const s = $('#stairs'); s.classList.remove('hidden');
-        s.innerHTML = v.map((t, i) => `<div class="step s${i+1}" style="animation-delay:${i*.15}s"><span>${esc(t)}</span>${i === 0 ? '<button class="btn" id="stdo" style="min-height:40px;padding:0 10px;font-size:13px">¡Hecho!</button>' : ''}</div>`).join('');
-        $('#stdo').addEventListener('click', () => { $('.step.s1').classList.add('done'); $('#stdo').remove();
+        s.innerHTML = v.map((t, i) => `<div class="step s${i+1}" style="animation-delay:${i*.15}s"><span>${esc(t)}</span></div>`).join(''); s.insertAdjacentHTML('afterend', `<div class="center" id="stdow"><button class="btn" id="stdo">¡Hecho! Subí el primer escalón</button></div>`);
+        $('#stdo').addEventListener('click', () => { $('.step.s1').classList.add('done'); $('#stdow').remove();
           finish("Bravo, de verdad. Aunque sea minúsculo, este paso es la prueba de que puedes atreverte. Anota cómo te sentías antes y después. Los otros escalones esperarán su turno, a tu ritmo.", true); });
         finish("Sube hoy el primer escalón, el más pequeño. Después vuelve y pulsa «¡Hecho!».");
       });
@@ -973,7 +1032,7 @@ const XP = {
       T.forEach(t => { const b = document.createElement('button'); b.className = 'chip'; b.dataset.k = t[0]; b.textContent = t[1]; b.addEventListener('click', () => sel(t[0])); tabs.appendChild(b); });
       $('#bt').addEventListener('input', e => { data[cur] = e.target.value; store.set('bilan', data); });
       sel('garde');
-      $('#bgo').addEventListener('click', () => finish("Este balance no es una nota, es una foto de tu camino. Queda guardado en este navegador: mañana te ayudará a elegir tu palabra para el año.", true));
+      $('#bgo').addEventListener('click', () => { $('#bgo').classList.add('hidden'); finish("Este balance no es una nota, es una foto de tu camino. Queda guardado en este navegador: mañana te ayudará a elegir tu palabra para el año.", true); });
     }
   },
   word:{
@@ -986,7 +1045,7 @@ const XP = {
       ["Dulzura","Impulso","Calma","Confianza","Ligereza","Valentía","Presencia","Libertad"].forEach(w => { const b = document.createElement('button'); b.className = 'chip'; b.textContent = w; b.addEventListener('click', () => { $('#wd').value = w; }); box.appendChild(b); });
       $('#wchips').appendChild(box);
       $('#wgo').addEventListener('click', () => {
-        const v = $('#wd').value.trim(); if (!v) return $('#wd').focus();
+        const v = $('#wd').value.trim(); if (!v) return $('#wd').focus(); $('#wgo').classList.add('hidden');
         store.set('word', v); const lan = $('#lan'); $('#lw').textContent = v; lan.classList.remove('hidden');
         for (let i = 0; i < 30; i++){ const s = document.createElement('span'); s.className = 'spark'; s.style.left = '50%'; s.style.top = '55%';
           const a = Math.random()*Math.PI*2, r = 60 + Math.random()*90; s.style.setProperty('--x', Math.cos(a)*r + 'px'); s.style.setProperty('--y', Math.sin(a)*r + 'px'); lan.appendChild(s); }
