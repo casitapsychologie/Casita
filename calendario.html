@@ -476,6 +476,100 @@
   .bstage .sf{position:absolute;top:-12px;border-radius:50%;background:#fff;opacity:0;animation:sfall3 linear infinite}
   .bstage.on .sf,.bstage.done .sf{opacity:.8}
   @keyframes sfall3{to{transform:translate(var(--dx,0),340px)}}
+
+  /* ===== nouvelles fenetres + cartes postales (nov. 2026) ===== */
+  .btn.ghost{background:transparent;color:#A8323C;box-shadow:inset 0 0 0 2px #A8323C}
+  .btn.ghost::after{display:none}
+  .linkbtn{background:none;border:0;color:#8E2731;text-decoration:underline;font:600 14px 'Lato',system-ui,sans-serif;cursor:pointer;padding:8px}
+  .pcw{margin:26px 0 8px;text-align:center}
+  .pck{font-family:'Dancing Script',cursive;font-size:26px!important;color:#8E2731;margin:0 0 10px!important}
+  .pcimg{width:min(300px,86%);aspect-ratio:4/5;margin:0 auto;border-radius:10px;background:#FFF8EE;box-shadow:0 14px 34px rgba(80,30,40,.25);transform:rotate(-1.5deg);display:flex;align-items:center;justify-content:center;overflow:hidden;animation:pop .6s ease}
+  .pcimg img{width:100%;height:100%;display:block;-webkit-touch-callout:default}
+  .pcload{font-size:28px;color:#C9952F;animation:spin 1.6s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .pcsave{margin-top:16px}
+  .pchint{font-size:13px!important;color:#8B7280;font-style:italic;margin:8px 0 0!important}
+  /* boule a neige */
+  .globe{position:relative;width:220px;height:250px;margin:10px auto 0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .gball{position:absolute;left:10px;top:0;width:200px;height:200px;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.9),rgba(214,226,246,.55) 40%,rgba(120,140,200,.45));box-shadow:inset -10px -14px 30px rgba(60,70,140,.25),inset 8px 8px 20px rgba(255,255,255,.7),0 10px 24px rgba(60,40,90,.2)}
+  .gball .ghouse{position:absolute;left:50%;bottom:20px;width:96px;margin-left:-48px}
+  .gball::after{content:"";position:absolute;left:0;right:0;bottom:0;height:34px;background:#FFFFFF;border-radius:50% 50% 0 0/30% 30% 0 0}
+  .gsnow i{position:absolute;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 3px rgba(120,130,190,.6);z-index:2}
+  .globe.shake .gball{animation:wobble .9s ease}
+  .globe.shake .gsnow i{animation:gswirl var(--d) ease-out}
+  @keyframes wobble{0%,100%{transform:none}20%{transform:rotate(-9deg)}45%{transform:rotate(8deg)}70%{transform:rotate(-4deg)}}
+  @keyframes gswirl{0%{transform:none}25%{transform:translate(var(--x),-120px)}100%{transform:none}}
+  .gbase{position:absolute;left:40px;bottom:6px;width:140px;height:50px;border-radius:12px 12px 22px 22px;background:linear-gradient(180deg,#A8323C,#7E1F2B);box-shadow:0 8px 16px rgba(80,20,30,.3)}
+  .gbase::before{content:"✦ ✦ ✦";position:absolute;inset:14px 0 0;text-align:center;color:#E9B949;font-size:14px;letter-spacing:4px}
+  .gqtext{font-family:'Cormorant Garamond',Georgia,serif;font-size:23px!important;font-weight:700;text-align:center;color:#8E2731;margin:14px 6px 12px!important;animation:fadeup .9s ease both}
+  /* grattage */
+  .scr{position:relative;width:min(300px,92%);aspect-ratio:600/340;margin:12px auto 4px;border-radius:16px;overflow:hidden;background:#FFFDF8;box-shadow:inset 0 0 0 2px #E9B949,0 10px 24px rgba(201,149,47,.25)}
+  .scrtxt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:18px;text-align:center;font-family:'Cormorant Garamond',Georgia,serif;font-size:20px;font-weight:700;color:#5A2A33;line-height:1.3}
+  .scr canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:grab;transition:opacity .8s ease}
+  .scr canvas.gone{opacity:0;pointer-events:none}
+  /* soiree */
+  .nrow{margin-bottom:6px} .nrow .lbl{margin:8px 0 6px!important}
+  .nscene{position:relative;margin:14px 0 4px;padding:22px 14px 18px;border-radius:18px;background:radial-gradient(ellipse at 50% 30%,#6E4632,#2D2858 70%);text-align:center;overflow:hidden;animation:pop .6s ease}
+  .nwin{width:90px;height:70px;margin:0 auto 12px;border-radius:40px 40px 6px 6px;border:5px solid #FFF6EA;background:linear-gradient(180deg,#22305A,#3C4F86);position:relative;overflow:hidden}
+  .nwin::before{content:"· ✦ · ✦ ·";position:absolute;inset:12px 0 0;text-align:center;color:#fff;font-size:12px;letter-spacing:3px}
+  .nitems{display:flex;justify-content:center;gap:10px;font-size:38px}
+  .nitems span{animation:pop .6s ease both}
+  .ncap{color:#FFE9C2!important;font-family:'Dancing Script',cursive;font-size:24px!important;margin:12px 0 0!important}
+  /* bouteille */
+  .inp.rollup{transition:transform .7s ease,opacity .7s;transform:scale(.2,.05) translateY(200px);opacity:0}
+  .sea{position:relative;height:160px;margin:12px 0 4px;border-radius:18px;overflow:hidden;background:linear-gradient(180deg,#FBE3D2 0%,#F6C7B6 38%,#6F9FC4 39%,#3E6E9C 100%)}
+  .sea::before{content:"";position:absolute;left:50%;top:22px;width:56px;height:56px;margin-left:-28px;border-radius:50%;background:#FFD36B;box-shadow:0 0 30px #FFB86B}
+  .bot{position:absolute;top:54px;left:-30%;width:110px;animation:sail 5s ease-in-out forwards;z-index:2}
+  @keyframes sail{0%{left:-30%;transform:rotate(-8deg)}25%{transform:rotate(6deg) translateY(4px)}50%{transform:rotate(-6deg)}75%{transform:rotate(5deg) translateY(4px)}100%{left:105%;transform:rotate(-4deg)}}
+  .wave{position:absolute;left:-50%;width:200%;height:40px;border-radius:40%;background:rgba(255,255,255,.18);animation:wv 6s linear infinite}
+  .wave.w1{top:66px} .wave.w2{top:96px;animation-duration:9s;background:rgba(255,255,255,.12)}
+  @keyframes wv{to{transform:translateX(25%)}}
+  /* etoiles */
+  .sky2{position:relative;height:230px;margin:12px 0 10px;border-radius:18px;overflow:hidden;background:radial-gradient(ellipse at 70% 10%,#3E3A78,#1B1838 70%);transition:box-shadow 1.2s}
+  .sky2::before{content:"";position:absolute;inset:0;background-image:radial-gradient(1px 1px at 12% 20%,#fff,transparent),radial-gradient(1px 1px at 72% 12%,#fff,transparent),radial-gradient(1px 1px at 40% 80%,#fff,transparent),radial-gradient(1px 1px at 88% 60%,#fff,transparent),radial-gradient(1px 1px at 25% 52%,#fff,transparent),radial-gradient(1px 1px at 60% 44%,#fff,transparent);opacity:.7}
+  .sky2.lit2{box-shadow:0 0 0 3px #E9B949,0 0 30px rgba(233,185,73,.6)}
+  .sklines{position:absolute;inset:0;width:100%;height:100%}
+  .sklines polyline{fill:none;stroke:rgba(255,226,140,.65);stroke-width:1.2;stroke-dasharray:4 4;vector-effect:non-scaling-stroke}
+  .st2{position:absolute;translate:-50% -8px;text-align:center;animation:pop .6s ease both}
+  .st2 i{display:block;margin:0 auto;width:16px;height:16px;background:#FFE08A;clip-path:polygon(50% 0,61% 38%,100% 50%,61% 62%,50% 100%,39% 62%,0 50%,39% 38%);filter:drop-shadow(0 0 6px #FFD36B);animation:twinkle 2.4s ease-in-out infinite}
+  .st2 span{display:block;margin-top:3px;font:700 13px 'Lato',system-ui,sans-serif;color:#FFF3D6;text-shadow:0 1px 4px #000;white-space:nowrap}
+  @keyframes twinkle{50%{transform:scale(1.35);opacity:.8}}
+  .srow{display:flex;gap:8px;align-items:stretch} .srow .inp{flex:1;min-width:0;margin:0} .srow .btn{padding-left:16px;padding-right:16px}
+  /* compliments */
+  .crain{position:relative;height:330px;margin:10px 0;border-radius:18px;overflow:hidden;background:linear-gradient(180deg,#FFF3F5,#F8E7EF)}
+  .cbub{position:absolute;top:-60px;max-width:44%;padding:7px 11px;border:0;border-radius:16px;background:#FFFFFF;color:#8E2731;font:700 12.5px/1.25 'Lato',system-ui,sans-serif;box-shadow:0 4px 12px rgba(194,86,107,.25);cursor:pointer;animation:cfall linear infinite}
+  .cbub::before{content:"♥ ";color:#C2566B}
+  @keyframes cfall{to{transform:translateY(540px) rotate(4deg)}}
+  .cbub.caught{opacity:0;transition:opacity .4s;pointer-events:none}
+  .crain.stop .cbub{animation-play-state:paused;opacity:.25;pointer-events:none}
+  .basket{list-style:none;padding:0;margin:4px 0 0}
+  .basket li{margin:6px 0;padding:10px 14px;border-radius:12px;background:#FFFDF8;box-shadow:inset 0 0 0 1.5px #F3BCCB;font-family:'Cormorant Garamond',Georgia,serif;font-size:19px;font-weight:700;color:#8E2731;animation:pop .5s ease}
+  .basket li::before{content:"♥ ";color:#C2566B}
+  /* enfant */
+  .kidnote{margin:14px 0 4px;padding:20px 18px;border-radius:6px;background:repeating-linear-gradient(180deg,#FFFEF9 0 29px,#D9E6F5 29px 30px);box-shadow:0 8px 20px rgba(60,40,90,.15);transform:rotate(-1deg);font-family:'Dancing Script',cursive;font-size:23px;line-height:30px;color:#2B4C8C;animation:pop .6s ease}
+  .kidnote p{margin:0 0 6px!important;font-size:23px!important;line-height:30px!important}
+  .kidnote ul{margin:0 0 6px;padding-left:22px} .kidnote li{margin:0}
+  /* vinyle */
+  .vinyl{position:relative;height:220px;margin:12px 0 4px}
+  .disc{position:absolute;left:50%;top:10px;width:200px;height:200px;margin-left:-100px;border-radius:50%;background:repeating-radial-gradient(circle,#1E1B2A 0 2px,#2D2838 2px 4px);box-shadow:0 10px 24px rgba(0,0,0,.35);animation:spin 3.5s linear infinite}
+  .vlabel{position:absolute;left:50%;top:50%;width:92px;height:92px;margin:-46px 0 0 -46px;border-radius:50%;background:#C2566B;color:#FFF6EA;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;font:700 11px/1.2 'Lato',system-ui,sans-serif;overflow:hidden}
+  .note{position:absolute;font-size:26px;color:#C2566B;animation:notefly 3s ease-in infinite;opacity:0}
+  .note.n1{left:18%;top:60%} .note.n2{left:78%;top:50%;animation-delay:1s} .note.n3{left:30%;top:20%;animation-delay:2s}
+  @keyframes notefly{0%{opacity:0;transform:none}20%{opacity:1}100%{opacity:0;transform:translate(14px,-80px) rotate(20deg)}}
+  /* polaroid */
+  .polaroid{width:min(250px,80%);margin:16px auto 4px;padding:12px 12px 16px;background:#fff;box-shadow:0 12px 28px rgba(60,40,60,.25);transform:rotate(2deg);animation:pop .6s ease}
+  .pimg{aspect-ratio:1;background:radial-gradient(circle at 25% 30%,rgba(255,233,170,.95) 0 12%,transparent 13%),radial-gradient(circle at 70% 25%,rgba(255,200,150,.8) 0 9%,transparent 10%),radial-gradient(circle at 55% 70%,rgba(255,220,180,.85) 0 14%,transparent 15%),radial-gradient(circle at 85% 80%,rgba(240,170,190,.8) 0 8%,transparent 9%),linear-gradient(160deg,#F6B87A,#C2566B 60%,#5E4A8C);display:flex;align-items:center;justify-content:center;color:#FFF6EA;font-size:34px}
+  .polaroid.dev .pimg{animation:develop 2.6s ease both}
+  @keyframes develop{0%{filter:brightness(.05) sepia(1)}60%{filter:brightness(.8) sepia(.4)}100%{filter:none}}
+  .pcap{margin:12px 2px 0!important;font-family:'Dancing Script',cursive;font-size:21px!important;line-height:1.25;color:#3A2233;text-align:center}
+  /* toast */
+  .glasses{position:relative;height:170px;margin:12px 0 4px;display:flex;justify-content:center;align-items:flex-end;gap:0}
+  .flute{width:70px;height:150px;transform-origin:50% 100%}
+  .flute.l{animation:clinkl 1.2s ease forwards} .flute.r{animation:clinkr 1.2s ease forwards}
+  @keyframes clinkl{0%{transform:translateX(-30px) rotate(-4deg)}60%{transform:translateX(8px) rotate(14deg)}75%{transform:translateX(2px) rotate(10deg)}100%{transform:translateX(4px) rotate(12deg)}}
+  @keyframes clinkr{0%{transform:translateX(30px) rotate(4deg)}60%{transform:translateX(-8px) rotate(-14deg)}75%{transform:translateX(-2px) rotate(-10deg)}100%{transform:translateX(-4px) rotate(-12deg)}}
+  .spark{position:absolute;left:50%;top:6px;font-size:28px;color:#E9B949;opacity:0;animation:sparkle 1s ease .7s forwards}
+  @keyframes sparkle{0%{opacity:0;transform:scale(.3)}50%{opacity:1;transform:scale(1.3)}100%{opacity:0;transform:scale(1) translateY(-14px)}}
 </style>
 </head>
 <body>
@@ -532,26 +626,26 @@ const PRODUCTS = {
 };
 const MORE = {
   1:["anx","Si a veces la ansiedad o el estrés se hacen grandes, este cuaderno te ayuda a entender cómo funcionan y a que ocupen menos espacio."],
-  2:["journal","Escribir lo que pesa es un verdadero cuidado. Este programa te acompaña con una página de escritura guiada cada día durante un mes."],
+  2:["journal","Poner por escrito los buenos recuerdos es una forma preciosa de cuidarse. Este programa te propone una página de escritura guiada cada día durante un mes."],
   3:["aimer","Si estas frases te hicieron bien, este cuaderno te ayuda a construir, día a día, una relación más tierna contigo."],
   4:["anx20","Tu refugio es una primera herramienta. Este programa de 20 días te da muchas más, paso a paso."],
-  5:["kit","Si lo que más te cuesta son los momentos de angustia, este cuaderno reúne todas las herramientas concretas para atravesarlos."],
+  5:["voyage","Si te gustan estos pequeños momentos para ti, este viaje interior de 35 días te invita a regalártelos cada día."],
   6:["qui","Para explorar más a fondo tus valores, tus necesidades y lo que te hace ser quien eres, este cuaderno es una bonita puerta de entrada."],
-  7:["anx","Los rituales que calman están en el corazón de este cuaderno, para aliviar el cuerpo y la mente cuando el estrés se acumula."],
+  7:["anx","Si a veces te cuesta desconectar por la noche, este cuaderno te propone rituales para soltar el estrés del día."],
   8:["journal","Poner palabras a tu clima interior cada día es justo lo que propone este diario guiado de 30 días."],
   9:["voyage","Si este momento de calma te gustó, este viaje de 35 días te lleva más lejos, al encuentro contigo."],
-  10:["conf24","Poner límites requiere confianza en ti. Este programa te ayuda a reconstruirla, un día a la vez."],
+  10:["sens","Pensar en la persona que quieres ser es reconectar con lo que da sentido a tu vida. Este cuaderno te acompaña en ese camino."],
   11:["aimer","La autocompasión se aprende. Este cuaderno te guía para convertirte en tu propio apoyo, incluso en los días difíciles."],
-  12:["qui","Nuestras necesidades dicen mucho de quiénes somos. Este cuaderno te ayuda a reconocerlas y a honrarlas."],
-  13:["voix","Esa voz dura tiene nombre: el crítico interior. Este cuaderno te enseña a reconocerla y a responderle."],
+  12:["qui","Las personas que nos importan dicen mucho de quiénes somos. Este cuaderno te ayuda a explorar lo que te hace ser tú."],
+  13:["voix","Si la voz que te habla por dentro es más dura que estos cumplidos, este cuaderno te ayuda a responderle con cariño."],
   14:["conf24","Cada pequeña victoria alimenta la confianza. Este programa te ayuda a hacerla crecer, paso a paso, durante 24 días."],
-  15:["paralyse","Para entender qué te frena y empezar a aflojar el nudo del miedo, este cuaderno es para ti."],
+  15:["conf24","Esa niña o ese niño confiaba en ti. Este programa te ayuda a recuperar la confianza, un día a la vez."],
   16:["aimer","Reconocer tus cualidades es un primer paso. Este cuaderno te ayuda a mirarte con más justicia y más ternura."],
-  17:["paralyse","Si este miedo ocupa mucho espacio, este cuaderno te ayuda a explorarlo y a mirarlo de otra manera."],
+  17:["oser28","Si tu año te pide un cambio, este programa te ayuda a atreverte, paso a paso, durante 28 días."],
   18:["voix","Para hacer crecer esa voz bondadosa frente a la voz crítica, este cuaderno propone muchos ejercicios."],
-  19:["anx20","Si los pensamientos ansiosos te acompañan a menudo, tomar distancia de ellos es una de las claves de este programa de 20 días."],
+  19:["journal","Guardar los buenos momentos por escrito ayuda a verlos también los días grises. Este diario guiado te propone una cita contigo cada día."],
   20:["voyage","¿Te llama la atención plena? Este viaje interior de 35 días te invita a ir más despacio y a reencontrarte."],
-  21:["oser28","Para seguir subiendo escalones a tu ritmo, este programa te acompaña durante 28 días."],
+  21:["conf24","Reconocer lo que haces alimenta la confianza. Este programa te ayuda a hacerla crecer durante 24 días."],
   22:["sens","Si algunas habitaciones de tu casa parecen vacías, este cuaderno te ayuda a reencontrar lo que da sentido a tus días."],
   23:["journal","Hacer balance con regularidad lo cambia todo. Este diario guiado te propone una cita contigo cada día."],
   24:["sens","Para que tu palabra se convierta en dirección, este cuaderno te ayuda a reconectar con lo que de verdad importa."],
@@ -565,50 +659,22 @@ const SITE = 'https://casita-psychologie.com';
 
 const DAYS = {
   1:{tag:"Experiencia · 2 min",h:"La casita respira contigo",k:"breath"},
-  2:{tag:"Experiencia · 3 min",h:"Confía una preocupación a la nieve",k:"snow"},
+  2:{tag:"Juego · 2 min",h:"Agita la bola de nieve de los recuerdos",k:"globe"},
   3:{tag:"Experiencia · 1 min",h:"Elige tu carta de ternura",k:"cards"},
   4:{tag:"Experiencia · 3 min",h:"Crea tu rincón refugio",k:"refuge"},
-  5:{tag:"Regalo · en una hoja",c:"t-gift",h:"Tu tarjeta SOS para los días difíciles",k:"unwrap",d:{
-      inner:`<div class="fiche"><p class="fk">Para el estrés, la tristeza o los nervios</p><h3>Mi tarjeta SOS</h3>
-<p class="prep">Prepara un papelito y un bolígrafo. Esta tarjeta cabe en la cartera: estará ahí el día en que todo se haga cuesta arriba, sea estrés, tristeza, enfado o ansiedad.</p>
-<ol><li><strong>Mis señales de alerta.</strong> Anota tres señales que te avisan de que vas al límite (el corazón se acelera, te irritas por todo, los pensamientos dan vueltas, se te cierra la garganta…).</li>
-<li><strong>Lo que me calma.</strong> Anota tres gestos que te ayudan: respirar en cuadrado, pasar agua fresca por las muñecas, nombrar 5 cosas a tu alrededor…</li>
-<li><strong>Mi persona de apoyo.</strong> El nombre y el número de alguien a quien puedas llamar.</li>
-<li><strong>Mi frase ancla.</strong> Por detrás, en grande: «Es una ola. Sube, y va a volver a bajar.» o la frase que a ti te sirva.</li></ol>
-<p class="fend">Dobla la tarjeta y guárdala. Solo saber que está ahí ya tranquiliza.</p></div>`}},
+  5:{tag:"Juego · 1 min",h:"Rasca y descubre tu reto amable",k:"scratch"},
   6:{tag:"Experiencia · 3 min",h:"Tu brújula interior",k:"compass"},
-  7:{tag:"Regalo · en una hoja",c:"t-gift",h:"Tu ritual de noche para calmarte",k:"unwrap",d:{
-      inner:`<div class="fiche"><p class="fk">Inspirada en los cuadernos «Calmarse»</p><h3>Mi ritual de noche</h3>
-<p class="prep">En una hoja vas a dibujar el ritual que ayudará a tu cuerpo a entender que el día ha terminado.</p>
-<ol><li><strong>Mi hora de «apagar».</strong> Elige la hora en que se apagan las pantallas, al menos 30 minutos antes de dormir.</li>
-<li><strong>Vaciar la cabeza.</strong> Deja un rincón de la hoja para anotar cada noche, sin orden, lo que aún da vueltas: mañana se ocupará de ello.</li>
-<li><strong>Un gesto para el cuerpo.</strong> Una infusión, una ducha caliente, unos estiramientos… Elige uno.</li>
-<li><strong>Tres pequeñas luces.</strong> Termina con tres cosas agradables del día, aunque sean minúsculas.</li></ol>
-<p class="fend">Pon la hoja junto a tu cama y prueba este ritual durante siete noches. Al cerebro le encanta la repetición: es ella la que calma.</p></div>`}},
+  7:{tag:"Juego · 2 min",h:"Diseña tu noche perfecta de invierno",k:"night"},
   8:{tag:"Experiencia · 3 min",h:"Tu clima interior",k:"weather"},
   9:{tag:"Experiencia · 3 min",h:"Enciende la vela",k:"candle"},
-  10:{tag:"Experiencia · 2 min",h:"Una frase clave en tu bolsillo",k:"pocket"},
+  10:{tag:"Experiencia · 3 min",h:"Un mensaje en una botella para ti",k:"bottle"},
   11:{tag:"Experiencia · 2 min",h:"La mano en el corazón",k:"heart"},
-  12:{tag:"Regalo · en una hoja",c:"t-gift",h:"El árbol de tus necesidades",k:"unwrap",d:{
-      inner:`<div class="fiche"><p class="fk">Inspirada en los cuadernos «Comprenderse»</p><h3>El árbol de mis necesidades</h3>
-<p class="prep">Toma una hoja en blanco y unos lápices de colores si tienes.</p>
-<ol><li><strong>Dibuja un árbol</strong> con cinco raíces grandes. Escribe en cada una una necesidad fundamental: seguridad, vínculo, reconocimiento, libertad, placer.</li>
-<li><strong>Riégalas con la mirada.</strong> Para cada raíz, puntúa de 0 a 10 cuánto está alimentada esa necesidad ahora mismo.</li>
-<li><strong>En las ramas,</strong> escribe lo que ya alimenta cada raíz: personas, actividades, lugares.</li>
-<li><strong>Elige la raíz más sedienta</strong> y anota un gesto muy pequeño para regarla esta semana.</li></ol>
-<p class="fend">Las emociones difíciles suelen señalar una raíz que tiene sed. Cuidar tus necesidades no es egoísmo: es mantenimiento.</p></div>`}},
-  13:{tag:"Experiencia · 4 min",h:"Háblate como a alguien que quieres",k:"friend"},
+  12:{tag:"Experiencia · 3 min",h:"Tu cielo de estrellas",k:"stars"},
+  13:{tag:"Juego · 2 min",h:"Atrapa los cumplidos",k:"compliments"},
   14:{tag:"Experiencia · 3 min",h:"El frasco de las pequeñas victorias",k:"jar"},
-  15:{tag:"Regalo · en una hoja",c:"t-gift",h:"Tus tres círculos para atreverte",k:"unwrap",d:{
-      inner:`<div class="fiche"><p class="fk">Inspirada en los cuadernos «Atreverse»</p><h3>Mis tres círculos</h3>
-<p class="prep">En una hoja, dibuja tres círculos uno dentro de otro, como una diana.</p>
-<ol><li><strong>En el centro, mi zona de confort:</strong> lo que hago con facilidad, sin estrés.</li>
-<li><strong>En medio, mi zona de impulso:</strong> lo que me da un poco de miedo, pero me gustaría atreverme a hacer (hablar en público, pedir ayuda, salir por mi cuenta…).</li>
-<li><strong>Fuera, mi zona de tormenta:</strong> lo que hoy todavía me parece demasiado difícil. Sin presión: ahí no vamos.</li>
-<li><strong>Rodea una sola cosa</strong> de la zona de impulso y escribe al lado la fecha en que lo vas a intentar.</li></ol>
-<p class="fend">En la zona de impulso es donde se crece. Y cada vez que vas, la zona de confort se agranda un poco.</p></div>`}},
+  15:{tag:"Experiencia · 3 min",h:"Si tu yo de la infancia te viera hoy",k:"child"},
   16:{tag:"Experiencia · 3 min",h:"El muñeco de nieve de tus cualidades",k:"snowman"},
-  17:{tag:"Experiencia · 4 min",h:"Mira cómo se encoge tu miedo",k:"fear"},
+  17:{tag:"Experiencia · 2 min",h:"La canción de tu año",k:"song"},
   18:{tag:"Regalo · en una hoja",c:"t-gift",h:"Una carta de tu parte más sabia",k:"unwrap",d:{
       inner:`<div class="fiche"><p class="fk">Inspirada en los cuadernos «Reconstruirse»</p><h3>La carta de mi parte más sabia</h3>
 <p class="prep">Busca un momento de calma con una hoja y un bolígrafo. Reserva diez minutos solo para ti.</p>
@@ -617,9 +683,9 @@ const DAYS = {
 <li><strong>Añade lo que necesitas escuchar.</strong> Un permiso, un ánimo, quizás un perdón.</li>
 <li><strong>Firma</strong> «Tu parte más sabia» y relee la carta despacio, en voz alta si puedes.</li></ol>
 <p class="fend">Guarda esta carta en un sobre. Los días en que la voz crítica hable fuerte, ábrela: esa otra voz también existe en ti.</p></div>`}},
-  19:{tag:"Experiencia · 3 min",h:"Deja pasar las nubes",k:"clouds"},
+  19:{tag:"Experiencia · 3 min",h:"La foto mental de tu año",k:"photo"},
   20:{tag:"Experiencia · 5 min",h:"Un chocolate caliente con atención plena",k:"cocoa"},
-  21:{tag:"Experiencia · 5 min",h:"La escalera de los pequeños pasos",k:"stairs"},
+  21:{tag:"Experiencia · 2 min",h:"Un brindis por ti",k:"toast"},
   22:{tag:"Regalo · en una hoja",c:"t-gift",h:"La casa de tu vida",k:"unwrap",d:{
       inner:`<div class="fiche"><p class="fk">Inspirada en los cuadernos «Dar sentido»</p><h3>La casa de mi vida</h3>
 <p class="prep">En una hoja, dibuja una casa con cinco habitaciones. No hace falta saber dibujar: bastan unos cuadrados.</p>
@@ -646,12 +712,13 @@ const store = {
   set(k, v){ try { localStorage.setItem('casita-es-' + k, JSON.stringify(v)); } catch(e){} }
 };
 const shareHTML = () => `<button type="button" class="share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22 11 13 2 9z"/></svg><span>Enviar a alguien que lo necesite</span></button>`;
-const moreHTML = () => { const m = MORE[curDay]; if (!m) return shareHTML(); const p = PRODUCTS[m[0]]; return shareHTML() + `<div class="more"><span class="mk">Para ir más lejos</span><p><strong>${p[0]}</strong> <span class="mt">· ${p[1]}</span></p><p>${m[1]}</p><a href="${p[2]}">Descubrir</a></div>`; };
+const moreHTML0 = () => { const m = MORE[curDay]; if (!m) return shareHTML(); const p = PRODUCTS[m[0]]; return shareHTML() + `<div class="more"><span class="mk">Para ir más lejos</span><p><strong>${p[0]}</strong> <span class="mt">· ${p[1]}</span></p><p>${m[1]}</p><a href="${p[2]}">Descubrir</a></div>`; };
 document.addEventListener('click', async e => { const b = e.target.closest('.share'); if (!b) return;
   const url = 'https://casita-psychologie.com/calendario.html', text = "Me acordé de ti 🤍 Mira este calendario de Adviento para cuidarte: una ventanita para abrir cada día, y es gratis.";
   try { if (navigator.share) { await navigator.share({ title: document.title, text, url }); return; } } catch (err) { if (err && err.name === 'AbortError') return; }
   try { await navigator.clipboard.writeText(text + ' ' + url); b.querySelector('span').textContent = 'Enlace copiado ✨'; b.classList.add('done'); } catch (err) { window.open('https://wa.me/?text=' + encodeURIComponent(text + ' ' + url), '_blank'); }
 });
+const moreHTML = () => { later(() => drawPostcard(curDay), 80); return pcHTML() + moreHTML0(); };
 const finish = (html, party) => { const el = $('#fin'); if (!el) return; el.innerHTML = `<p class="end"><strong>Para terminar</strong> ${html}</p>${moreHTML()}`; el.classList.remove('hidden'); if (party) confetti(); };
 const FIN = `<div id="fin" class="hidden"></div>`;
 function chips(list, max, onChange){
@@ -770,14 +837,14 @@ const XP = {
         b.addEventListener('click', () => {
           if (deck.classList.contains('done')) return;
           deck.classList.add('done'); b.classList.add('flip'); b.setAttribute('aria-label', a);
-          later(() => finish(`${act} Haz una captura de pantalla de tu carta para llevarla contigo hoy.`, true), 700);
+          later(() => finish(`${act} Guarda tu postal para llevarla contigo hoy.`, true), 700);
         });
         deck.appendChild(b);
       });
     }
   },
   refuge:{
-    html:`<p class="why">El cerebro reacciona a las imágenes: imaginar un lugar seguro calma casi tanto como estar en él. Elige tres elementos para crear el tuyo.</p>
+    html:`<p class="why">Imagina un lugar donde te sientes en paz, real o inventado. Elige tres cosas para crearlo.</p>
       <div id="rchips"></div><div class="scene refuge" id="rscene" aria-live="polite"><em>Tu refugio aparecerá aquí…</em></div>
       <div class="center"><button class="btn" id="rgo" disabled>Entrar en mi refugio</button></div>${FIN}`,
     init(){
@@ -795,7 +862,7 @@ const XP = {
     }
   },
   compass:{
-    html:`<p class="why">Nuestros valores son como una brújula: cuando perdemos el rumbo, indican la dirección. Elige los dos que más te importan hoy.</p>
+    html:`<p class="why">¿Qué es lo que de verdad te importa? Elige las dos palabras que más te hablan hoy.</p>
       <div id="cchips"></div><div class="compass" id="cmp"><div class="needle" id="ndl"></div><div class="pin"></div></div>
       <div class="center"><button class="btn" id="cgo" disabled>Encontrar mi rumbo</button></div>${FIN}`,
     init(){
@@ -891,18 +958,18 @@ const XP = {
     }
   },
   heart:{
-    html:`<p class="why">Piensa en una dificultad que estés atravesando ahora. Luego mantén el dedo sobre el corazón, como una mano posada sobre el tuyo.</p>
+    html:`<p class="why">Piensa en una persona que te quiere o te ha querido de verdad. Mantén el dedo sobre el corazón y escucha lo que te diría.</p>
       <button class="heart" id="hrt" aria-label="Mantener presionado el corazón"><svg viewBox="0 0 100 92" aria-hidden="true"><path d="M50 88 C10 60 2 38 12 20 C22 4 42 6 50 22 C58 6 78 4 88 20 C98 38 90 60 50 88 Z" fill="#C2566B"/><path d="M28 24 C22 28 20 36 22 42" stroke="#F6D9DF" stroke-width="5" fill="none" stroke-linecap="round"/></svg></button>
       <div class="hl" id="hl" aria-live="polite"></div>${FIN}`,
     init(){
       const h = $('#hrt'), hl = $('#hl');
-      const L = ["«Este es un momento difícil.»","«Otras personas también viven esto. No es solo cosa mía.»","«Puedo tratarme con cariño.»"];
+      const L = ["«Me alegra tanto que existas.»", "«No tienes que ganarte mi cariño: ya lo tienes.»", "«Tienes un corazón inmenso, aunque a veces no lo veas.»"];
       let shown = 0;
       holdable(h, 9000, p => {
         h.classList.toggle('beat', p > 0);
         const k = p >= 1 ? 3 : Math.floor(p * 3.2);
         while (shown < k && shown < 3){ const e = document.createElement('p'); e.textContent = L[shown]; hl.appendChild(e); shown++; }
-      }, () => { h.classList.add('beat'); finish("Quédate así unas respiraciones más. Este gesto es tuyo: puedes poner tu mano de verdad sobre tu corazón cada vez que sea duro."); });
+      }, () => { h.classList.add('beat'); finish("Ese cariño no se ha ido: vive en ti. Puedes volver a sentirlo cada vez que pongas tu mano de verdad sobre tu corazón."); });
     }
   },
   friend:{
@@ -943,7 +1010,7 @@ const XP = {
     }
   },
   snowman:{
-    html:`<p class="why">Nuestra atención se va sola hacia nuestros defectos. Hoy construimos algo con tus cualidades. Elige tres.</p>
+    html:`<p class="why">Hoy construimos un muñeco de nieve con lo mejor de ti. Elige tres cualidades.</p>
       <div id="smchips"></div><div class="snowman" id="sm" aria-live="polite"></div>${FIN}`,
     init(){
       const Q = ["Bondad","Valentía","Humor","Saber escuchar","Constancia","Creatividad","Generosidad","Sensibilidad","Lealtad","Curiosidad","Paciencia","Honestidad"];
@@ -1084,7 +1151,7 @@ const XP = {
         store.set('word', v); const lan = $('#lan'); $('#lw').textContent = v; lan.classList.remove('hidden');
         for (let i = 0; i < 30; i++){ const s = document.createElement('span'); s.className = 'spark'; s.style.left = '50%'; s.style.top = '55%';
           const a = Math.random()*Math.PI*2, r = 60 + Math.random()*90; s.style.setProperty('--x', Math.cos(a)*r + 'px'); s.style.setProperty('--y', Math.sin(a)*r + 'px'); lan.appendChild(s); }
-        finish("Haz una captura de pantalla de tu palabra y ponla de fondo de pantalla, o escríbela en algún lugar donde la veas a menudo. Te acompañará todo el año.", true);
+        finish("Guarda tu postal y ponla de fondo de pantalla, o escribe tu palabra en algún lugar donde la veas a menudo. Te acompañará todo el año.", true);
       });
     }
   },
@@ -1129,7 +1196,7 @@ const XP = {
         $('#ptxt').textContent = 'Me prometo ' + v.replace(/^me prometo\s*/i,'');
         $('#prom').classList.add('hidden'); $('#prom').previousElementSibling.classList.add('hidden'); $('#seal').classList.add('hidden');
         $('#sealed').classList.remove('hidden'); store.set('promesse', v);
-        later(() => finish(`Haz una captura de pantalla de tu promesa y guárdala como un tesoro. Reléela al comienzo de cada estación. Feliz Navidad: ya estás en casa.`, true), 1200);
+        later(() => finish(`Guarda tu postal como un tesoro. Reléela al comienzo de cada estación. Feliz Navidad: ya estás en casa.`, true), 1200);
       });
     }
   }
@@ -1165,8 +1232,213 @@ for (const n of Object.keys(BOXES).map(Number)){
 }
 
 let lastBtn = null;
+
+// ---------- cartes postales + nouvelles fenetres (nov. 2026) ----------
+const TX = {"qo": "«", "qc": "»", "pcLabel": "Tu postal del día ✨", "pcSave": "Guardar mi postal", "pcSaved": "¡Guardada! ✨", "pcHint": "En el móvil también puedes mantener el dedo sobre la postal para guardarla.", "pcKicker": "Día {n} · El Adviento de Casita", "pcFoot": "@psychoclinique · casita-psychologie.com", "pcAlt": "Postal del día {n}", "pcq": {"breath": "Mi palabra del 1 de diciembre", "refuge": "Mi rincón refugio", "compass": "Mi brújula", "snowman": "Mis cualidades", "weather": "Mi clima interior de hoy", "jar": "Mis pequeñas victorias", "word": "Mi palabra para el año", "door": "Mi promesa"}, "pc": {"1": "Respirar despacio es volver a casa.", "3": "Merezco la misma ternura que doy.", "4": "Tengo un refugio dentro de mí.", "6": "Lo que me importa me guía.", "8": "Todas mis emociones tienen algo que decirme.", "9": "Una pequeña luz basta para atravesar la noche.", "11": "El cariño que he recibido vive en mí.", "14": "Mis pequeñas victorias también cuentan.", "16": "Tengo cualidades que merecen ser vistas.", "18": "Dentro de mí hay una voz sabia y amable.", "20": "Saborear el momento también es cuidarme.", "22": "Soy la casa de mi vida.", "23": "Este año también he crecido.", "24": "Mi palabra me guiará.", "25": "Soy la casa. Estoy aquí. No me voy."}, "globe": {"why": "Dentro de esta bola de nieve se esconde un recuerdo. Agítala y deja que la nieve te traiga una pregunta.", "shake": "Agitar la bola de nieve", "lbl": "Tu recuerdo, en pocas palabras", "ph": "Cierra los ojos un segundo… ¿qué ves?", "other": "Otra pregunta", "keep": "Guardarlo en la bola", "qs": ["¿Cuál es tu recuerdo de Navidad más bonito de la infancia?", "¿Qué olor te recuerda a tu casa en invierno?", "¿Quién te hizo sentir en casa este año?", "¿Qué regalo sin papel ni lazo recibiste este año?", "¿Qué momento de este año te gustaría volver a vivir?", "¿Qué canción te lleva a un invierno feliz?"], "end": "Este recuerdo es tuyo y puedes volver a él cuando quieras. A veces, lo que más calienta en invierno no es la chimenea: es lo que llevamos dentro."}, "scratch": {"why": "Debajo del dorado se esconde un pequeño reto amable para hoy. Rasca con el dedo para descubrirlo.", "here": "Rasca aquí ✦", "noscr": "Descubrir sin rascar", "accept": "¡Acepto el reto!", "pcq": "Mi reto amable de hoy", "list": ["Pon tu canción favorita y báilala, aunque sea en la cocina.", "Escribe a una persona que echas de menos, solo para decirle que piensas en ella.", "Mírate al espejo y date las gracias por algo concreto.", "Sal cinco minutos y busca la cosa más bonita de tu calle.", "Prepárate tu bebida favorita y tómatela sin pantallas.", "Haz una foto de algo que te haga sonreír hoy.", "Dile a alguien algo que admiras de esa persona.", "Regálate diez minutos de no hacer absolutamente nada."], "end": "Cuando lo hayas hecho, vuelve un segundo aquí y fíjate en cómo te sientes. Los pequeños placeres no son un capricho: son lo que hace que los días se parezcan a ti."}, "night": {"why": "Hoy no hay deberes: solo imaginar la noche de invierno que más te apetece. Elige una cosa de cada fila.", "rows": [["Para abrigarte", ["🧣 Una manta gordita", "🧦 Calcetines de lana", "🛁 Un baño caliente"]], ["Para beber", ["☕ Chocolate caliente", "🍵 Una infusión", "🍷 Una copa de vino"]], ["Para disfrutar", ["🎶 Música suave", "📖 Un buen libro", "🎬 Mi película favorita"]], ["En compañía de", ["🐾 Mi animal", "💛 Alguien que quiero", "🌙 Solo yo, en calma"]]], "cap": "Tu noche perfecta te está esperando.", "go": "Me la regalo esta semana", "pcq": "Mi noche perfecta de invierno", "end": "Ponle fecha en tu agenda, como a cualquier otra cita importante. Cuidarte también se planifica."}, "bottle": {"why": "Escríbele unas líneas a la persona que serás en diciembre de 2027. ¿Qué te gustaría recordarle? ¿Qué le deseas?", "lbl": "Querido yo de 2027…", "ph": "Espero que sigas…, no olvides…, te deseo…", "go": "Lanzar la botella al mar", "pcq": "Para mí, en diciembre de 2027", "end": "Tu mensaje ya navega. Guarda la postal: es tu botella. Ábrela dentro de un año y mira todo lo que has recorrido."}, "heart": {"why": "Piensa en una persona que te quiere o te ha querido de verdad. Mantén el dedo sobre el corazón y escucha lo que te diría.", "L": ["«Me alegra tanto que existas.»", "«No tienes que ganarte mi cariño: ya lo tienes.»", "«Tienes un corazón inmenso, aunque a veces no lo veas.»"], "end": "Ese cariño no se ha ido: vive en ti. Puedes volver a sentirlo cada vez que pongas tu mano de verdad sobre tu corazón."}, "stars": {"why": "Algunas personas iluminan tu vida, aunque no lo sepan. Escribe sus nombres: cada una se convertirá en una estrella de tu cielo.", "ph": "Un nombre", "lbl": "Nombre de una persona que ilumina tu vida", "add": "Encender", "done": "Ya está, mi cielo brilla", "pcq": "Las estrellas de mi cielo", "end": "Esta noche, si puedes, envía un mensaje a una de tus estrellas para decirle que ilumina tu vida. Se lo merece, y tú mereces decirlo."}, "comp": {"why": "Caen cumplidos del cielo. Atrapa los tres que más mereces oír hoy (sí, te los mereces).", "basket": "Mis cumplidos", "pcq": "Hoy merezco oír…", "list": ["Tienes buen corazón", "Tu risa es contagiosa", "Haces que la gente se sienta en casa", "Eres más valiente de lo que crees", "Tu forma de ver el mundo es única", "Sabes escuchar", "Has crecido mucho este año", "Tu presencia hace bien", "Tienes un humor maravilloso", "Mereces el cariño que das"], "end": "Léelos en voz alta, despacio, como si te los dijera alguien que te quiere. Al principio cuesta creérselos, es normal: poco a poco irán encontrando su sitio."}, "child": {"why": "Imagina a la niña o al niño que fuiste mirándote ahora mismo. ¿Qué le haría sonreír? Elige tres cosas.", "list": ["La risa, siempre ahí", "Amistades de verdad", "Cosas difíciles superadas", "La curiosidad intacta", "Tiempo para lo que nos gusta", "El cuidado de los demás", "El valor de cambiar", "Un hogar, a nuestra manera"], "go": "Leer su mensaje", "hi": "Hola, soy yo, de hace muchos años 🌟", "see": "He visto cómo eres hoy y me encanta:", "bye": "No sabía que llegaríamos hasta aquí. Gracias por cuidarnos. ¿Me prometes que seguiremos jugando?", "pcq": "Lo que a mi yo de la infancia le encantaría ver", "end": "Esa parte de ti sigue ahí, con sus ganas de jugar. ¿Qué podrías hacer esta semana solo porque te divierte?"}, "song": {"why": "Si este año tuviera banda sonora, ¿qué canción sería? Puede ser alegre, triste o muy rara: la tuya.", "lbl": "La canción de mi año", "ph": "Título y artista", "why2": "Porque…", "list": ["Me hizo bailar", "Me consoló", "Me dio fuerzas", "Me recuerda a alguien", "Me acompañó en un cambio"], "go": "Poner el disco", "pcq": "La canción de mi año", "end": "Escúchala hoy de principio a fin, con atención, como un pequeño homenaje a todo lo que has vivido. Y si quieres, envíasela a alguien que formó parte de tu año."}, "photo": {"why": "Cierra los ojos y busca un instante de este año en el que te sentiste bien de verdad. Descríbelo: lo vamos a revelar.", "lbl": "Mi momento", "ph": "¿Dónde estabas? ¿Con quién? ¿Qué se oía?", "go": "Revelar la foto", "pcq": "Mi foto mental de este año", "end": "Este recuerdo forma parte de ti. Cuando un día se vuelva gris, vuelve a esta foto: los buenos momentos existen, y vendrán más."}, "toast": {"why": "Este año has hecho mucho, aunque a veces no lo veas. Hoy levantamos una copa por ti. Completa tu brindis.", "lbl": "Brindo por mí, porque…", "ph": "ej. no me rendí, aprendí a decir que no, cuidé de los míos", "go": "¡Chinchín!", "pcq": "Brindo por mí, porque…", "end": "Repítelo en voz alta, con una copa o una taza en la mano. Celebrar lo que haces no es presumir: es reconocer tu camino."}};
+let pcx = null;
+const AXPALE = {apaiser:'#F5E8E8', comprendre:'#E8EAF5', reconstruire:'#E5F0E7', oser:'#F5E8E5', sens:'#F0E8DA'};
+const AXINK = {apaiser:'#B06A6A', comprendre:'#5E68AE', reconstruire:'#3F7A4B', oser:'#B05A4A', sens:'#8A643E'};
+const pressed = sel => $$(sel).filter(b => b.getAttribute('aria-pressed') === 'true').map(b => b.textContent.trim());
+const PCF = {
+  breath: () => { const w = store.get('mot', ''); return w ? {q: TX.pcq.breath, lines: [w]} : null; },
+  cards: () => { const b = content.querySelector('.tcard.flip'); return b ? {lines: [b.getAttribute('aria-label')]} : null; },
+  refuge: () => { const s = pressed('.chip'); return s.length ? {q: TX.pcq.refuge, lines: s} : null; },
+  compass: () => { const s = pressed('.chip'); return s.length ? {q: TX.pcq.compass, lines: s} : null; },
+  snowman: () => { const s = pressed('.chip'); return s.length ? {q: TX.pcq.snowman, lines: s} : null; },
+  weather: () => { const b = $$('.wbtn').find(x => x.getAttribute('aria-pressed') === 'true'); const r = content.querySelector('#wr'); return b ? {q: TX.pcq.weather, lines: [b.textContent.trim().replace(/\s+/g, ' ') + (r ? ' · ' + r.value + '/10' : '')]} : null; },
+  jar: () => { const l = $$('#jl li').map(x => x.textContent); return l.length ? {q: TX.pcq.jar, lines: l} : null; },
+  word: () => { const w = content.querySelector('#wd'); return w && w.value.trim() ? {q: TX.pcq.word, lines: [w.value.trim()]} : null; },
+  door: () => { const t = content.querySelector('#ptxt'); return t && t.textContent.trim() ? {q: TX.pcq.door, lines: [t.textContent.trim()]} : null; }
+};
+const pcHTML = () => `<div class="pcw"><p class="pck">${TX.pcLabel}</p><div class="pcimg" id="pcimg"><span class="pcload">✦</span></div><div class="center"><button type="button" class="btn pcsave" id="pcsave" disabled>${TX.pcSave}</button></div><p class="pchint">${TX.pcHint}</p></div>`;
+function wrapText(c, text, maxW){ const words = String(text).split(/\s+/); const out = []; let cur = '';
+  for (const w of words){ const t = cur ? cur + ' ' + w : w; if (c.measureText(t).width > maxW && cur){ out.push(cur); cur = w; } else cur = t; }
+  if (cur) out.push(cur); return out; }
+async function drawPostcard(n){
+  const box = document.getElementById('pcimg'), btn = document.getElementById('pcsave'); if (!box) return;
+  const d = DAYS[n], ax = axOf(n);
+  let data = pcx; if (!data && PCF[d.k]) { try { data = PCF[d.k](); } catch (e) { data = null; } }
+  if (!data) data = {lines: [TX.pc[n] || '']};
+  try { await Promise.race([Promise.all(['700 66px "Cormorant Garamond"', 'italic 600 52px "Cormorant Garamond"', '700 30px "Lato"', '400 28px "Lato"'].map(f => document.fonts.load(f))), new Promise(r => setTimeout(r, 2500))]); } catch (e) {}
+  const W = 1080, H = 1350, cv = document.createElement('canvas'); cv.width = W; cv.height = H; const c = cv.getContext('2d');
+  const g = c.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#FFF8EE'); g.addColorStop(1, AXPALE[ax] || '#F7EEDF'); c.fillStyle = g; c.fillRect(0, 0, W, H);
+  let seed = n * 97 + 13; const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+  c.textAlign = 'center'; c.fillStyle = 'rgba(201,149,47,.18)';
+  for (let i = 0; i < 28; i++){ c.font = (18 + rnd() * 22) + 'px serif'; c.fillText('✦', 80 + rnd() * (W - 160), 90 + rnd() * (H - 180)); }
+  const rr = (x, y, w, h, r) => { c.beginPath(); c.moveTo(x + r, y); c.arcTo(x + w, y, x + w, y + h, r); c.arcTo(x + w, y + h, x, y + h, r); c.arcTo(x, y + h, x, y, r); c.arcTo(x, y, x + w, y, r); c.closePath(); };
+  c.strokeStyle = '#C9952F'; c.lineWidth = 5; rr(36, 36, W - 72, H - 72, 34); c.stroke(); c.lineWidth = 1.5; rr(54, 54, W - 108, H - 108, 24); c.stroke();
+  c.save(); c.translate(W / 2, 96);
+  c.fillStyle = '#F3BCCB'; c.fillRect(-92, 74, 184, 122);
+  c.fillStyle = '#A8323C'; c.beginPath(); c.moveTo(-118, 82); c.lineTo(0, -8); c.lineTo(118, 82); c.closePath(); c.fill();
+  c.fillStyle = '#FFFFFF'; c.beginPath(); c.moveTo(-118, 82); c.lineTo(0, -8); c.lineTo(118, 82); c.lineTo(102, 82); c.lineTo(0, 6); c.lineTo(-102, 82); c.closePath(); c.fill();
+  c.fillStyle = '#FFD36B'; c.fillRect(-68, 104, 40, 40); c.fillRect(28, 104, 40, 40);
+  c.fillStyle = '#2F5544'; c.fillRect(-17, 132, 34, 64);
+  c.fillStyle = '#FFFFFF'; c.fillRect(-140, 192, 280, 10);
+  c.restore();
+  const ink = AXINK[ax] || '#8A643E';
+  c.fillStyle = ink; c.font = '700 28px "Lato", sans-serif'; try { c.letterSpacing = '4px'; } catch (e) {}
+  c.fillText(TX.pcKicker.replace('{n}', n).toUpperCase(), W / 2, 372); try { c.letterSpacing = '0px'; } catch (e) {}
+  c.fillStyle = '#8E2731'; c.font = '700 64px "Cormorant Garamond", Georgia, serif';
+  let y = 452; for (const l of wrapText(c, d.h, 860)){ c.fillText(l, W / 2, y); y += 72; }
+  c.fillStyle = '#C9952F'; c.font = '28px serif'; c.fillText('✦   ✦   ✦', W / 2, y + 4); y += 62;
+  const top = y, bottom = 1172;
+  const items = (data.lines || []).filter(Boolean).map(s => String(s).trim()).slice(0, 7);
+  const multi = items.length > 1;
+  const build = s => { const blocks = []; let h = 0;
+    if (data.q){ c.font = `700 ${Math.min(34, Math.round(s * .58))}px "Lato", sans-serif`; const ls = wrapText(c, data.q, 820); blocks.push({k: 'q', s: Math.min(34, Math.round(s * .58)), ls}); h += ls.length * Math.min(34, s * .58) * 1.35 + s * .5; }
+    items.forEach((it, i) => { c.font = `italic 600 ${s}px "Cormorant Garamond", Georgia, serif`; const ls = wrapText(c, (multi ? '✦ ' : '') + it, 840); blocks.push({k: 'i', s, ls}); h += ls.length * s * 1.22 + (i < items.length - 1 ? s * .38 : 0); });
+    return {blocks, h}; };
+  let s = multi ? 58 : 76, L = build(s); while (L.h > bottom - top && s > 28){ s -= 2; L = build(s); }
+  let yy = top + Math.max(0, (bottom - top - L.h) / 2);
+  L.blocks.forEach(b => {
+    if (b.k === 'q'){ c.fillStyle = ink; c.font = `700 ${b.s}px "Lato", sans-serif`; b.ls.forEach(l => { yy += b.s * 1.1; c.fillText(l, W / 2, yy); yy += b.s * .25; }); yy += s * .5; }
+    else { c.fillStyle = '#3A2233'; c.font = `italic 600 ${b.s}px "Cormorant Garamond", Georgia, serif`; b.ls.forEach(l => { yy += b.s * 1.0; c.fillText(l, W / 2, yy); yy += b.s * .22; }); yy += b.s * .38; }
+  });
+  c.fillStyle = '#7A5A4A'; c.font = '400 26px "Lato", sans-serif'; c.fillText(TX.pcFoot, W / 2, 1262);
+  let url = ''; try { url = cv.toDataURL('image/png'); } catch (e) { return; }
+  if (!document.getElementById('pcimg')) return;
+  box.innerHTML = `<img alt="${esc(TX.pcAlt.replace('{n}', n))}" src="${url}">`;
+  btn.disabled = false;
+  btn.onclick = async () => {
+    const blob = await new Promise(r => cv.toBlob(r, 'image/png')); if (!blob) return;
+    const file = new File([blob], `casita-${n}.png`, {type: 'image/png'});
+    try { if (navigator.canShare && navigator.canShare({files: [file]})){ await navigator.share({files: [file]}); btn.textContent = TX.pcSaved; return; } } catch (e) { if (e && e.name === 'AbortError') return; }
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = file.name; document.body.appendChild(a); a.click(); a.remove(); btn.textContent = TX.pcSaved;
+  };
+}
+const HOUSE = `<svg class="ghouse" viewBox="0 0 64 56" aria-hidden="true"><path d="M32 4 L60 26 H52 V54 H12 V26 H4 Z" fill="#F3BCCB"/><path d="M32 4 L60 26 H4 Z" fill="#A8323C"/><path d="M32 4 L60 26 H55 L32 9 L9 26 H4 Z" fill="#FFFFFF"/><rect x="27" y="36" width="10" height="18" rx="2" fill="#2F5544"/><rect x="15" y="32" width="9" height="9" fill="#FFD36B"/><rect x="40" y="32" width="9" height="9" fill="#FFD36B"/></svg>`;
+Object.assign(XP, {
+  globe:{
+    html:() => `<p class="why">${TX.globe.why}</p>
+      <div class="globe" id="glb" role="button" tabindex="0" aria-label="${TX.globe.shake}"><div class="gball"><div class="gsnow">${Array.from({length: 38}, () => `<i style="left:${(6 + Math.random() * 88).toFixed(1)}%;top:${(58 + Math.random() * 34).toFixed(1)}%;--x:${(Math.random() * 70 - 35).toFixed(0)}px;--d:${(1.4 + Math.random() * 1.4).toFixed(2)}s"></i>`).join('')}</div>${HOUSE}</div><div class="gbase"></div></div>
+      <div class="center"><button class="btn" id="gshake">${TX.globe.shake}</button></div>
+      <div id="gq" class="hidden"><p class="gqtext" id="gqt" aria-live="polite"></p><label class="lbl" for="gmem">${TX.globe.lbl}</label><textarea id="gmem" class="inp" rows="3" placeholder="${TX.globe.ph}"></textarea>
+      <div class="center"><button class="btn ghost" id="gother">${TX.globe.other}</button> <button class="btn" id="gkeep">${TX.globe.keep}</button></div></div>${FIN}`,
+    init(){
+      const g = $('#glb'); let q = -1, busy = false;
+      const shake = () => { if (busy || $('#gkeep').classList.contains('hidden')) return; busy = true; g.classList.remove('shake'); void g.offsetWidth; g.classList.add('shake');
+        later(() => { let k; do { k = Math.floor(Math.random() * TX.globe.qs.length); } while (k === q); q = k; $('#gqt').textContent = TX.globe.qs[q]; $('#gq').classList.remove('hidden'); $('#gshake').classList.add('hidden'); busy = false; }, 1500); };
+      g.addEventListener('click', shake); g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); shake(); } });
+      $('#gshake').addEventListener('click', shake); $('#gother').addEventListener('click', shake);
+      $('#gkeep').addEventListener('click', () => { const v = $('#gmem').value.trim(); if (!v) return $('#gmem').focus(); $('#gkeep').classList.add('hidden'); $('#gother').classList.add('hidden'); pcx = {q: TX.globe.qs[q], lines: [v]}; finish(TX.globe.end); });
+    }
+  },
+  scratch:{
+    html:`<p class="why">${TX.scratch.why}</p>
+      <div class="scr"><div class="scrtxt" id="scrt"></div><canvas id="scrc" width="600" height="340" aria-hidden="true"></canvas></div>
+      <div class="center"><button class="linkbtn" id="scrno">${TX.scratch.noscr}</button></div>
+      <div id="scrok" class="center hidden"><button class="btn" id="scracc">${TX.scratch.accept}</button></div>${FIN}`,
+    init(){
+      const ch = TX.scratch.list[Math.floor(Math.random() * TX.scratch.list.length)]; $('#scrt').textContent = ch;
+      const cv = $('#scrc'), c = cv.getContext('2d'); let done = false, down = false, k = 0;
+      const gr = c.createLinearGradient(0, 0, 600, 340); gr.addColorStop(0, '#E2AE3C'); gr.addColorStop(.5, '#F6DA8A'); gr.addColorStop(1, '#C9952F'); c.fillStyle = gr; c.fillRect(0, 0, 600, 340);
+      c.fillStyle = 'rgba(255,255,255,.4)'; c.textAlign = 'center'; for (let i = 0; i < 50; i++){ c.font = (14 + Math.random() * 20) + 'px serif'; c.fillText('✦', Math.random() * 600, Math.random() * 340); }
+      c.fillStyle = '#7A4E12'; c.font = '700 44px Lato, sans-serif'; c.fillText(TX.scratch.here, 300, 186);
+      const reveal = () => { if (done) return; done = true; cv.classList.add('gone'); $('#scrno').classList.add('hidden'); $('#scrok').classList.remove('hidden'); confetti(30); };
+      const pos = e => { const r = cv.getBoundingClientRect(); return [(e.clientX - r.left) * 600 / r.width, (e.clientY - r.top) * 340 / r.height]; };
+      const rub = e => { if (!down || done) return; const [x, y] = pos(e); c.globalCompositeOperation = 'destination-out'; c.beginPath(); c.arc(x, y, 36, 0, 7); c.fill();
+        if (++k % 6 === 0){ const px = c.getImageData(0, 0, 600, 340).data; let clear = 0, tot = 0; for (let i = 3; i < px.length; i += 80){ tot++; if (px[i] === 0) clear++; } if (clear / tot > .45) reveal(); } };
+      cv.addEventListener('pointerdown', e => { down = true; try { cv.setPointerCapture(e.pointerId); } catch (x) {} rub(e); });
+      cv.addEventListener('pointermove', rub); cv.addEventListener('pointerup', () => down = false); cv.addEventListener('pointercancel', () => down = false);
+      $('#scrno').addEventListener('click', reveal);
+      $('#scracc').addEventListener('click', () => { $('#scrok').classList.add('hidden'); pcx = {q: TX.scratch.pcq, lines: [ch]}; finish(TX.scratch.end, true); });
+    }
+  },
+  night:{
+    html:`<p class="why">${TX.night.why}</p><div id="nrows"></div>
+      <div class="nscene hidden" id="nsc"><div class="nwin" aria-hidden="true"></div><div class="nitems" id="nit" aria-hidden="true"></div><p class="ncap" id="ncap"></p></div>
+      <div class="center hidden" id="nok"><button class="btn" id="ngo">${TX.night.go}</button></div>${FIN}`,
+    init(){
+      const pick = {}, rows = $('#nrows');
+      const vals = () => TX.night.rows.map((_, i) => pick[i]).filter(Boolean);
+      const update = () => { const v = vals(); if (v.length < TX.night.rows.length) return;
+        $('#nsc').classList.remove('hidden'); $('#nit').innerHTML = v.map((x, i) => `<span style="animation-delay:${i * .15}s">${x.split(' ')[0]}</span>`).join(''); $('#ncap').textContent = TX.night.cap; $('#nok').classList.remove('hidden'); };
+      TX.night.rows.forEach((r, ri) => { const w = document.createElement('div'); w.className = 'nrow'; w.innerHTML = `<p class="lbl">${r[0]}</p>`; const box = document.createElement('div'); box.className = 'chips';
+        r[1].forEach(o => { const b = document.createElement('button'); b.type = 'button'; b.className = 'chip'; b.textContent = o; b.setAttribute('aria-pressed', 'false');
+          b.addEventListener('click', () => { if ($('#nok').dataset.done) return; box.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-pressed', 'false')); b.setAttribute('aria-pressed', 'true'); pick[ri] = o; update(); }); box.appendChild(b); });
+        w.appendChild(box); rows.appendChild(w); });
+      $('#ngo').addEventListener('click', () => { $('#nok').dataset.done = '1'; $('#nok').classList.add('hidden'); pcx = {q: TX.night.pcq, lines: vals()}; finish(TX.night.end, true); });
+    }
+  },
+  bottle:{
+    html:`<p class="why">${TX.bottle.why}</p><label class="lbl" for="btx">${TX.bottle.lbl}</label><textarea id="btx" class="inp" rows="4" placeholder="${TX.bottle.ph}"></textarea>
+      <div class="center"><button class="btn" id="bgo2">${TX.bottle.go}</button></div>
+      <div class="sea hidden" id="sea"><div class="wave w2"></div><svg class="bot" viewBox="0 0 120 50" aria-hidden="true"><rect x="8" y="12" width="84" height="28" rx="13" fill="rgba(190,230,215,.85)" stroke="#fff" stroke-width="2"/><rect x="90" y="18" width="14" height="16" rx="3" fill="rgba(190,230,215,.85)" stroke="#fff" stroke-width="2"/><rect x="103" y="19" width="10" height="14" rx="2" fill="#B07A4A"/><rect x="24" y="18" width="50" height="16" rx="8" fill="#FFF6EA"/><path d="M30 26 H68" stroke="#C2566B" stroke-width="2" stroke-dasharray="4 3"/></svg><div class="wave w1"></div></div>${FIN}`,
+    init(){
+      $('#bgo2').addEventListener('click', () => { const v = $('#btx').value.trim(); if (!v) return $('#btx').focus();
+        $('#btx').classList.add('rollup'); $('#bgo2').classList.add('hidden');
+        later(() => { $('#btx').classList.add('hidden'); content.querySelector('label[for="btx"]').classList.add('hidden'); $('#sea').classList.remove('hidden'); }, 700);
+        later(() => { pcx = {q: TX.bottle.pcq, lines: [v]}; finish(TX.bottle.end); }, 3400); });
+    }
+  },
+  stars:{
+    html:`<p class="why">${TX.stars.why}</p><div class="sky2" id="sky2"><svg class="sklines" id="skl" viewBox="0 0 300 230" preserveAspectRatio="none" aria-hidden="true"></svg></div>
+      <div class="srow" id="srow"><input id="sname" class="inp" maxlength="22" placeholder="${TX.stars.ph}" aria-label="${TX.stars.lbl}"><button class="btn" id="sadd">${TX.stars.add} ✦</button></div>
+      <div class="center hidden" id="sdonew"><button class="btn" id="sdone">${TX.stars.done}</button></div>${FIN}`,
+    init(){
+      const P = [[20, 26], [46, 16], [72, 28], [84, 58], [56, 70], [26, 66]]; const names = []; const sky = $('#sky2');
+      const add = () => { const v = $('#sname').value.trim(); if (!v) return $('#sname').focus(); if (names.length >= 6) return; const [x, y] = P[names.length]; names.push(v);
+        const s = document.createElement('div'); s.className = 'st2'; s.style.left = x + '%'; s.style.top = y + '%'; s.innerHTML = `<i></i><span>${esc(v)}</span>`; sky.appendChild(s);
+        $('#skl').innerHTML = names.length > 1 ? `<polyline points="${names.map((_, i) => (P[i][0] * 3) + ',' + (P[i][1] * 2.3)).join(' ')}"/>` : '';
+        $('#sname').value = ''; if (names.length >= 3) $('#sdonew').classList.remove('hidden'); if (names.length >= 6) $('#sadd').disabled = true; else $('#sname').focus(); };
+      $('#sadd').addEventListener('click', add); $('#sname').addEventListener('keydown', e => { if (e.key === 'Enter'){ e.preventDefault(); add(); } });
+      $('#sdone').addEventListener('click', () => { $('#sdonew').classList.add('hidden'); $('#srow').classList.add('hidden'); sky.classList.add('lit2'); pcx = {q: TX.stars.pcq, lines: names}; finish(TX.stars.end, true); });
+    }
+  },
+  compliments:{
+    html:() => `<p class="why">${TX.comp.why}</p><div class="crain" id="rain">${TX.comp.list.map((t, i) => `<button type="button" class="cbub" style="left:${i % 2 ? 52 + (i % 3) * 2 : 3 + (i % 3) * 3}%;animation-duration:16s;animation-delay:${(-(i * 1.6)).toFixed(2)}s">${t}</button>`).join('')}</div>
+      <p class="lbl">${TX.comp.basket} · <span id="ccount">0/3</span></p><ul class="basket" id="bsk"></ul>${FIN}`,
+    init(){
+      const got = [];
+      $$('.cbub').forEach(b => b.addEventListener('click', () => { if (got.length >= 3 || b.classList.contains('caught')) return; got.push(b.textContent); b.classList.add('caught');
+        const li = document.createElement('li'); li.textContent = b.textContent; $('#bsk').appendChild(li); $('#ccount').textContent = got.length + '/3';
+        if (got.length === 3){ $('#rain').classList.add('stop'); pcx = {q: TX.comp.pcq, lines: got}; later(() => finish(TX.comp.end, true), 500); } }));
+    }
+  },
+  child:{
+    html:`<p class="why">${TX.child.why}</p><div id="chc"></div><div class="center hidden" id="chgo"><button class="btn" id="chbtn">${TX.child.go}</button></div>
+      <div class="kidnote hidden" id="kid"></div>${FIN}`,
+    init(){
+      let sel = []; $('#chc').appendChild(chips(TX.child.list, 3, s => { sel = s; $('#chgo').classList.toggle('hidden', s.length < 3); }));
+      $('#chbtn').addEventListener('click', () => { $('#chgo').classList.add('hidden'); $$('#chc .chip').forEach(b => b.disabled = true);
+        const k = $('#kid'); k.innerHTML = `<p>${TX.child.hi}</p><p>${TX.child.see}</p><ul>${sel.map(x => `<li>${esc(x)}</li>`).join('')}</ul><p>${TX.child.bye}</p>`; k.classList.remove('hidden');
+        pcx = {q: TX.child.pcq, lines: sel}; later(() => finish(TX.child.end), 1200); });
+    }
+  },
+  song:{
+    html:`<p class="why">${TX.song.why}</p><label class="lbl" for="sgt">${TX.song.lbl}</label><input id="sgt" class="inp" maxlength="60" placeholder="${TX.song.ph}">
+      <p class="lbl">${TX.song.why2}</p><div id="sgc"></div><div class="center"><button class="btn" id="sggo">${TX.song.go} ♪</button></div>
+      <div class="vinyl hidden" id="vin"><div class="disc"><div class="vlabel" id="vlab"></div></div><span class="note n1">♪</span><span class="note n2">♫</span><span class="note n3">♪</span></div>${FIN}`,
+    init(){
+      let why = []; $('#sgc').appendChild(chips(TX.song.list, 1, s => why = s));
+      $('#sggo').addEventListener('click', () => { const v = $('#sgt').value.trim(); if (!v) return $('#sgt').focus(); $('#sggo').classList.add('hidden'); $$('#sgc .chip').forEach(b => b.disabled = true);
+        $('#vlab').textContent = v; $('#vin').classList.remove('hidden');
+        pcx = {q: TX.song.pcq, lines: [TX.qo + v + TX.qc].concat(why)}; later(() => finish(TX.song.end), 1600); });
+    }
+  },
+  photo:{
+    html:`<p class="why">${TX.photo.why}</p><label class="lbl" for="phx">${TX.photo.lbl}</label><textarea id="phx" class="inp" rows="3" placeholder="${TX.photo.ph}"></textarea>
+      <div class="center"><button class="btn" id="phgo">${TX.photo.go}</button></div>
+      <div class="polaroid hidden" id="pol"><div class="pimg" aria-hidden="true">✦</div><p class="pcap" id="pcap"></p></div>${FIN}`,
+    init(){
+      $('#phgo').addEventListener('click', () => { const v = $('#phx').value.trim(); if (!v) return $('#phx').focus(); $('#phgo').classList.add('hidden');
+        $('#pcap').textContent = v; $('#pol').classList.remove('hidden'); $('#pol').classList.add('dev');
+        pcx = {q: TX.photo.pcq, lines: [v]}; later(() => finish(TX.photo.end), 2700); });
+    }
+  },
+  toast:{
+    html:`<p class="why">${TX.toast.why}</p><label class="lbl" for="tst">${TX.toast.lbl}</label><textarea id="tst" class="inp" rows="2" placeholder="${TX.toast.ph}"></textarea>
+      <div class="center"><button class="btn" id="tgo">${TX.toast.go} 🥂</button></div>
+      <div class="glasses hidden" id="gls" aria-hidden="true">${['l', 'r'].map(s => `<svg class="flute ${s}" viewBox="0 0 70 150"><path d="M14 6 H56 L50 70 Q35 86 20 70 Z" fill="rgba(255,255,255,.55)" stroke="#C9952F" stroke-width="3"/><path d="M17 30 H53 L50 70 Q35 84 20 70 Z" fill="#F6D27A"/><circle cx="30" cy="52" r="2.5" fill="#fff"/><circle cx="40" cy="42" r="2" fill="#fff"/><circle cx="36" cy="62" r="2" fill="#fff"/><path d="M35 80 V136" stroke="#C9952F" stroke-width="4"/><path d="M18 140 H52" stroke="#C9952F" stroke-width="5" stroke-linecap="round"/></svg>`).join('')}<span class="spark">✦</span></div>${FIN}`,
+    init(){
+      $('#tgo').addEventListener('click', () => { const v = $('#tst').value.trim(); if (!v) return $('#tst').focus(); $('#tgo').classList.add('hidden');
+        $('#gls').classList.remove('hidden'); pcx = {q: TX.toast.pcq, lines: [v]}; later(() => { confetti(); }, 800); later(() => finish(TX.toast.end, true), 1500); });
+    }
+  }
+});
+
 function show(n, btn){
-  lastBtn = btn; curDay = n; timers.forEach(clearTimeout); timers = [];
+  lastBtn = btn; curDay = n; pcx = null; timers.forEach(clearTimeout); timers = [];
   card.querySelectorAll('.confetti').forEach(c => c.remove());
   const d = DAYS[n];
   if (!isOpen(n)){
