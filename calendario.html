@@ -455,6 +455,27 @@
   /* phrase douce (jour 13) */
   #fnew.kind{position:relative;padding:22px 20px;background:#FFFDF8;box-shadow:inset 0 0 0 2px var(--gold),0 8px 24px rgba(201,149,47,.25);font-size:21px;line-height:1.35}
   #fnew.kind::before{content:"✦";position:absolute;top:6px;left:10px;color:var(--gold)} #fnew.kind::after{content:"✦";position:absolute;bottom:6px;right:10px;color:var(--gold)}
+
+  /* ===== respiration guidee (nov. 2026) ===== */
+  .bstage{position:relative;margin:10px 0 6px;padding:16px 12px 18px;border-radius:18px;background:linear-gradient(180deg,#FBF1E6,#F5E3DC);transition:background 1.6s ease;overflow:hidden;text-align:center}
+  .bstage.on{background:linear-gradient(180deg,#1E1B3F,#2D2858)}
+  .bstage.done{background:radial-gradient(ellipse at 50% 34%,#7A4A2A 0%,#3B2A4A 52%,#1E1B3F 100%)}
+  .bstage .breath{margin:6px auto 0}
+  .bstage .glass{transition:transform 4s ease-in-out,filter 4s ease-in-out}
+  .bstage .glass.in{transform:scale(1.22);filter:brightness(1.18) saturate(1.1)}
+  .bcue{font-family:'Cormorant Garamond',Georgia,serif;font-size:22px!important;font-weight:700;line-height:1.25;min-height:56px;margin:8px 4px 0!important;color:#6E3523;transition:opacity .6s ease}
+  .bstage.on .bcue,.bstage.done .bcue{color:#FFE9C2;text-shadow:0 1px 8px rgba(0,0,0,.35)}
+  .bcue.fade{opacity:0}
+  .bnum{font-family:'Cormorant Garamond',Georgia,serif;font-size:46px!important;font-weight:700;line-height:1;min-height:48px;margin:2px 0 0!important;color:#FFD36B;text-shadow:0 0 14px rgba(255,200,90,.6)}
+  .bnum.tick{animation:tick .45s ease}
+  @keyframes tick{0%{transform:scale(.7);opacity:.3}60%{transform:scale(1.12);opacity:1}100%{transform:scale(1)}}
+  .bdots{display:none;gap:9px;justify-content:center;margin-top:10px}
+  .bstage.on .bdots{display:flex}
+  .bdots i{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.22);transition:background .6s,box-shadow .6s}
+  .bdots i.on{background:#FFD36B;box-shadow:0 0 10px #FFD36B}
+  .bstage .sf{position:absolute;top:-12px;border-radius:50%;background:#fff;opacity:0;animation:sfall3 linear infinite}
+  .bstage.on .sf,.bstage.done .sf{opacity:.8}
+  @keyframes sfall3{to{transform:translate(var(--dx,0),340px)}}
 </style>
 </head>
 <body>
@@ -510,11 +531,11 @@ const PRODUCTS = {
   integrale:["L'Intégrale Casita","8 cuadernos y 4 programas, en francés","https://jennandrea.gumroad.com/l/ylpuap"]
 };
 const MORE = {
-  1:["anx","Si la ansiedad te acompaña a menudo, este cuaderno te ayuda a entender cómo funciona y a que ocupe menos espacio."],
+  1:["anx","Si a veces la ansiedad o el estrés se hacen grandes, este cuaderno te ayuda a entender cómo funcionan y a que ocupen menos espacio."],
   2:["journal","Escribir lo que pesa es un verdadero cuidado. Este programa te acompaña con una página de escritura guiada cada día durante un mes."],
   3:["aimer","Si estas frases te hicieron bien, este cuaderno te ayuda a construir, día a día, una relación más tierna contigo."],
   4:["anx20","Tu refugio es una primera herramienta. Este programa de 20 días te da muchas más, paso a paso."],
-  5:["kit","Esta tarjeta nace del espíritu del Kit: todas las herramientas concretas para atravesar una crisis de angustia, reunidas en un cuaderno."],
+  5:["kit","Si lo que más te cuesta son los momentos de angustia, este cuaderno reúne todas las herramientas concretas para atravesarlos."],
   6:["qui","Para explorar más a fondo tus valores, tus necesidades y lo que te hace ser quien eres, este cuaderno es una bonita puerta de entrada."],
   7:["anx","Los rituales que calman están en el corazón de este cuaderno, para aliviar el cuerpo y la mente cuando el estrés se acumula."],
   8:["journal","Poner palabras a tu clima interior cada día es justo lo que propone este diario guiado de 30 días."],
@@ -528,7 +549,7 @@ const MORE = {
   16:["aimer","Reconocer tus cualidades es un primer paso. Este cuaderno te ayuda a mirarte con más justicia y más ternura."],
   17:["paralyse","Si este miedo ocupa mucho espacio, este cuaderno te ayuda a explorarlo y a mirarlo de otra manera."],
   18:["voix","Para hacer crecer esa voz bondadosa frente a la voz crítica, este cuaderno propone muchos ejercicios."],
-  19:["anx20","Tomar distancia de los pensamientos es una de las claves de este programa para salir de la ansiedad en 20 días."],
+  19:["anx20","Si los pensamientos ansiosos te acompañan a menudo, tomar distancia de ellos es una de las claves de este programa de 20 días."],
   20:["voyage","¿Te llama la atención plena? Este viaje interior de 35 días te invita a ir más despacio y a reencontrarte."],
   21:["oser28","Para seguir subiendo escalones a tu ritmo, este programa te acompaña durante 28 días."],
   22:["sens","Si algunas habitaciones de tu casa parecen vacías, este cuaderno te ayuda a reencontrar lo que da sentido a tus días."],
@@ -547,13 +568,13 @@ const DAYS = {
   2:{tag:"Experiencia · 3 min",h:"Confía una preocupación a la nieve",k:"snow"},
   3:{tag:"Experiencia · 1 min",h:"Elige tu carta de ternura",k:"cards"},
   4:{tag:"Experiencia · 3 min",h:"Crea tu rincón refugio",k:"refuge"},
-  5:{tag:"Regalo · en una hoja",c:"t-gift",h:"Tu tarjeta SOS contra la angustia",k:"unwrap",d:{
-      inner:`<div class="fiche"><p class="fk">Inspirada en el Kit de Crise Anxieuse</p><h3>Mi tarjeta SOS</h3>
-<p class="prep">Prepara un papelito y un bolígrafo. Esta tarjeta cabe en la cartera: estará ahí el día que la angustia suba.</p>
-<ol><li><strong>Mis señales de alerta.</strong> Anota tres señales que te avisan de que llega la ansiedad (el corazón se acelera, los pensamientos dan vueltas, la garganta se cierra…).</li>
+  5:{tag:"Regalo · en una hoja",c:"t-gift",h:"Tu tarjeta SOS para los días difíciles",k:"unwrap",d:{
+      inner:`<div class="fiche"><p class="fk">Para el estrés, la tristeza o los nervios</p><h3>Mi tarjeta SOS</h3>
+<p class="prep">Prepara un papelito y un bolígrafo. Esta tarjeta cabe en la cartera: estará ahí el día en que todo se haga cuesta arriba, sea estrés, tristeza, enfado o ansiedad.</p>
+<ol><li><strong>Mis señales de alerta.</strong> Anota tres señales que te avisan de que vas al límite (el corazón se acelera, te irritas por todo, los pensamientos dan vueltas, se te cierra la garganta…).</li>
 <li><strong>Lo que me calma.</strong> Anota tres gestos que te ayudan: respirar en cuadrado, pasar agua fresca por las muñecas, nombrar 5 cosas a tu alrededor…</li>
 <li><strong>Mi persona de apoyo.</strong> El nombre y el número de alguien a quien puedas llamar.</li>
-<li><strong>Mi frase ancla.</strong> Por detrás, en grande: «Es una ola. Sube, y va a volver a bajar.»</li></ol>
+<li><strong>Mi frase ancla.</strong> Por detrás, en grande: «Es una ola. Sube, y va a volver a bajar.» o la frase que a ti te sirva.</li></ol>
 <p class="fend">Dobla la tarjeta y guárdala. Solo saber que está ahí ya tranquiliza.</p></div>`}},
   6:{tag:"Experiencia · 3 min",h:"Tu brújula interior",k:"compass"},
   7:{tag:"Regalo · en una hoja",c:"t-gift",h:"Tu ritual de noche para calmarte",k:"unwrap",d:{
@@ -671,25 +692,39 @@ function holdable(el, ms, onTick, onDone){
 // ---------- las experiencias ----------
 const XP = {
   breath:{
-    html:`<p class="why">Sigue la luz de la ventana. Cuando crece, inspira. Cuando disminuye, espira. Cinco respiraciones, nada más.</p>
-      <div class="breath"><div class="halo" id="halo"></div><div class="glass"><span id="bword">¿Empezamos?</span></div></div>
-      <p class="count" id="bcount"></p><div class="center"><button class="btn" id="bstart">Empezar</button></div>
+    html:`<p class="why">Dos minutos solo para ti. Siéntate cómodamente, apoya los pies en el suelo y, si te apetece, pon una mano sobre el vientre. La ventana te guía: cuando se enciende, tomas aire; cuando se apaga, lo sueltas despacio.</p>
+      <div class="bstage" id="bstage">${Array.from({length: 26}, () => `<i class="sf" aria-hidden="true" style="left:${Math.random()*100}%;width:${3+Math.random()*4}px;height:${3+Math.random()*4}px;animation-duration:${6+Math.random()*6}s;animation-delay:${-Math.random()*10}s;--dx:${Math.random()*30-15}px"></i>`).join('')}<div class="breath"><div class="halo" id="halo"></div><div class="glass" id="bglass"><span id="bword">¿Empezamos?</span></div></div>
+      <p class="bcue" id="bcue" aria-live="polite">Cuando quieras, pulsa «Empezar a respirar»</p><p class="bnum" id="bnum" aria-hidden="true"></p>
+      <div class="bdots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>
+      <div class="center"><button class="btn" id="bstart">Empezar a respirar</button></div>
       <div id="bend" class="hidden"><p class="end"><strong>Para terminar</strong> ¿Cómo te sientes, en una palabra? Escríbela aquí: te estará esperando el 23 de diciembre.</p>
       <label class="lbl" for="bmot">Mi palabra del 1 de diciembre</label><input id="bmot" class="inp" maxlength="30" placeholder="ej. cansancio, calma, curiosidad…"></div>`,
     init(){
-      const halo = $('#halo'), word = $('#bword'), cnt = $('#bcount'), st = $('#bstart');
+      const halo = $('#halo'), word = $('#bword'), cue = $('#bcue'), num = $('#bnum'), st = $('#bstart'), stage = $('#bstage'), gl = $('#bglass'), dots = $$('#bstage .bdots i');
       $('#bmot').value = store.get('mot', '');
       $('#bmot').addEventListener('input', e => store.set('mot', e.target.value));
+      const say = txt => { cue.classList.add('fade'); later(() => { cue.textContent = txt; cue.classList.remove('fade'); }, 350); };
+      const count = (from, to) => { const step = from < to ? 1 : -1; let k = 0; for (let v = from; step > 0 ? v <= to : v >= to; v += step){ later(() => { num.textContent = v; num.classList.remove('tick'); void num.offsetWidth; num.classList.add('tick'); }, k * 1000); k++; } };
+      const buzz = () => { try { navigator.vibrate && navigator.vibrate(25); } catch (e) {} };
       st.addEventListener('click', () => {
-        st.classList.add('hidden'); let i = 0;
+        st.classList.add('hidden'); stage.classList.add('on'); let i = 0;
         const cycle = () => {
-          if (i >= 5){ word.textContent = 'Gracias'; cnt.textContent = ''; $('#bend').classList.remove('hidden'); $('#bend').insertAdjacentHTML('beforeend', moreHTML()); return; }
-          i++; cnt.textContent = `Respiración ${i} de 5`;
-          word.textContent = 'Inspira…'; halo.style.transition = 'transform 4s ease-in-out,opacity 4s'; halo.style.transform = 'scale(1.9)'; halo.style.opacity = '1';
-          later(() => { word.textContent = 'Espira…'; halo.style.transition = 'transform 6s ease-in-out,opacity 6s'; halo.style.transform = 'scale(1)'; halo.style.opacity = '.55'; }, 4000);
+          if (i >= 5){
+            num.textContent = ''; word.textContent = "Gracias"; stage.classList.remove('on'); stage.classList.add('done'); say("Muy bien. Quédate un momento con esta calma.");
+            later(() => { $('#bend').classList.remove('hidden'); $('#bend').insertAdjacentHTML('beforeend', moreHTML()); }, 2600); return;
+          }
+          dots[i].classList.add('on'); i++;
+          buzz(); word.textContent = "Inspira"; say("Toma aire suavemente por la nariz…"); count(1, 4);
+          gl.style.transition = 'transform 4s ease-in-out,filter 4s ease-in-out'; gl.classList.add('in');
+          halo.style.transition = 'transform 4s ease-in-out,opacity 4s'; halo.style.transform = 'scale(1.9)'; halo.style.opacity = '1';
+          later(() => {
+            buzz(); word.textContent = "Suelta"; say("Y suéltalo por la boca, despacio…"); count(6, 1);
+            gl.style.transition = 'transform 6s ease-in-out,filter 6s ease-in-out'; gl.classList.remove('in');
+            halo.style.transition = 'transform 6s ease-in-out,opacity 6s'; halo.style.transform = 'scale(1)'; halo.style.opacity = '.55';
+          }, 4000);
           later(cycle, 10000);
         };
-        cycle();
+        later(cycle, 900);
       });
     }
   },
@@ -755,7 +790,7 @@ const XP = {
       }));
       $('#rgo').addEventListener('click', () => { $('#rgo').classList.add('hidden');
         sc.style.transition = 'transform 1.2s'; sc.style.transform = 'scale(1.06)'; store.set('refuge', sel);
-        finish(`Cierra los ojos unas respiraciones e imagínate en este refugio: ${sel.join(', ').toLowerCase()}. Elige un gesto clave, como una mano en el corazón. Cuando suba la ansiedad, repite ese gesto: te traerá suavemente de vuelta aquí.`);
+        finish(`Cierra los ojos unas respiraciones e imagínate en este refugio: ${sel.join(', ').toLowerCase()}. Elige un gesto clave, como una mano en el corazón. Cuando el día pese o los nervios suban, repite ese gesto: te traerá suavemente de vuelta aquí.`);
       });
     }
   },

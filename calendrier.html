@@ -455,6 +455,27 @@
   /* phrase douce (jour 13) */
   #fnew.kind{position:relative;padding:22px 20px;background:#FFFDF8;box-shadow:inset 0 0 0 2px var(--gold),0 8px 24px rgba(201,149,47,.25);font-size:21px;line-height:1.35}
   #fnew.kind::before{content:"✦";position:absolute;top:6px;left:10px;color:var(--gold)} #fnew.kind::after{content:"✦";position:absolute;bottom:6px;right:10px;color:var(--gold)}
+
+  /* ===== respiration guidee (nov. 2026) ===== */
+  .bstage{position:relative;margin:10px 0 6px;padding:16px 12px 18px;border-radius:18px;background:linear-gradient(180deg,#FBF1E6,#F5E3DC);transition:background 1.6s ease;overflow:hidden;text-align:center}
+  .bstage.on{background:linear-gradient(180deg,#1E1B3F,#2D2858)}
+  .bstage.done{background:radial-gradient(ellipse at 50% 34%,#7A4A2A 0%,#3B2A4A 52%,#1E1B3F 100%)}
+  .bstage .breath{margin:6px auto 0}
+  .bstage .glass{transition:transform 4s ease-in-out,filter 4s ease-in-out}
+  .bstage .glass.in{transform:scale(1.22);filter:brightness(1.18) saturate(1.1)}
+  .bcue{font-family:'Cormorant Garamond',Georgia,serif;font-size:22px!important;font-weight:700;line-height:1.25;min-height:56px;margin:8px 4px 0!important;color:#6E3523;transition:opacity .6s ease}
+  .bstage.on .bcue,.bstage.done .bcue{color:#FFE9C2;text-shadow:0 1px 8px rgba(0,0,0,.35)}
+  .bcue.fade{opacity:0}
+  .bnum{font-family:'Cormorant Garamond',Georgia,serif;font-size:46px!important;font-weight:700;line-height:1;min-height:48px;margin:2px 0 0!important;color:#FFD36B;text-shadow:0 0 14px rgba(255,200,90,.6)}
+  .bnum.tick{animation:tick .45s ease}
+  @keyframes tick{0%{transform:scale(.7);opacity:.3}60%{transform:scale(1.12);opacity:1}100%{transform:scale(1)}}
+  .bdots{display:none;gap:9px;justify-content:center;margin-top:10px}
+  .bstage.on .bdots{display:flex}
+  .bdots i{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.22);transition:background .6s,box-shadow .6s}
+  .bdots i.on{background:#FFD36B;box-shadow:0 0 10px #FFD36B}
+  .bstage .sf{position:absolute;top:-12px;border-radius:50%;background:#fff;opacity:0;animation:sfall3 linear infinite}
+  .bstage.on .sf,.bstage.done .sf{opacity:.8}
+  @keyframes sfall3{to{transform:translate(var(--dx,0),340px)}}
 </style>
 </head>
 <body>
@@ -495,7 +516,7 @@ const BOXES = {
   25:[498,1002,632,1248]
 };
 const PRODUCTS = {"anx": ["Apprivoiser l'Anxiété", "cahier", "https://jennandrea.gumroad.com/l/gjvfx"], "kit": ["Kit de Crise Anxieuse", "cahier", "https://jennandrea.gumroad.com/l/nwxih"], "anx20": ["Sortir de l'anxiété en 20 jours", "programme", "https://jennandrea.gumroad.com/l/lsstww"], "qui": ["Qui suis-je vraiment ?", "cahier", "https://jennandrea.gumroad.com/l/tqlwld"], "journal": ["Journal de l'Intérieur", "programme de 30 jours", "https://jennandrea.gumroad.com/l/ewlbyx"], "voyage": ["Voyage Intérieur", "programme de 35 jours", "https://jennandrea.gumroad.com/l/rbjpn"], "aimer": ["J'apprends à m'aimer", "cahier", "https://jennandrea.gumroad.com/l/vyxyc"], "voix": ["Cette voix qui me détruit", "cahier", "https://jennandrea.gumroad.com/l/qsdloo"], "conf24": ["Reprendre confiance en 24 jours", "programme", "https://jennandrea.gumroad.com/l/irnljk"], "paralyse": ["Ce qui me paralyse", "cahier", "https://jennandrea.gumroad.com/l/aorhra"], "oser28": ["Oser enfin en 28 jours", "programme", "https://jennandrea.gumroad.com/l/fktqwy"], "sens": ["Je ne sais plus pourquoi je me lève", "cahier", "https://jennandrea.gumroad.com/l/keoph"], "integrale": ["L'Intégrale Casita", "8 cahiers et 4 programmes", "https://jennandrea.gumroad.com/l/ylpuap"]};
-const MORE = {"1": ["anx", "Si l'anxiété est souvent là, ce cahier vous aide à comprendre ses mécanismes et à la rendre moins envahissante."], "2": ["journal", "Écrire ce qui pèse est un vrai soin. Ce programme vous accompagne avec une page d'écriture guidée chaque jour pendant un mois."], "3": ["aimer", "Si ces phrases vous ont fait du bien, ce cahier vous aide à installer jour après jour une relation plus douce avec vous-même."], "4": ["anx20", "Votre refuge est un premier outil. Ce programme en 20 jours vous en donne beaucoup d'autres, étape par étape."], "5": ["kit", "Cette carte est tirée de l'esprit du Kit : tous les outils concrets pour traverser une crise d'angoisse, réunis en un seul cahier."], "6": ["qui", "Pour explorer plus loin vos valeurs, vos besoins et ce qui vous rend unique, ce cahier est une belle porte d'entrée."], "7": ["anx", "Les rituels apaisants sont au cœur de ce cahier, pour calmer le corps et le mental quand le stress s'accumule."], "8": ["journal", "Mettre des mots sur sa météo intérieure chaque jour, c'est exactement ce que propose ce journal guidé de 30 jours."], "9": ["voyage", "Si ce moment de calme vous a plu, ce voyage de 35 jours vous emmène plus loin, à la rencontre de vous-même."], "10": ["conf24", "Poser ses limites demande de la confiance en soi. Ce programme vous aide à la reconstruire, un jour à la fois."], "11": ["aimer", "L'autocompassion s'apprend. Ce cahier vous guide pour devenir votre propre allié·e, même dans les jours difficiles."], "12": ["qui", "Nos besoins disent beaucoup de qui nous sommes. Ce cahier vous aide à les reconnaître et à les honorer."], "13": ["voix", "Cette voix dure a un nom : le critique intérieur. Ce cahier vous apprend à la reconnaître et à lui répondre."], "14": ["conf24", "Chaque petite victoire nourrit la confiance. Ce programme vous aide à la faire grandir, pas à pas, sur 24 jours."], "15": ["paralyse", "Pour comprendre ce qui vous retient et commencer à desserrer l'étau de la peur, ce cahier est fait pour vous."], "16": ["aimer", "Reconnaître ses qualités est un premier pas. Ce cahier vous aide à poser un regard plus juste et plus tendre sur vous."], "17": ["paralyse", "Si cette peur prend beaucoup de place, ce cahier vous aide à l'explorer et à la regarder autrement."], "18": ["voix", "Pour faire grandir cette voix bienveillante face à la voix critique, ce cahier propose de nombreux exercices."], "19": ["anx20", "Prendre de la distance avec ses pensées est l'une des clés de ce programme pour sortir de l'anxiété en 20 jours."], "20": ["voyage", "La pleine conscience vous parle ? Ce voyage intérieur de 35 jours vous invite à ralentir et à vous retrouver."], "21": ["oser28", "Pour continuer à gravir les marches à votre rythme, ce programme vous accompagne pendant 28 jours."], "22": ["sens", "Si certaines pièces de votre maison semblent vides, ce cahier vous aide à retrouver ce qui donne du sens à vos journées."], "23": ["journal", "Faire le point régulièrement change tout. Ce journal guidé vous propose un rendez-vous avec vous-même chaque jour."], "24": ["sens", "Pour que votre mot devienne une direction, ce cahier vous aide à reconnecter avec ce qui compte vraiment."], "25": ["integrale", "Si vous souhaitez continuer à habiter votre maison intérieure toute l'année, l'Intégrale réunit tous les cahiers et programmes Casita."]};
+const MORE = {"1": ["anx", "Si l'anxiété ou le stress prennent parfois beaucoup de place, ce cahier vous aide à comprendre leurs mécanismes et à les rendre moins envahissants."], "2": ["journal", "Écrire ce qui pèse est un vrai soin. Ce programme vous accompagne avec une page d'écriture guidée chaque jour pendant un mois."], "3": ["aimer", "Si ces phrases vous ont fait du bien, ce cahier vous aide à installer jour après jour une relation plus douce avec vous-même."], "4": ["anx20", "Votre refuge est un premier outil. Ce programme en 20 jours vous en donne beaucoup d'autres, étape par étape."], "5": ["kit", "Si ce sont surtout les moments d'angoisse qui vous pèsent, ce cahier réunit tous les outils concrets pour les traverser."], "6": ["qui", "Pour explorer plus loin vos valeurs, vos besoins et ce qui vous rend unique, ce cahier est une belle porte d'entrée."], "7": ["anx", "Les rituels apaisants sont au cœur de ce cahier, pour calmer le corps et le mental quand le stress s'accumule."], "8": ["journal", "Mettre des mots sur sa météo intérieure chaque jour, c'est exactement ce que propose ce journal guidé de 30 jours."], "9": ["voyage", "Si ce moment de calme vous a plu, ce voyage de 35 jours vous emmène plus loin, à la rencontre de vous-même."], "10": ["conf24", "Poser ses limites demande de la confiance en soi. Ce programme vous aide à la reconstruire, un jour à la fois."], "11": ["aimer", "L'autocompassion s'apprend. Ce cahier vous guide pour devenir votre propre allié·e, même dans les jours difficiles."], "12": ["qui", "Nos besoins disent beaucoup de qui nous sommes. Ce cahier vous aide à les reconnaître et à les honorer."], "13": ["voix", "Cette voix dure a un nom : le critique intérieur. Ce cahier vous apprend à la reconnaître et à lui répondre."], "14": ["conf24", "Chaque petite victoire nourrit la confiance. Ce programme vous aide à la faire grandir, pas à pas, sur 24 jours."], "15": ["paralyse", "Pour comprendre ce qui vous retient et commencer à desserrer l'étau de la peur, ce cahier est fait pour vous."], "16": ["aimer", "Reconnaître ses qualités est un premier pas. Ce cahier vous aide à poser un regard plus juste et plus tendre sur vous."], "17": ["paralyse", "Si cette peur prend beaucoup de place, ce cahier vous aide à l'explorer et à la regarder autrement."], "18": ["voix", "Pour faire grandir cette voix bienveillante face à la voix critique, ce cahier propose de nombreux exercices."], "19": ["anx20", "Si les pensées anxieuses sont souvent là, prendre de la distance avec elles est l'une des clés de ce programme de 20 jours."], "20": ["voyage", "La pleine conscience vous parle ? Ce voyage intérieur de 35 jours vous invite à ralentir et à vous retrouver."], "21": ["oser28", "Pour continuer à gravir les marches à votre rythme, ce programme vous accompagne pendant 28 jours."], "22": ["sens", "Si certaines pièces de votre maison semblent vides, ce cahier vous aide à retrouver ce qui donne du sens à vos journées."], "23": ["journal", "Faire le point régulièrement change tout. Ce journal guidé vous propose un rendez-vous avec vous-même chaque jour."], "24": ["sens", "Pour que votre mot devienne une direction, ce cahier vous aide à reconnecter avec ce qui compte vraiment."], "25": ["integrale", "Si vous souhaitez continuer à habiter votre maison intérieure toute l'année, l'Intégrale réunit tous les cahiers et programmes Casita."]};
 let curDay = 0;
 const AX = {"anx": "apaiser", "kit": "apaiser", "anx20": "apaiser", "qui": "comprendre", "journal": "comprendre", "voyage": "comprendre", "aimer": "reconstruire", "voix": "reconstruire", "conf24": "reconstruire", "paralyse": "oser", "oser28": "oser", "sens": "sens"};
 const AXN = {"apaiser": "S'apaiser", "comprendre": "Se comprendre", "reconstruire": "Se reconstruire", "oser": "Oser", "sens": "Donner du sens"};
@@ -509,13 +530,13 @@ const DAYS = {
   2:{tag:"Expérience · 3 min",h:"Confiez un souci à la neige",k:"snow"},
   3:{tag:"Expérience · 1 min",h:"Tirez votre carte douceur",k:"cards"},
   4:{tag:"Expérience · 3 min",h:"Composez votre coin refuge",k:"refuge"},
-  5:{tag:"Cadeau · sur une feuille",c:"t-gift",h:"Votre carte SOS anti-angoisse",k:"unwrap",d:{
-      inner:`<div class="fiche"><p class="fk">Inspirée du Kit de Crise Anxieuse</p><h3>Ma carte SOS</h3>
-<p class="prep">Préparez une petite feuille et un stylo. Cette carte se glisse dans un portefeuille : elle sera là le jour où l'angoisse monte.</p>
-<ol><li><strong>Mes signaux d'alerte.</strong> Notez trois signes qui vous montrent que l'anxiété arrive (cœur qui s'accélère, pensées qui tournent, gorge serrée…).</li>
+  5:{tag:"Cadeau · sur une feuille",c:"t-gift",h:"Votre carte SOS pour les jours difficiles",k:"unwrap",d:{
+      inner:`<div class="fiche"><p class="fk">Pour le stress, la tristesse ou la tension</p><h3>Ma carte SOS</h3>
+<p class="prep">Préparez une petite feuille et un stylo. Cette carte se glisse dans un portefeuille : elle sera là le jour où tout devient lourd, que ce soit du stress, de la tristesse, de la colère ou de l'angoisse.</p>
+<ol><li><strong>Mes signaux d'alerte.</strong> Notez trois signes qui vous montrent que vous arrivez à vos limites (cœur qui s'accélère, irritabilité, pensées qui tournent, gorge serrée…).</li>
 <li><strong>Ce qui m'apaise.</strong> Notez trois gestes qui vous aident : respirer en carré, passer de l'eau fraîche sur les poignets, nommer 5 choses autour de vous…</li>
 <li><strong>Ma personne-ressource.</strong> Le prénom et le numéro de quelqu'un que vous pouvez appeler.</li>
-<li><strong>Ma phrase-ancre.</strong> Au dos, en grand : « C'est une vague. Elle monte, et elle va redescendre. »</li></ol>
+<li><strong>Ma phrase-ancre.</strong> Au dos, en grand : « C'est une vague. Elle monte, et elle va redescendre. », ou la phrase qui vous fait du bien.</li></ol>
 <p class="fend">Pliez la carte et rangez-la. Le simple fait de savoir qu'elle est là rassure déjà.</p></div>`}},
   6:{tag:"Expérience · 3 min",h:"Votre boussole intérieure",k:"compass"},
   7:{tag:"Cadeau · sur une feuille",c:"t-gift",h:"Votre rituel du soir apaisant",k:"unwrap",d:{
@@ -633,25 +654,39 @@ function holdable(el, ms, onTick, onDone){
 // ---------- les expériences ----------
 const XP = {
   breath:{
-    html:`<p class="why">Suivez la lumière de la fenêtre. Quand elle grandit, inspirez. Quand elle diminue, expirez. Cinq souffles, pas plus.</p>
-      <div class="breath"><div class="halo" id="halo"></div><div class="glass"><span id="bword">Prêt·e ?</span></div></div>
-      <p class="count" id="bcount"></p><div class="center"><button class="btn" id="bstart">Commencer</button></div>
+    html:`<p class="why">Deux minutes rien que pour vous. Installez-vous confortablement, les pieds bien posés au sol et, si vous le souhaitez, une main sur le ventre. La fenêtre vous guide : quand elle s'illumine, vous inspirez ; quand elle s'éteint, vous relâchez l'air doucement.</p>
+      <div class="bstage" id="bstage">${Array.from({length: 26}, () => `<i class="sf" aria-hidden="true" style="left:${Math.random()*100}%;width:${3+Math.random()*4}px;height:${3+Math.random()*4}px;animation-duration:${6+Math.random()*6}s;animation-delay:${-Math.random()*10}s;--dx:${Math.random()*30-15}px"></i>`).join('')}<div class="breath"><div class="halo" id="halo"></div><div class="glass" id="bglass"><span id="bword">On commence ?</span></div></div>
+      <p class="bcue" id="bcue" aria-live="polite">Quand vous êtes prêt·e, appuyez sur « Commencer à respirer »</p><p class="bnum" id="bnum" aria-hidden="true"></p>
+      <div class="bdots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>
+      <div class="center"><button class="btn" id="bstart">Commencer à respirer</button></div>
       <div id="bend" class="hidden"><p class="end"><strong>Pour finir</strong> Comment vous sentez-vous, en un mot ? Écrivez-le ici : il vous attendra le 23 décembre.</p>
       <label class="lbl" for="bmot">Mon mot du 1er décembre</label><input id="bmot" class="inp" maxlength="30" placeholder="ex. fatigue, calme, curiosité…"></div>`,
     init(){
-      const halo = $('#halo'), word = $('#bword'), cnt = $('#bcount'), st = $('#bstart');
+      const halo = $('#halo'), word = $('#bword'), cue = $('#bcue'), num = $('#bnum'), st = $('#bstart'), stage = $('#bstage'), gl = $('#bglass'), dots = $$('#bstage .bdots i');
       $('#bmot').value = store.get('mot', '');
       $('#bmot').addEventListener('input', e => store.set('mot', e.target.value));
+      const say = txt => { cue.classList.add('fade'); later(() => { cue.textContent = txt; cue.classList.remove('fade'); }, 350); };
+      const count = (from, to) => { const step = from < to ? 1 : -1; let k = 0; for (let v = from; step > 0 ? v <= to : v >= to; v += step){ later(() => { num.textContent = v; num.classList.remove('tick'); void num.offsetWidth; num.classList.add('tick'); }, k * 1000); k++; } };
+      const buzz = () => { try { navigator.vibrate && navigator.vibrate(25); } catch (e) {} };
       st.addEventListener('click', () => {
-        st.classList.add('hidden'); let i = 0;
+        st.classList.add('hidden'); stage.classList.add('on'); let i = 0;
         const cycle = () => {
-          if (i >= 5){ word.textContent = 'Merci'; cnt.textContent = ''; $('#bend').classList.remove('hidden'); $('#bend').insertAdjacentHTML('beforeend', moreHTML()); return; }
-          i++; cnt.textContent = `Souffle ${i} sur 5`;
-          word.textContent = 'Inspirez…'; halo.style.transition = 'transform 4s ease-in-out,opacity 4s'; halo.style.transform = 'scale(1.9)'; halo.style.opacity = '1';
-          later(() => { word.textContent = 'Expirez…'; halo.style.transition = 'transform 6s ease-in-out,opacity 6s'; halo.style.transform = 'scale(1)'; halo.style.opacity = '.55'; }, 4000);
+          if (i >= 5){
+            num.textContent = ''; word.textContent = "Merci"; stage.classList.remove('on'); stage.classList.add('done'); say("C'est très bien. Restez un instant avec ce calme.");
+            later(() => { $('#bend').classList.remove('hidden'); $('#bend').insertAdjacentHTML('beforeend', moreHTML()); }, 2600); return;
+          }
+          dots[i].classList.add('on'); i++;
+          buzz(); word.textContent = "Inspirez"; say("Inspirez doucement par le nez…"); count(1, 4);
+          gl.style.transition = 'transform 4s ease-in-out,filter 4s ease-in-out'; gl.classList.add('in');
+          halo.style.transition = 'transform 4s ease-in-out,opacity 4s'; halo.style.transform = 'scale(1.9)'; halo.style.opacity = '1';
+          later(() => {
+            buzz(); word.textContent = "Relâchez"; say("Et relâchez par la bouche, lentement…"); count(6, 1);
+            gl.style.transition = 'transform 6s ease-in-out,filter 6s ease-in-out'; gl.classList.remove('in');
+            halo.style.transition = 'transform 6s ease-in-out,opacity 6s'; halo.style.transform = 'scale(1)'; halo.style.opacity = '.55';
+          }, 4000);
           later(cycle, 10000);
         };
-        cycle();
+        later(cycle, 900);
       });
     }
   },
@@ -717,7 +752,7 @@ const XP = {
       }));
       $('#rgo').addEventListener('click', () => { $('#rgo').classList.add('hidden');
         sc.style.transition = 'transform 1.2s'; sc.style.transform = 'scale(1.06)'; store.set('refuge', sel);
-        finish(`Fermez les yeux quelques respirations et imaginez-vous dans ce refuge : ${sel.join(', ').toLowerCase()}. Choisissez un geste-clé, comme une main sur le cœur. Quand l'anxiété monte, refaites ce geste : il vous ramènera doucement ici.`);
+        finish(`Fermez les yeux quelques respirations et imaginez-vous dans ce refuge : ${sel.join(', ').toLowerCase()}. Choisissez un geste-clé, comme une main sur le cœur. Quand la journée pèse ou que la tension monte, refaites ce geste : il vous ramènera doucement ici.`);
       });
     }
   },
