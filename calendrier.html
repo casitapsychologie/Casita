@@ -679,9 +679,11 @@ const $$ = q => [...content.querySelectorAll(q)];
 let timers = [];
 const later = (fn, ms) => timers.push(setTimeout(fn, ms));
 const esc = s => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const PREVIEW_MODE = location.hash === '#vista' || location.hash === '#apercu';
+const MEM = {};
 const store = {
-  get(k, d){ try { const v = localStorage.getItem('casita-' + k); return v === null ? d : JSON.parse(v); } catch(e){ return d; } },
-  set(k, v){ try { localStorage.setItem('casita-' + k, JSON.stringify(v)); } catch(e){} }
+  get(k, d){ if (PREVIEW_MODE) return k in MEM ? MEM[k] : d; try { const v = localStorage.getItem('casita-' + k); return v === null ? d : JSON.parse(v); } catch(e){ return d; } },
+  set(k, v){ if (PREVIEW_MODE) { MEM[k] = v; return; } try { localStorage.setItem('casita-' + k, JSON.stringify(v)); } catch(e){} }
 };
 const shareHTML = () => `<button type="button" class="share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22 11 13 2 9z"/></svg><span>Envoyer à quelqu’un qui en a besoin</span></button>`;
 const moreHTML0 = () => { const m = MORE[curDay]; if (!m) return shareHTML(); const p = PRODUCTS[m[0]]; return shareHTML() + `<div class="more"><span class="mk">Pour aller plus loin</span><p><strong>${p[0]}</strong> <span class="mt">· ${p[1]}</span></p><p>${m[1]}</p><a href="${p[2]}">Découvrir</a></div>`; };
@@ -1243,6 +1245,7 @@ function parisToday(){
   catch(e){ const n = new Date(); return {y:n.getFullYear(), m:n.getMonth()+1, d:n.getDate()}; }
 }
 const isOpen = n => { if (preview) return true; const t = parisToday(); return t.y > 2026 || (t.y === 2026 && t.m === 12 && t.d >= n); };
+for (const k of Object.keys(opened)) if (!isOpen(+k)) delete opened[k];
 const isPast = n => { if (preview) return false; const t = parisToday(); return t.y > 2026 || (t.y === 2026 && t.m === 12 && t.d > n); };
 
 function lightUp(all){
