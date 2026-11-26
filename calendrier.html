@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>L'Avent de Casita</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -681,6 +682,7 @@ const later = (fn, ms) => timers.push(setTimeout(fn, ms));
 const esc = s => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const PREVIEW_MODE = location.hash === '#vista' || location.hash === '#apercu';
 const MEM = {};
+try { if (!PREVIEW_MODE && localStorage.getItem('casita-v') !== '2') { Object.keys(localStorage).filter(k => k.startsWith('casita-')).forEach(k => localStorage.removeItem(k)); localStorage.setItem('casita-v', '2'); } } catch (e) {}
 const store = {
   get(k, d){ if (PREVIEW_MODE) return k in MEM ? MEM[k] : d; try { const v = localStorage.getItem('casita-' + k); return v === null ? d : JSON.parse(v); } catch(e){ return d; } },
   set(k, v){ if (PREVIEW_MODE) { MEM[k] = v; return; } try { localStorage.setItem('casita-' + k, JSON.stringify(v)); } catch(e){} }
